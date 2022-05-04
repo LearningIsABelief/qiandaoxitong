@@ -1,4 +1,4 @@
-package qiandaoxitong
+package main
 
 func main() {
 
