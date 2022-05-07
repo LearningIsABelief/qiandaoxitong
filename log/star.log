@@ -333,4 +333,6 @@
 {"level":"INFO","timestamp":"2022-05-06 21:49:56.559","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
 {"level":"INFO","timestamp":"2022-05-06 21:49:56.559","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8888"}
 {"level":"INFO","timestamp":"2022-05-06 21:51:17.781","file":"store/user.go:23","msg":"成功插入:1条记录"}
-
+{"level":"INFO","timestamp":"2022-05-07 09:09:39.117","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-07 09:09:39.117","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-07 09:09:39.117","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8080"}

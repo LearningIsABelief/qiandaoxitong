@@ -2,6 +2,7 @@ package service
 
 import (
 	"qiandao/model"
+	"qiandao/pkg/util"
 	"qiandao/store"
 	"qiandao/viewmodel"
 )
@@ -12,7 +13,7 @@ func CreateLesson(lessonParam *viewmodel.Lesson) error{
 
 	// 处理课程表实体并加入数据库
 	lesson := &model.Lesson{
-		LessonID:"",
+		LessonID:util.GetUUID(),
 		LessonName:    lessonParam.LessonName,
 		LessonCreator: lessonParam.LessonCreator,
 	}
@@ -22,7 +23,7 @@ func CreateLesson(lessonParam *viewmodel.Lesson) error{
 
 	for _, v := range lessonParam.ClassList {
 		classLesson := model.ClassLesson{
-			ClassLessonID: "",
+			ClassLessonID:util.GetUUID(),
 			ClassID:v,
 			LessonID:lesson.LessonID,
 		}
