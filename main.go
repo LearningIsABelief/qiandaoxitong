@@ -50,7 +50,7 @@ func main() {
 func pingServer() error {
 	for i := 0; i < viper.GetInt("max_ping_count"); i++ {
 		// 通过向 /health 发送 GET 请求来 Ping 服务器。
-		resp, err := http.Get(viper.GetString("url") + "/sd/health")
+		resp, err := http.Get(viper.GetString("url") + "/api/sd/health")
 		if err == nil && resp.StatusCode == 200 {
 			return nil
 		}
