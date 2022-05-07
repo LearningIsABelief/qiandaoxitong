@@ -50,3 +50,11 @@ func GetCreateLessonList(userId string)(lessonList []*viewmodel.ListObj,err erro
 	}
 	return lessonList,err
 }
+
+func GetJoinLessonList(classId string)(lessonList []*viewmodel.ListObj,err error) {
+	lessonList,err = store.GetJoinLessonList(classId)
+	if err != nil {
+		return nil,err
+	}
+	return lessonList,err
+}

@@ -58,7 +58,21 @@ func GetCreateLessonList(ctx *gin.Context)  {
 }
 
 // GetJoinLessonList 获取加入的课程列表
-func GetJoinLessonList(ctx *gin.Context)  {
+func GetJoinLessonList(ctx *gin.Context){
+//	1.绑定参数
+	classId := ctx.Query("class_id")
+	if classId == ""{
+		app.SendResponse(ctx,app.ErrBind,nil)
+		return
+	}
+//	2.调用业务逻辑
+	joinList,err:= service.GetJoinLessonList(classId)
+	if err != nil{
+		app.SendResponse(ctx,app.ErrClassNotExist,nil)
+		return
+	}
+//	3.返回响应
+	app.SendResponse(ctx,app.OK,joinList)
 
 }
 

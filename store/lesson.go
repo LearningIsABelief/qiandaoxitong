@@ -13,8 +13,8 @@ func InsertLesson(lesson *model.Lesson, classLesson []model.ClassLesson) error {
 		return err
 	}
 	for _, v := range classLesson{
-		tx.Rollback()
 		err = tx.Create(&v).Error;if err != nil{
+			tx.Rollback()
 			return err
 		}
 	}
@@ -76,3 +76,45 @@ func LessonIsExist(lessonParam *viewmodel.Lesson)(err error,ok bool) {
 	}
 	return err,lesson.LessonName == lessonParam.LessonName
 }
+
+func GetJoinLessonList(classId string) ([]*viewmodel.ListObj,error) {
+	// 返回结果
+	var resListObj []*viewmodel.ListObj
+	// 创建课程实体
+	var lesson []model.Lesson
+	// 存入每个课堂对应的班级
+	classLessonMap := make(map[string][]string)
+	// 创建班级实体
+	var classLesson []viewmodel.ClassObj
+	// 根据中间表关联查询到当前班级加入的课堂
+	err := DB.Self.Table("class_lesson").Select([]string{`lesson.lesson_name`,`lesson.created_at`,`lesson.lesson_id`}).
+		Joins("inner join lesson on lesson.lesson_id = class_lesson.lesson_id").
+		Joins("inner join class on class.class_id = class_lesson.class_id").Where("class_lesson.class_id = ?",classId).Find(&lesson).Error
+	if err != nil {
+		return nil,err
+	}
+	// 根据查询出的课堂id,去反查询，得到加入该课堂的相应班级
+	for _,v := range lesson{
+		err = DB.Self.Table("class").Select([]string{`class_name`}).Joins("inner join class_lesson on class.class_id = class_lesson.class_id").
+			Where("class_lesson.lesson_id = ?",v.LessonID).Find(&classLesson).Error
+		if err != nil {
+			return nil,err
+		}
+		var tmp []string
+		for _,v1 := range classLesson{
+			tmp = append(tmp,v1.ClassName)
+		}
+		classLessonMap[v.LessonID] = tmp
+	}
+	for _,v := range lesson{
+		vobj := &viewmodel.ListObj{
+			LessonName: v.LessonName,
+			CreatedAt: v.CreatedAt,
+			ClassName: classLessonMap[v.LessonID],
+
+		}
+		resListObj = append(resListObj,vobj)
+	}
+	return resListObj,err
+}
+

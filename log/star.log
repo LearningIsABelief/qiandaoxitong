@@ -609,3 +609,48 @@
 {"level":"INFO","timestamp":"2022-05-07 15:56:09.228","file":"sd/healthcheck.go:25","msg":"路由正常"}
 {"level":"INFO","timestamp":"2022-05-07 15:56:09.229","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
 {"level":"INFO","timestamp":"2022-05-07 15:56:09.229","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8080"}
+{"level":"ERROR","timestamp":"2022-05-07 19:08:00.991","file":"store/mysql.go:49","msg":"数据库连接失败.Database Name: checkin","data":{"error":"Error 1045: Access denied for user 'root'@'localhost' (using password: YES)"}}
+{"level":"INFO","timestamp":"2022-05-07 19:08:01.008","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-07 19:08:01.008","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-07 19:08:01.008","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-05-07 19:08:45.480","file":"store/mysql.go:49","msg":"数据库连接失败.Database Name: checkin","data":{"error":"Error 1045: Access denied for user 'root'@'localhost' (using password: YES)"}}
+{"level":"INFO","timestamp":"2022-05-07 19:08:45.989","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-07 19:08:45.990","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-07 19:08:45.990","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-05-07 19:09:03.132","file":"config/config.go:55","msg":"配置文件已更改: E:\\小组学习\\项目\\qiandaoxitong\\conf\\config.yaml"}
+{"level":"INFO","timestamp":"2022-05-07 19:09:03.132","file":"config/config.go:55","msg":"配置文件已更改: E:\\小组学习\\项目\\qiandaoxitong\\conf\\config.yaml"}
+{"level":"INFO","timestamp":"2022-05-07 19:09:06.837","file":"config/config.go:55","msg":"配置文件已更改: E:\\小组学习\\项目\\qiandaoxitong\\conf\\config.yaml"}
+{"level":"INFO","timestamp":"2022-05-07 19:09:06.837","file":"config/config.go:55","msg":"配置文件已更改: E:\\小组学习\\项目\\qiandaoxitong\\conf\\config.yaml"}
+{"level":"INFO","timestamp":"2022-05-07 19:09:27.020","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-07 19:09:27.020","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-07 19:09:27.020","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8080"}
+{"level":"INFO","timestamp":"2022-05-07 19:12:39.745","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-07 19:12:39.745","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-07 19:12:39.745","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8080"}
+{"level":"INFO","timestamp":"2022-05-07 19:14:53.774","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-07 19:14:53.774","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-07 19:14:53.774","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8080"}
+{"level":"INFO","timestamp":"2022-05-07 19:17:38.138","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-07 19:17:38.140","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-07 19:17:38.140","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8080"}
+{"level":"INFO","timestamp":"2022-05-07 19:20:02.471","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-07 19:20:02.472","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-07 19:20:02.472","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8080"}
+{"level":"INFO","timestamp":"2022-05-07 19:20:35.304","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-07 19:20:35.304","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-07 19:20:35.304","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8080"}
+{"level":"INFO","timestamp":"2022-05-07 19:21:33.942","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-07 19:21:33.942","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-07 19:21:33.942","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8080"}
+{"level":"INFO","timestamp":"2022-05-07 19:22:12.918","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-07 19:22:12.919","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-07 19:22:12.919","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8080"}
+{"level":"INFO","timestamp":"2022-05-07 20:13:18.565","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-07 20:13:18.576","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-07 20:13:18.577","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8080"}
+{"level":"INFO","timestamp":"2022-05-07 20:14:46.237","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-07 20:14:46.237","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-07 20:14:46.237","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8080"}
+{"level":"INFO","timestamp":"2022-05-07 20:16:18.322","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-07 20:16:18.322","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-07 20:16:18.322","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8080"}
