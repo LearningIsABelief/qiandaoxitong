@@ -1,7 +1,7 @@
 run_mode: debug              # 开发模式, debug, release, test
-addr: :8080                 # HTTP绑定端口
+addr: :8000                  # HTTP绑定端口
 name: qiandaoqitong          # API Server的名字
-url: http://127.0.0.1:8080   # pingServer函数请求的API服务器的ip:port
+url: http://127.0.0.1:8000   # pingServer函数请求的API服务器的ip:port
 max_ping_count: 10           # pingServer函数try的次数
 
 log:
@@ -14,9 +14,11 @@ log:
   log_rotate_size: 1             # rotate 转存大小，配合 rollingPolicy: size 使用
   log_backup_count: 7            # 当日志文件达到转存标准时，log 系统会将该日志文件进行压缩备份，这里指定了备份文件的最大个数
 
+jwt_secret: Rtg8BPKNEf2mB4mgvKONGP78Z9ZQS6adgsIUYsnnJWNLijxR42qRgq0iBb5
+
 # 数据库配置
 db:
-  name: javaweb
+  name: checkin
   addr: 127.0.0.1:3306
   username: root
-  password: mysql1.
+  password: 875839231

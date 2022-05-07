@@ -654,3 +654,36 @@
 {"level":"INFO","timestamp":"2022-05-07 20:16:18.322","file":"sd/healthcheck.go:25","msg":"路由正常"}
 {"level":"INFO","timestamp":"2022-05-07 20:16:18.322","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
 {"level":"INFO","timestamp":"2022-05-07 20:16:18.322","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8080"}
+{"level":"INFO","timestamp":"2022-05-07 21:56:14.712","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-07 21:56:14.713","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-07 21:56:14.713","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-05-07 22:03:33.779","file":"store/user.go:134","msg":"查找到账号为: 15637954339 的信息"}
+{"level":"INFO","timestamp":"2022-05-07 22:05:34.853","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-07 22:05:34.854","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-07 22:05:34.854","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-05-07 22:05:46.041","file":"store/user.go:134","msg":"查找到账号为: 15637954339 的信息"}
+{"level":"INFO","timestamp":"2022-05-07 22:23:08.138","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-07 22:23:08.139","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-07 22:23:08.139","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-05-07 22:23:11.335","file":"store/user.go:134","msg":"查找到账号为: 15637954339 的信息"}
+{"level":"INFO","timestamp":"2022-05-07 22:23:57.842","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-07 22:23:57.844","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-07 22:23:57.844","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-05-07 22:24:14.665","file":"store/user.go:71","msg":"修改邮箱：成功修改 1 条记录"}
+{"level":"INFO","timestamp":"2022-05-07 22:26:33.376","file":"store/user.go:71","msg":"修改邮箱：成功修改 1 条记录"}
+{"level":"INFO","timestamp":"2022-05-07 22:36:59.767","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-07 22:36:59.768","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-07 22:36:59.769","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-05-07 22:43:27.544","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-07 22:43:27.545","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-07 22:43:27.545","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-05-07 22:46:16.417","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-07 22:46:16.418","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-07 22:46:16.418","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-05-07 22:54:45.815","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-07 22:54:45.816","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-07 22:54:45.817","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-05-07 22:59:24.166","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-07 22:59:24.168","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-07 22:59:24.168","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-05-07 22:59:48.663","file":"store/user.go:134","msg":"查找到账号为: 15637954339 的信息"}
