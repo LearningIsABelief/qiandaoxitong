@@ -3,8 +3,8 @@ package router
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
-
 	"qiandao/controller/lesson"
+
 	"qiandao/controller/class"
 	"qiandao/controller/sd"
 	"qiandao/controller/user"
@@ -35,6 +35,17 @@ func Load(engine *gin.Engine, handlerFunc ...gin.HandlerFunc) *gin.Engine {
 		classAPI.GET("", class.GetAllClass)
 	}
 
+	// 课程
+	lessonApi := engine.Group("/api/lesson")
+	{
+		// 创建课程
+		lessonApi.POST("",lesson.CreateLesson)
+		// 获取创建的课程列表
+		lessonApi.GET("/user",lesson.GetCreateLessonList)
+		//获取加入的课程列表
+		lessonApi.GET("/join",lesson.GetJoinLessonList)
+	}
+
 	// 检查http健康的路由组
 	svcd := engine.Group("/api/sd")
 	{
@@ -44,15 +55,5 @@ func Load(engine *gin.Engine, handlerFunc ...gin.HandlerFunc) *gin.Engine {
 		svcd.GET("/ram", sd.RAMCheck)
 	}
 
-	// 课程
-	lessonApi := engine.Group("/api/lesson")
-	{
-		// 创建课程
-		lessonApi.POST("",lesson.CreateLesson)
-		// 获取创建的课程列表
-		lessonApi.GET("/user",lesson.GetCreateLessonList)
-       //获取加入的课程列表
-		lessonApi.GET("/join",lesson.GetJoinLessonList)
-	}
 	return engine
 }
