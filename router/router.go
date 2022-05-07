@@ -3,6 +3,7 @@ package router
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"qiandao/controller/lesson"
 	"qiandao/controller/sd"
 )
 
@@ -23,6 +24,17 @@ func Load(engine *gin.Engine, handlerFunc ...gin.HandlerFunc) *gin.Engine {
 		svcd.GET("/disk", sd.DiskCheck)
 		svcd.GET("/cpu", sd.CPUCheck)
 		svcd.GET("/ram", sd.RAMCheck)
+	}
+
+	// 课程
+	lessonApi := engine.Group("/api/lesson")
+	{
+		// 创建课程
+		lessonApi.POST("",lesson.CreateLesson)
+		// 获取创建的课程列表
+		lessonApi.GET("/user",lesson.GetCreateLessonList)
+       //获取加入的课程列表
+		lessonApi.GET("/join",lesson.GetJoinLessonList)
 	}
 	return engine
 }
