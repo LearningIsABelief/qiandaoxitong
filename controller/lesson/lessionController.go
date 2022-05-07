@@ -1,6 +1,7 @@
 package lesson
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"qiandao/pkg/app"
 	"qiandao/service"
@@ -36,6 +37,23 @@ func CreateLesson(ctx *gin.Context)  {
 
 // GetCreateLessonList 获取创建的课程列表
 func GetCreateLessonList(ctx *gin.Context)  {
+//	1.绑定参数
+	userId := ctx.Query("user_id")
+	if userId == "" {
+		app.SendResponse(ctx,app.ErrBind,nil)
+		return
+	}
+//	2.调用业务逻辑
+	dataList,err := service.GetCreateLessonList(userId)
+	if err != nil {
+		app.SendResponse(ctx,app.ErrUserNotExist,nil)
+		return
+	}
+	for _,v := range dataList{
+		fmt.Println(v)
+	}
+//	3.返回响应
+	app.SendResponse(ctx,app.OK,dataList)
 	
 }
 
@@ -43,3 +61,4 @@ func GetCreateLessonList(ctx *gin.Context)  {
 func GetJoinLessonList(ctx *gin.Context)  {
 
 }
+
