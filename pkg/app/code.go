@@ -18,6 +18,7 @@ var (
 	ErrPhoneDoesNotExist   = &Errno{Code: 20107, Message: "手机号不存在"}
 	ErrPhoneBinEmail       = &Errno{Code: 20108, Message: "请输入手机号绑定的正确邮箱"}
 	ErrAccountDoesNotExist = &Errno{Code: 20109, Message: "账号不存在"}
+	ErrLoginPassword       = &Errno{Code: 20105, Message: "密码错误"}
 	ErrUserNotExist        = &Errno{Code: 11002, Message: "用户不存在"}
 
 	// token

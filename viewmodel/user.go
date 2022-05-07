@@ -21,17 +21,17 @@ type LoginRequest struct {
 
 type UserInfo struct {
 	UserId    string `json:"user_id"`
+	Password  string `json:"password"`
 	Email     string `json:"email"`
 	Role      int    `json:"role"`
 	ClassId   string `json:"class_id"`
 	ClassName string `json:"class_name"`
-	RealName  string `json:"real_name"`
 }
 
 // LoginResponse 登录响应结构体
 type LoginResponse struct {
-	Token string   `json:"token"`
-	User  UserInfo `json:"user"`
+	Token string    `json:"token"`
+	User  *UserInfo `json:"user"`
 }
 
 // UpdateUserInfoRequest 修改用户信息请求结构体

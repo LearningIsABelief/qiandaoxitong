@@ -3,11 +3,11 @@ package router
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"qiandao/controller/lesson"
-
 	"qiandao/controller/class"
+	"qiandao/controller/lesson"
 	"qiandao/controller/sd"
 	"qiandao/controller/user"
+	"qiandao/router/middleware"
 )
 
 func Load(engine *gin.Engine, handlerFunc ...gin.HandlerFunc) *gin.Engine {
@@ -20,10 +20,14 @@ func Load(engine *gin.Engine, handlerFunc ...gin.HandlerFunc) *gin.Engine {
 		context.String(http.StatusNotFound, "API路由错误")
 	})
 
-	userAPI := engine.Group("/api/user")
+	authAPI := engine.Group("/api/auth")
 	{
-		userAPI.POST("/register", user.Register)
-		userAPI.POST("/login", user.Login)
+		authAPI.POST("/register", user.Register)
+		authAPI.POST("/login", user.Login)
+	}
+
+	userAPI := engine.Group("/api/user", middleware.Auth())
+	{
 		userAPI.PUT("/update-user", user.UpdateUserInfo)
 		userAPI.PUT("/update-email", user.UpdateEmail)
 		userAPI.PUT("/update-nick-name", user.UpdateNickName)

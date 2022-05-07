@@ -2,8 +2,10 @@ package service
 
 import (
 	"github.com/lexkong/log"
+	"github.com/spf13/viper"
 	"qiandao/model"
 	"qiandao/pkg/app"
+	"qiandao/pkg/token"
 	"qiandao/pkg/util"
 	"qiandao/store"
 	"qiandao/viewmodel"
@@ -127,7 +129,25 @@ func ForgetPassword(forgetPasswordRequest viewmodel.ForgetPasswordRequest) error
 	return nil
 }
 
-func Login(loginRequest viewmodel.LoginRequest) (viewmodel.UserInfo, error) {
+// Login 用户登录 service
+func Login(loginRequest viewmodel.LoginRequest) (viewmodel.LoginResponse, error) {
 	// 根据手机号拿到用户信息
-	store.GetUserInfoByPhone(loginRequest.Phone)
+	userInfo, err := store.GetUserInfoByPhone(loginRequest.Phone)
+	if err != nil {
+		return viewmodel.LoginResponse{}, err
+	}
+	// 验证密码正确与否
+	if err := util.Decrypt(userInfo.Password, loginRequest.Password); err != nil {
+		log.Errorf(app.ErrLoginPassword, "用户输入的原来的密码，和数据库中不一致")
+		return viewmodel.LoginResponse{}, app.ErrLoginPassword
+	}
+	// 账号存在 密码正确 生成token
+	userToken, err := token.Sign(nil, token.Context{ID: userInfo.UserId}, viper.GetString("jwt_secret"))
+	if err != nil {
+		return viewmodel.LoginResponse{}, app.ErrTokenInvalid
+	}
+	return viewmodel.LoginResponse{
+		Token: userToken,
+		User:  userInfo,
+	}, nil
 }

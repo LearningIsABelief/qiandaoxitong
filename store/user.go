@@ -116,23 +116,22 @@ func GetEmailByPhone(phone string) (string, error) {
 }
 
 // GetUserInfoByPhone 根据手机号获取用户信息
-func GetUserInfoByPhone(phone string) (viewmodel.UserInfo, error) {
-	info := &model.User{}
-	userInfo := DB.Self.Where("phone = ?", phone).First(&info)
-	if userInfo.RowsAffected == 0 {
-		log.Errorf(userInfo.Error, "找不到账号为:%v的信息", phone)
-		return viewmodel.UserInfo{}, app.ErrAccountDoesNotExist
+func GetUserInfoByPhone(phone string) (*viewmodel.UserInfo, error) {
+
+	// userInfo := DB.Self.Where("phone = ?", phone).First(&info)
+
+	result := &viewmodel.UserInfo{}
+
+	scan := DB.Self.Model(&model.User{}).
+		Select("user.user_id, user.phone,user.password, user.role, user.email , user.class_id, class.class_name").
+		Joins("left join class on user.class_id = class.class_id").
+		Where("user.phone = ?", phone).Scan(&result)
+
+	if scan.RowsAffected == 0 {
+		log.Errorf(scan.Error, "找不到账号为: %v 的信息", phone)
+		return &viewmodel.UserInfo{}, app.ErrAccountDoesNotExist
 	}
 	log.Infof("查找到账号为: %v 的信息", phone)
 
-	// 根据用户的班级ID获取
-	result := viewmodel.UserInfo{
-		UserId:    info.UserId,
-		Email:     info.Email,
-		Role:      info.Role,
-		ClassId:   info.ClassId,
-		ClassName: ,
-		RealName:  info.,
-	}
-	return result, userInfo.Error
+	return result, nil
 }

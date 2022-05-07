@@ -15,8 +15,7 @@ var (
 
 // Context token令牌
 type Context struct {
-	ID       uint64
-	Username string
+	ID string
 }
 
 func ParseRequest(c *gin.Context) (*Context, error) {
@@ -44,8 +43,7 @@ func Parse(tokenString string, secret string) (*Context, error) {
 	if err != nil {
 		return ctx, err
 	} else if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
-		ctx.ID = uint64(claims["id"].(float64))
-		ctx.Username = claims["username"].(string)
+		ctx.ID = claims["id"].(string)
 		return ctx, nil
 	} else {
 		return ctx, err
@@ -69,7 +67,7 @@ func Sign(ctx *gin.Context, c Context, secret string) (tokenString string, err e
 	}
 	// 定义token令牌内容
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"userid": c.ID,
+		"id": c.ID,
 		// token生效时间
 		"nbf": time.Now().Unix(),
 		// token签发时间
