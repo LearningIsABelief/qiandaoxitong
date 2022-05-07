@@ -35,6 +35,7 @@ func GetSelfDB() *gorm.DB {
 }
 
 func openDB(username, password, addr, name string) *gorm.DB {
+
 	mysqlConfig := fmt.Sprintf("%"+
 		"s:%s@tcp(%s)/%s?charset=utf8&parseTime=%t&loc=%s",
 		username,
@@ -50,5 +51,6 @@ func openDB(username, password, addr, name string) *gorm.DB {
 	db.LogMode(viper.GetBool("run_mode"))
 	db.DB().SetMaxIdleConns(0)
 	db.SingularTable(true)
+	db.LogMode(true)
 	return db
 }
