@@ -1,16 +1,37 @@
 package store
 
 import (
+	"github.com/jinzhu/gorm"
 	"qiandao/model"
 )
+
+type Tx struct {
+	tx *gorm.DB
+}
+
+func GetTx() *Tx {
+	return &Tx{tx: DB.Self}
+}
+
+func (tx *Tx) Begin() {
+	tx.tx.Begin()
+}
+
+func (tx *Tx) RollBack() {
+	tx.tx.Rollback()
+}
+
+func (tx *Tx) Commit() {
+	tx.tx.Commit()
+}
 
 // CreateCheckin
 // @Description: 创建一个签到
 // @Author zhandongyang 2022-05-08 22:44:50 ${time}
 // @Param checkin
 // @Return err
-func CreateCheckin(checkin *model.Checkin) (err error) {
-	err = DB.Self.Create(checkin).Error
+func (tx *Tx) CreateCheckin(checkin *model.Checkin) (err error) {
+	err = tx.tx.Create(checkin).Error
 	return
 }
 
@@ -20,8 +41,8 @@ func CreateCheckin(checkin *model.Checkin) (err error) {
 // @Param checkinID
 // @Return checkin
 // @Return err
-func GetCheckinById(checkinID string) (checkin model.Checkin, err error) {
-	err = DB.Self.Where("checkin_id = ?", checkinID).First(&checkin).Error
+func (tx *Tx) GetCheckinById(checkinID string) (checkin model.Checkin, err error) {
+	err = tx.tx.Where("checkin_id = ?", checkinID).First(&checkin).Error
 	return
 }
 
@@ -31,8 +52,8 @@ func GetCheckinById(checkinID string) (checkin model.Checkin, err error) {
 // @Param creator
 // @Return checkinList
 // @Return err
-func GetCheckinByCreator(creatorID string) (checkinList []model.Checkin, err error) {
-	err = DB.Self.Find(&checkinList).Where("creator_id = ? and deleted_at is null", creatorID).Error
+func (tx *Tx) GetCheckinByCreator(creatorID string) (checkinList []model.Checkin, err error) {
+	err = tx.tx.Where("creator_id = ?", creatorID).Find(&checkinList).Error
 	return
 }
 
@@ -42,8 +63,8 @@ func GetCheckinByCreator(creatorID string) (checkinList []model.Checkin, err err
 // @Param lessonID
 // @Return classList
 // @Return err
-func GetShouldCheckInClass(lessonID string) (classList []model.Class, err error) {
-	err = DB.Self.Raw("select * from class where class_id IN (select class_id from class_lesson where lesson_id = ?)", lessonID).Scan(&classList).Error
+func (tx *Tx) GetShouldCheckInClass(lessonID string) (classList []model.Class, err error) {
+	err = tx.tx.Raw("select * from class where class_id IN (select class_id from class_lesson where lesson_id = ? and class_lesson.deleted_at is null) and class.deleted_at is null", lessonID).Scan(&classList).Error
 	return
 }
 
@@ -54,8 +75,8 @@ func GetShouldCheckInClass(lessonID string) (classList []model.Class, err error)
 // @Param userID
 // @Return stu
 // @Return err
-func GetShouldCheckInStu(classID string) (stuList []model.User, err error) {
-	err = DB.Self.Raw("select * from user where class_id = ? and deleted_at is null", classID).Scan(&stuList).Error
+func (tx *Tx) GetShouldCheckInStu(classID string) (stuList []model.User, err error) {
+	err = tx.tx.Raw("select * from user where class_id = ? and user.deleted_at is null", classID).Scan(&stuList).Error
 	return
 }
 
@@ -65,8 +86,8 @@ func GetShouldCheckInStu(classID string) (stuList []model.User, err error) {
 // @Param lessonID
 // @Return lesson
 // @Return err
-func GetLessonById(lessonID string) (lesson model.Lesson, err error) {
-	err = DB.Self.First(&lesson).Where("lesson_id = ?", lessonID).Error
+func (tx *Tx) GetLessonById(lessonID string) (lesson model.Lesson, err error) {
+	err = tx.tx.Where("lesson_id = ?", lessonID).First(&lesson).Error
 	return
 }
 
@@ -75,8 +96,8 @@ func GetLessonById(lessonID string) (lesson model.Lesson, err error) {
 // @Author zhandongyang 2022-05-08 22:58:34 ${time}
 // @Param stuCheckin
 // @Return err
-func AddCheckedIn(stuCheckin *model.CheckedIn) (err error) {
-	err = DB.Self.Create(stuCheckin).Error
+func (tx *Tx) AddCheckedIn(stuCheckin *model.CheckedIn) (err error) {
+	err = tx.tx.Create(stuCheckin).Error
 	return
 }
 
@@ -85,8 +106,8 @@ func AddCheckedIn(stuCheckin *model.CheckedIn) (err error) {
 // @Author zhandongyang 2022-05-09 17:32:27
 // @Param stuCheckin
 // @Return err
-func UpdateCheckedIn(stuCheckedIn *model.CheckedIn) (err error) {
-	err = DB.Self.Model(stuCheckedIn).Update("state", stuCheckedIn.State).Error
+func (tx *Tx) UpdateCheckedIn(stuCheckedIn *model.CheckedIn) (err error) {
+	err = tx.tx.Model(stuCheckedIn).Update("state", stuCheckedIn.State).Error
 	return
 }
 
@@ -96,8 +117,8 @@ func UpdateCheckedIn(stuCheckedIn *model.CheckedIn) (err error) {
 // @Param checkedID
 // @Return checkedIn
 // @Return err
-func GetCheckedIn(checkedID string) (checkedIn model.CheckedIn, err error) {
-	err = DB.Self.First(&checkedIn).Where("id = ?", checkedID).Error
+func (tx *Tx) GetCheckedIn(checkedID string) (checkedIn model.CheckedIn, err error) {
+	err = tx.tx.Where("id = ?", checkedID).First(&checkedIn).Error
 	return
 }
 
@@ -107,8 +128,8 @@ func GetCheckedIn(checkedID string) (checkedIn model.CheckedIn, err error) {
 // @Param checkinID
 // @Return checkedInList
 // @Return err
-func GetAllCheckedInByCheckinID(checkinID string) (checkedInList []model.CheckedIn, err error) {
-	err = DB.Self.Where("checkin_id = ?", checkinID).Find(&checkedInList).Error
+func (tx *Tx) GetAllCheckedInByCheckinID(checkinID string) (checkedInList []model.CheckedIn, err error) {
+	err = tx.tx.Where("checkin_id = ?", checkinID).Find(&checkedInList).Error
 	return
 }
 
@@ -118,12 +139,12 @@ func GetAllCheckedInByCheckinID(checkinID string) (checkedInList []model.Checked
 // @Param checkedID
 // @Return checkedIn
 // @Return err
-func GetAllCheckedInByUserID(userID string) (checkedInList []model.CheckedIn, err error) {
-	err = DB.Self.Where("user_id = ?", userID).Find(&checkedInList).Error
+func (tx *Tx) GetAllCheckedInByUserID(userID string) (checkedInList []model.CheckedIn, err error) {
+	err = tx.tx.Where("user_id = ?", userID).Find(&checkedInList).Error
 	return
 }
 
-func GetClassByUserID(userID string) (class model.Class, err error) {
-	err = DB.Self.Raw("select * from class where class_id = (select class_id from connection where user_id = ?)", userID).Scan(&class).Error
+func (tx *Tx) GetClassByUserID(userID string) (class model.Class, err error) {
+	err = tx.tx.Raw("select * from class where class_id = (select class_id from connection where user_id = ? and connection.deleted_at is null) and class.deleted_at is null", userID).Scan(&class).Error
 	return
 }

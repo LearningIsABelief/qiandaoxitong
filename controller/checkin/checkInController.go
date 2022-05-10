@@ -14,7 +14,7 @@ func CreateCheckin(ctx *gin.Context) {
 		app.SendResponse(ctx, app.ErrBind, nil)
 		return
 	}
-	if checkin.CreatorID == "" || checkin.CheckinCode == "" || checkin.Duration < 0 || checkin.LessonID == "" {
+	if checkin.CreatorID == "" || checkin.CheckinCode == "" || checkin.Duration <= 0 || checkin.LessonID == "" {
 		app.SendResponse(ctx, app.ErrParamNull, nil)
 		return
 	}
