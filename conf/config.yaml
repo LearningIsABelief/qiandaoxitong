@@ -16,7 +16,7 @@ log:
 
 # 数据库配置
 db:
-  name: javaweb
-  addr: 127.0.0.1:3306
+  name: sgnInSys
+  addr: 47.93.88.66:3306
   username: root
   password: mysql1.

@@ -3,9 +3,10 @@ package router
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"qiandao/controller/checkin"
 
-	"qiandao/controller/lesson"
 	"qiandao/controller/class"
+	"qiandao/controller/lesson"
 	"qiandao/controller/sd"
 	"qiandao/controller/user"
 )
@@ -48,11 +49,23 @@ func Load(engine *gin.Engine, handlerFunc ...gin.HandlerFunc) *gin.Engine {
 	lessonApi := engine.Group("/api/lesson")
 	{
 		// 创建课程
-		lessonApi.POST("",lesson.CreateLesson)
+		lessonApi.POST("", lesson.CreateLesson)
 		// 获取创建的课程列表
-		lessonApi.GET("/user",lesson.GetCreateLessonList)
-       //获取加入的课程列表
-		lessonApi.GET("/join",lesson.GetJoinLessonList)
+		lessonApi.GET("/user", lesson.GetCreateLessonList)
+		//获取加入的课程列表
+		lessonApi.GET("/join", lesson.GetJoinLessonList)
 	}
+
+	// 签到
+	checkInApi := engine.Group("/api/checkin")
+	{
+		// 创建签到
+		checkInApi.POST("createCheckin", checkin.CreateCheckin)
+		checkInApi.POST("checkin", checkin.CheckIn)
+		checkInApi.GET("getCheckinDetails", checkin.GetCheckinDetails)
+		checkInApi.GET("getCheckinRecList", checkin.GetCheckinRecList)
+		checkInApi.GET("getCreatedCheckinList", checkin.GetCreatedCheckinList)
+	}
+
 	return engine
 }
