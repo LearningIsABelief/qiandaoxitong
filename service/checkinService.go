@@ -1,10 +1,12 @@
 package service
 
 import (
+	"fmt"
 	"qiandao/model"
 	"qiandao/pkg/util"
 	"qiandao/store"
 	"qiandao/viewmodel"
+	"reflect"
 	"time"
 )
 
@@ -15,10 +17,9 @@ func CreateCheckin(viewCreatCheckin *viewmodel.CreateCheckin) (*model.Checkin, e
 		CreatorID:   viewCreatCheckin.CreatorID,
 		LessonID:    viewCreatCheckin.LessonID,
 		BeginTime:   time.Now(),
-		EndTime:     time.Now().UTC().Add(time.Duration(viewCreatCheckin.Duration)),
+		EndTime:     time.Now().UTC().Add(time.Duration(viewCreatCheckin.Duration) * time.Minute),
 		CheckinCode: viewCreatCheckin.CheckinCode,
 	}
-
 	err := store.CreateCheckin(checkin)
 	shouldCheckInClass, err := store.GetShouldCheckInClass(checkin.LessonID)
 	if err != nil {
@@ -55,48 +56,38 @@ func CreateCheckin(viewCreatCheckin *viewmodel.CreateCheckin) (*model.Checkin, e
 // @Return res 1:签到成功 2:签到失败 3:重复的签到 4:非法的签到 5:签到已过期
 // @Return err
 func StuCheckin(viewCheckin *viewmodel.Checkin) (res int, err error) {
-	// 获取签到信息
+	fmt.Println(0)
 	checkin, err := store.GetCheckinById(viewCheckin.CheckinID)
 	if err != nil {
 		return 2, err
 	}
-	// 检查签到合法性
-	classList, err := store.GetShouldCheckInClass(checkin.LessonID)
+	fmt.Println(1)
+	// 获取正确的已签到信息
+	rightCheckedIn, err := store.GetCheckedIn(viewCheckin.CheckinID + viewCheckin.UserID)
 	if err != nil {
 		return 2, err
 	}
-	legitimate := false
-	for _, class := range classList {
-		stuList, err := store.GetShouldCheckInStu(class.ClassId)
-		if err != nil {
-			return 2, err
-		}
-		for _, stu := range stuList {
-			if stu.UserId == viewCheckin.UserID {
-				legitimate = true
-				break
-			}
-		}
+	fmt.Println(2)
+	// 检查签到合法性
+	if reflect.DeepEqual(rightCheckedIn, model.CheckedIn{}) {
+		return 4, err
 	}
-	if !legitimate {
-		return 4, nil
-	}
+	fmt.Println(3)
 	// 检查签到码
 	if checkin.CheckinCode != viewCheckin.CheckinCode {
-		return 2, nil
-	}
-	// 检查签到时间是否过期
-	if checkin.EndTime.Before(time.Now()) {
 		return 5, nil
 	}
-	// 检查是否重复签到
-	checkedInRec, err := store.GetCheckedIn(viewCheckin.CheckinID + viewCheckin.UserID)
-	if err != nil {
-		return 2, err
+	fmt.Println(4)
+	// 检查签到时间是否过期
+	if checkin.EndTime.Before(time.Now()) {
+		return 2, nil
 	}
-	if checkedInRec.State == true {
+	fmt.Println(5)
+	// 检查是否重复签到
+	if rightCheckedIn.State == true {
 		return 3, err
 	}
+	fmt.Println(6)
 	// 创建已签到记录
 	checkedIn := &model.CheckedIn{
 		ID:        viewCheckin.CheckinID + viewCheckin.UserID,
@@ -109,6 +100,7 @@ func StuCheckin(viewCheckin *viewmodel.Checkin) (res int, err error) {
 	if err != nil {
 		return 2, err
 	}
+	fmt.Println(7)
 	return 1, nil
 }
 
@@ -123,7 +115,7 @@ func GetCheckInDetails(checkinID string) (checkinDetails *viewmodel.CheckinDetai
 		return nil, err
 	}
 	// 获取需要签到的学生列表
-	shouldCheckInStuList, err := store.GetAllCheckedIn("checkin_id", checkinID)
+	shouldCheckInStuList, err := store.GetAllCheckedInByCheckinID(checkinID)
 	if err != nil {
 		return nil, err
 	}
@@ -193,7 +185,7 @@ func GetCreatedCheckInList(creatorID string) (listResponse []viewmodel.ListRespo
 // @Return shouldCheckInList
 // @Return err
 func GetShouldCheckInList(userID string) (shouldCheckInList []viewmodel.ListResponse, err error) {
-	checkedInList, err := store.GetAllCheckedIn("user_id", userID)
+	checkedInList, err := store.GetAllCheckedInByUserID(userID)
 	if err != nil {
 		return nil, err
 	}

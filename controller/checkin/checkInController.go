@@ -39,7 +39,7 @@ func CheckIn(ctx *gin.Context) {
 	}
 	checkinResponse, err := service.StuCheckin(checkIn)
 	if err != nil {
-		app.SendResponse(ctx, app.InternalServerError, nil)
+		app.SendResponse(ctx, app.InternalServerError, checkinResponse)
 		return
 	}
 	app.SendResponse(ctx, app.OK, checkinResponse)
@@ -59,7 +59,7 @@ func GetCheckinDetails(ctx *gin.Context) {
 	app.SendResponse(ctx, app.OK, checkinDetailsResponse)
 }
 
-func GetCheckinRecList(ctx *gin.Context) {
+func GetCreatedCheckinList(ctx *gin.Context) {
 	userID := ctx.Query("user_id")
 	if userID == "" {
 		app.SendResponse(ctx, app.ErrParamNull, nil)
@@ -73,7 +73,7 @@ func GetCheckinRecList(ctx *gin.Context) {
 	app.SendResponse(ctx, app.OK, response)
 }
 
-func GetCreatedCheckinList(ctx *gin.Context) {
+func GetCheckinRecList(ctx *gin.Context) {
 	userID := ctx.Query("user_id")
 	if userID == "" {
 		app.SendResponse(ctx, app.ErrParamNull, nil)

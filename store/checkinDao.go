@@ -20,8 +20,8 @@ func CreateCheckin(checkin *model.Checkin) (err error) {
 // @Param checkinID
 // @Return checkin
 // @Return err
-func GetCheckinById(checkinID string) (checkin *model.Checkin, err error) {
-	err = DB.Self.First(checkin, checkinID).Error
+func GetCheckinById(checkinID string) (checkin model.Checkin, err error) {
+	err = DB.Self.Where("checkin_id = ?", checkinID).First(&checkin).Error
 	return
 }
 
@@ -32,7 +32,7 @@ func GetCheckinById(checkinID string) (checkin *model.Checkin, err error) {
 // @Return checkinList
 // @Return err
 func GetCheckinByCreator(creatorID string) (checkinList []model.Checkin, err error) {
-	err = DB.Self.Find(&checkinList).Where("creator_id = ?", creatorID).Error
+	err = DB.Self.Find(&checkinList).Where("creator_id = ? and deleted_at is null", creatorID).Error
 	return
 }
 
@@ -55,7 +55,7 @@ func GetShouldCheckInClass(lessonID string) (classList []model.Class, err error)
 // @Return stu
 // @Return err
 func GetShouldCheckInStu(classID string) (stuList []model.User, err error) {
-	err = DB.Self.Find(&stuList).Where("class_id = ?", classID).Error
+	err = DB.Self.Raw("select * from user where class_id = ? and deleted_at is null", classID).Scan(&stuList).Error
 	return
 }
 
@@ -85,8 +85,8 @@ func AddCheckedIn(stuCheckin *model.CheckedIn) (err error) {
 // @Author zhandongyang 2022-05-09 17:32:27
 // @Param stuCheckin
 // @Return err
-func UpdateCheckedIn(stuCheckin *model.CheckedIn) (err error) {
-	err = DB.Self.Model(&model.CheckedIn{}).Where("id = ?", stuCheckin.ID).Update("state", stuCheckin.State).Error
+func UpdateCheckedIn(stuCheckedIn *model.CheckedIn) (err error) {
+	err = DB.Self.Model(stuCheckedIn).Update("state", stuCheckedIn.State).Error
 	return
 }
 
@@ -101,14 +101,25 @@ func GetCheckedIn(checkedID string) (checkedIn model.CheckedIn, err error) {
 	return
 }
 
-// GetAllCheckedIn
-// @Description: 获取签到的学生列表
+// GetAllCheckedInByCheckinID
+// @Description: 根据签到id获取需要签到的学生列表
+// @Author zhandongyang 2022-05-10 16:11:54
+// @Param checkinID
+// @Return checkedInList
+// @Return err
+func GetAllCheckedInByCheckinID(checkinID string) (checkedInList []model.CheckedIn, err error) {
+	err = DB.Self.Where("checkin_id = ?", checkinID).Find(&checkedInList).Error
+	return
+}
+
+// GetAllCheckedInByUserID
+// @Description: 获取某个学生需要签到的列表
 // @Author zhandongyang 2022-05-09 15:46:01
 // @Param checkedID
 // @Return checkedIn
 // @Return err
-func GetAllCheckedIn(field, checkinId string) (checkedInList []model.CheckedIn, err error) {
-	err = DB.Self.Find(&checkedInList).Where("? = ?", field, checkinId).Error
+func GetAllCheckedInByUserID(userID string) (checkedInList []model.CheckedIn, err error) {
+	err = DB.Self.Where("user_id = ?", userID).Find(&checkedInList).Error
 	return
 }
 
