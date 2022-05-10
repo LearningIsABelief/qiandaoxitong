@@ -687,3 +687,102 @@
 {"level":"INFO","timestamp":"2022-05-07 22:59:24.168","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
 {"level":"INFO","timestamp":"2022-05-07 22:59:24.168","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8000"}
 {"level":"INFO","timestamp":"2022-05-07 22:59:48.663","file":"store/user.go:134","msg":"查找到账号为: 15637954339 的信息"}
+{"level":"ERROR","timestamp":"2022-05-10 21:00:20.311","file":"store/mysql.go:49","msg":"数据库连接失败.Database Name: checkin","data":{"error":"Error 1045: Access denied for user 'root'@'localhost' (using password: YES)"}}
+{"level":"INFO","timestamp":"2022-05-10 21:00:20.817","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-10 21:00:20.818","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-10 21:00:20.818","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-05-10 21:00:44.777","file":"config/config.go:55","msg":"配置文件已更改: E:\\小组学习\\项目\\qiandaoxitong\\conf\\config.yaml"}
+{"level":"INFO","timestamp":"2022-05-10 21:00:44.777","file":"config/config.go:55","msg":"配置文件已更改: E:\\小组学习\\项目\\qiandaoxitong\\conf\\config.yaml"}
+{"level":"INFO","timestamp":"2022-05-10 21:41:43.648","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:41:46.700","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:41:49.743","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:41:52.777","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:41:55.814","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:41:58.854","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:42:01.895","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:42:04.940","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:42:07.964","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:42:11.022","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"FATAL","timestamp":"2022-05-10 21:42:12.032","file":"qiandaoxitong/main.go:42","msg":"路由没有响应，或者启动时间过长.","data":{"error":"无法连接到路由","trace":"goroutine 38 [running]:\ngithub.com/lexkong/log/lager.(*logger).logs(0xc0004803c0, {0x10, 0x235bc960eb8, 0x10}, 0x4, {0xecbd19, 0x2e}, {0xfa0d40, 0xc000304380}, {0x0, ...})\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:135 +0x145\ngithub.com/lexkong/log/lager.(*logger).log(0xc0004cbf78, 0xd881e5, {0xecbd19, 0x2e}, {0xfa0d40, 0xc000304380}, {0x0, 0x0, 0x0})\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:123 +0xcd\ngithub.com/lexkong/log/lager.(*logger).Fatal(0x0, {0xecbd19, 0x0}, {0xfa0d40, 0xc000304380}, {0x0, 0x0, 0x0})\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:197 +0x4a\ngithub.com/lexkong/log.Fatal(...)\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/st_lager.go:162\nmain.main.func1()\n\tE:/小组学习/项目/qiandaoxitong/main.go:42 +0x58\ncreated by main.main\n\tE:/小组学习/项目/qiandaoxitong/main.go:40 +0x1f3\n"}}
+{"level":"INFO","timestamp":"2022-05-10 21:42:54.259","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:42:57.425","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:43:00.467","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:43:03.503","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:43:06.546","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:43:09.589","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:43:12.615","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:43:15.651","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:43:18.678","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:43:21.719","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"FATAL","timestamp":"2022-05-10 21:43:22.722","file":"qiandaoxitong/main.go:42","msg":"路由没有响应，或者启动时间过长.","data":{"error":"无法连接到路由","trace":"goroutine 7 [running]:\ngithub.com/lexkong/log/lager.(*logger).logs(0xc000306480, {0x10, 0x20bbbf90eb8, 0x10}, 0x4, {0xf0bd19, 0x2e}, {0xfe0d40, 0xc000304870}, {0x0, ...})\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:135 +0x145\ngithub.com/lexkong/log/lager.(*logger).log(0xc00034df78, 0xdc81e5, {0xf0bd19, 0x2e}, {0xfe0d40, 0xc000304870}, {0x0, 0x0, 0x0})\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:123 +0xcd\ngithub.com/lexkong/log/lager.(*logger).Fatal(0x0, {0xf0bd19, 0x0}, {0xfe0d40, 0xc000304870}, {0x0, 0x0, 0x0})\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:197 +0x4a\ngithub.com/lexkong/log.Fatal(...)\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/st_lager.go:162\nmain.main.func1()\n\tE:/小组学习/项目/qiandaoxitong/main.go:42 +0x58\ncreated by main.main\n\tE:/小组学习/项目/qiandaoxitong/main.go:40 +0x1f3\n"}}
+{"level":"INFO","timestamp":"2022-05-10 21:44:06.397","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:44:09.428","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:44:12.463","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:44:15.493","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:44:18.537","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:44:21.558","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:44:24.603","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:44:27.639","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:44:30.697","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:44:33.721","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"FATAL","timestamp":"2022-05-10 21:44:34.722","file":"qiandaoxitong/main.go:42","msg":"路由没有响应，或者启动时间过长.","data":{"error":"无法连接到路由","trace":"goroutine 20 [running]:\ngithub.com/lexkong/log/lager.(*logger).logs(0xc0003004e0, {0x10, 0x2aa15b50598, 0x10}, 0x4, {0xd3bd19, 0x2e}, {0xe10d40, 0xc00027dd20}, {0x0, ...})\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:135 +0x145\ngithub.com/lexkong/log/lager.(*logger).log(0xc0000a3f78, 0xbf81e5, {0xd3bd19, 0x2e}, {0xe10d40, 0xc00027dd20}, {0x0, 0x0, 0x0})\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:123 +0xcd\ngithub.com/lexkong/log/lager.(*logger).Fatal(0x0, {0xd3bd19, 0x0}, {0xe10d40, 0xc00027dd20}, {0x0, 0x0, 0x0})\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:197 +0x4a\ngithub.com/lexkong/log.Fatal(...)\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/st_lager.go:162\nmain.main.func1()\n\tE:/小组学习/项目/qiandaoxitong/main.go:42 +0x58\ncreated by main.main\n\tE:/小组学习/项目/qiandaoxitong/main.go:40 +0x1f3\n"}}
+{"level":"INFO","timestamp":"2022-05-10 21:45:11.697","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:45:14.736","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:45:17.773","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:45:20.808","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:45:23.850","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:45:26.890","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:45:29.931","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:45:32.978","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:45:36.001","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:45:39.040","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"FATAL","timestamp":"2022-05-10 21:45:40.053","file":"qiandaoxitong/main.go:42","msg":"路由没有响应，或者启动时间过长.","data":{"error":"无法连接到路由","trace":"goroutine 9 [running]:\ngithub.com/lexkong/log/lager.(*logger).logs(0xc00002e780, {0x10, 0x244d7500a28, 0x10}, 0x4, {0x149bd79, 0x2e}, {0x1570da0, 0xc000441620}, {0x0, ...})\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:135 +0x145\ngithub.com/lexkong/log/lager.(*logger).log(0xc0004adf78, 0x1358205, {0x149bd79, 0x2e}, {0x1570da0, 0xc000441620}, {0x0, 0x0, 0x0})\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:123 +0xcd\ngithub.com/lexkong/log/lager.(*logger).Fatal(0x0, {0x149bd79, 0x0}, {0x1570da0, 0xc000441620}, {0x0, 0x0, 0x0})\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:197 +0x4a\ngithub.com/lexkong/log.Fatal(...)\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/st_lager.go:162\nmain.main.func1()\n\tE:/小组学习/项目/qiandaoxitong/main.go:42 +0x58\ncreated by main.main\n\tE:/小组学习/项目/qiandaoxitong/main.go:40 +0x1f3\n"}}
+{"level":"INFO","timestamp":"2022-05-10 21:46:07.160","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:46:10.197","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:46:13.252","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:46:16.306","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:46:19.343","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:46:22.385","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:46:25.431","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:46:28.479","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:46:31.526","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:46:34.562","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"FATAL","timestamp":"2022-05-10 21:46:35.566","file":"qiandaoxitong/main.go:42","msg":"路由没有响应，或者启动时间过长.","data":{"error":"无法连接到路由","trace":"goroutine 38 [running]:\ngithub.com/lexkong/log/lager.(*logger).logs(0xc0003065a0, {0x10, 0x18447420598, 0x10}, 0x4, {0xdfbd79, 0x2e}, {0xed0da0, 0xc00046e790}, {0x0, ...})\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:135 +0x145\ngithub.com/lexkong/log/lager.(*logger).log(0xc00009ff78, 0xcb81e5, {0xdfbd79, 0x2e}, {0xed0da0, 0xc00046e790}, {0x0, 0x0, 0x0})\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:123 +0xcd\ngithub.com/lexkong/log/lager.(*logger).Fatal(0x0, {0xdfbd79, 0x0}, {0xed0da0, 0xc00046e790}, {0x0, 0x0, 0x0})\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:197 +0x4a\ngithub.com/lexkong/log.Fatal(...)\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/st_lager.go:162\nmain.main.func1()\n\tE:/小组学习/项目/qiandaoxitong/main.go:42 +0x58\ncreated by main.main\n\tE:/小组学习/项目/qiandaoxitong/main.go:40 +0x1f3\n"}}
+{"level":"INFO","timestamp":"2022-05-10 21:48:18.030","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:48:21.071","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:48:24.102","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:48:27.150","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:48:30.182","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:48:33.235","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:48:36.272","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:48:39.295","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:48:42.339","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:48:45.383","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"FATAL","timestamp":"2022-05-10 21:48:46.388","file":"qiandaoxitong/main.go:42","msg":"路由没有响应，或者启动时间过长.","data":{"error":"无法连接到路由","trace":"goroutine 66 [running]:\ngithub.com/lexkong/log/lager.(*logger).logs(0xc00008c9c0, {0x10, 0x13a2ae80a28, 0x10}, 0x4, {0xb9bd79, 0x2e}, {0xc70da0, 0xc000307710}, {0x0, ...})\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:135 +0x145\ngithub.com/lexkong/log/lager.(*logger).log(0xc00007df78, 0xa58225, {0xb9bd79, 0x2e}, {0xc70da0, 0xc000307710}, {0x0, 0x0, 0x0})\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:123 +0xcd\ngithub.com/lexkong/log/lager.(*logger).Fatal(0x0, {0xb9bd79, 0x0}, {0xc70da0, 0xc000307710}, {0x0, 0x0, 0x0})\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:197 +0x4a\ngithub.com/lexkong/log.Fatal(...)\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/st_lager.go:162\nmain.main.func1()\n\tE:/小组学习/项目/qiandaoxitong/main.go:42 +0x58\ncreated by main.main\n\tE:/小组学习/项目/qiandaoxitong/main.go:40 +0x1f3\n"}}
+{"level":"INFO","timestamp":"2022-05-10 21:49:04.231","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:49:07.273","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:49:10.318","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:49:13.349","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:49:16.383","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:49:19.433","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:49:22.464","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:49:25.486","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:49:28.530","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 21:49:31.570","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"FATAL","timestamp":"2022-05-10 21:49:32.584","file":"qiandaoxitong/main.go:42","msg":"路由没有响应，或者启动时间过长.","data":{"error":"无法连接到路由","trace":"goroutine 52 [running]:\ngithub.com/lexkong/log/lager.(*logger).logs(0xc00002e720, {0x10, 0x19be9cb0a28, 0x10}, 0x4, {0xffbd79, 0x2e}, {0x10d0da0, 0xc0002bdb70}, {0x0, ...})\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:135 +0x145\ngithub.com/lexkong/log/lager.(*logger).log(0xc000079f78, 0xeb8225, {0xffbd79, 0x2e}, {0x10d0da0, 0xc0002bdb70}, {0x0, 0x0, 0x0})\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:123 +0xcd\ngithub.com/lexkong/log/lager.(*logger).Fatal(0x0, {0xffbd79, 0x0}, {0x10d0da0, 0xc0002bdb70}, {0x0, 0x0, 0x0})\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:197 +0x4a\ngithub.com/lexkong/log.Fatal(...)\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/st_lager.go:162\nmain.main.func1()\n\tE:/小组学习/项目/qiandaoxitong/main.go:42 +0x58\ncreated by main.main\n\tE:/小组学习/项目/qiandaoxitong/main.go:40 +0x1f3\n"}}
+{"level":"INFO","timestamp":"2022-05-10 22:11:27.264","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 22:11:30.309","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 22:11:33.354","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 22:11:36.392","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 22:11:39.431","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 22:25:00.713","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 22:25:03.745","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 22:25:06.786","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 22:25:09.830","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 22:25:12.866","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 22:25:15.917","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 22:25:18.969","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 22:25:22.006","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 22:25:25.058","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-05-10 22:25:28.112","file":"qiandaoxitong/main.go:58","msg":"等待路由，1秒后重试."}
+{"level":"FATAL","timestamp":"2022-05-10 22:25:29.125","file":"qiandaoxitong/main.go:42","msg":"路由没有响应，或者启动时间过长.","data":{"error":"无法连接到路由","trace":"goroutine 50 [running]:\ngithub.com/lexkong/log/lager.(*logger).logs(0xc000300a20, {0x10, 0x18da2a90598, 0x10}, 0x4, {0x153bd99, 0x2e}, {0x1610e40, 0xc00008d270}, {0x0, ...})\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:135 +0x145\ngithub.com/lexkong/log/lager.(*logger).log(0xc00007df78, 0x13f8425, {0x153bd99, 0x2e}, {0x1610e40, 0xc00008d270}, {0x0, 0x0, 0x0})\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:123 +0xcd\ngithub.com/lexkong/log/lager.(*logger).Fatal(0x0, {0x153bd99, 0x0}, {0x1610e40, 0xc00008d270}, {0x0, 0x0, 0x0})\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:197 +0x4a\ngithub.com/lexkong/log.Fatal(...)\n\tD:/software/goPath/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/st_lager.go:162\nmain.main.func1()\n\tE:/小组学习/项目/qiandaoxitong/main.go:42 +0x58\ncreated by main.main\n\tE:/小组学习/项目/qiandaoxitong/main.go:40 +0x1f3\n"}}

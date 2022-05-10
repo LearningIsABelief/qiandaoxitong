@@ -75,4 +75,26 @@ func GetJoinLessonList(ctx *gin.Context){
 	app.SendResponse(ctx,app.OK,joinList)
 
 }
+// EditorLesson 编辑课程信息
+func EditorLesson(ctx *gin.Context){
+// 	1.绑定参数
+	var lesson *viewmodel.LessonEditor
+	err := ctx.ShouldBindJSON(&lesson)
+	if err != nil {
+		app.SendResponse(ctx,app.ErrBind,nil)
+		return
+	}
+	if lesson.LessonID == "" || lesson.LessonName == ""{
+		app.SendResponse(ctx,app.ErrParamNull,nil)
+		return
+	}
+//	2.业务处理
+	err = service.EditorLesson(lesson)
+	if err != nil {
+		return
+	}
+//	3.返回响应
+	app.SendResponse(ctx,app.OK,nil)
+}
+
 

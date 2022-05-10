@@ -2,6 +2,7 @@ package service
 
 import (
 	"errors"
+	"github.com/gin-gonic/gin"
 	"qiandao/model"
 	"qiandao/pkg/util"
 	"qiandao/store"
@@ -51,10 +52,46 @@ func GetCreateLessonList(userId string)(lessonList []*viewmodel.ListObj,err erro
 	return lessonList,err
 }
 
+// GetJoinLessonList 获取当前用户加入的所有课程
 func GetJoinLessonList(classId string)(lessonList []*viewmodel.ListObj,err error) {
 	lessonList,err = store.GetJoinLessonList(classId)
 	if err != nil {
 		return nil,err
 	}
 	return lessonList,err
+}
+
+// EditorLesson 编辑课程信息
+func EditorLesson(lesson *viewmodel.LessonEditor)(err error){
+	// 首先更新课程名称
+	err = store.UpdateLessonName(lesson)
+	if err != nil {
+		return err
+	}
+	// 删除该课程对应的班级
+	err = store.DeleteClassIdByLessonId(lesson.LessonID)
+	if err != nil {
+		return err
+	}
+	// 重新插入
+	// 遍历班级id列表，创建中间表实体，加入切片
+	classLessonSlice := make([]model.ClassLesson,0)
+	for _,v := range lesson.ClassIdList{
+		classLesson := model.ClassLesson{
+			ClassLessonID:util.GetUUID(),
+			ClassID: v,
+			LessonID: lesson.LessonID,
+		}
+		classLessonSlice = append(classLessonSlice,classLesson)
+	}
+	// 调用插入语句重新插入
+	err = store.InsertClassLesson(classLessonSlice)
+	if err != nil{
+		return err
+	}
+	return nil
+}
+
+func RemoveLesson(ctx *gin.Context)  {
+
 }

@@ -50,6 +50,8 @@ func Load(engine *gin.Engine, handlerFunc ...gin.HandlerFunc) *gin.Engine {
 		lessonApi.GET("/user", lesson.GetCreateLessonList)
 		//获取加入的课程列表
 		lessonApi.GET("/join", lesson.GetJoinLessonList)
+		// 编辑课程
+		lessonApi.POST("/editor",lesson.EditorLesson)
 	}
 
 	// 检查http健康的路由组
