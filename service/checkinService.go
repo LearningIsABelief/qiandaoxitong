@@ -124,6 +124,12 @@ func GetCheckInDetails(checkinID string) (checkinDetails *viewmodel.CheckinDetai
 	var checkedInStuList, noCheckedInStuList []viewmodel.List
 	for i := range shouldCheckInStuList {
 		checkedIn := shouldCheckInStuList[i]
+		state := func() string {
+			if checkedIn.State {
+				return "已签到"
+			}
+			return "未签到"
+		}()
 		class, err := store.GetClassByUserID(checkedIn.UserID)
 		if err != nil {
 			return nil, err
@@ -131,6 +137,7 @@ func GetCheckInDetails(checkinID string) (checkinDetails *viewmodel.CheckinDetai
 		totalStuList[i] = viewmodel.List{
 			ClassName: class.ClassName,
 			UserName:  checkedIn.UserName,
+			State:     state,
 		}
 		if checkedIn.State == true {
 			checkedInStuList = append(checkedInStuList, totalStuList[i])

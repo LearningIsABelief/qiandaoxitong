@@ -21,6 +21,7 @@ type Checkin struct {
 type List struct {
 	ClassName string `json:"class_name"`
 	UserName  string `json:"user_name"`
+	State     string `json:"state"`
 }
 
 // CheckinDetailsResponse 签到详情响应结构体
