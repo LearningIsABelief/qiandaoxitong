@@ -4,13 +4,12 @@ import (
 	"github.com/lexkong/log"
 	"qiandao/model"
 	"qiandao/pkg/app"
-	"qiandao/pkg/util"
 	"qiandao/viewmodel"
 )
 
-// GetByPhone 查询手机号是否在数据库中存在
-func GetByPhone(phone string) bool {
-	isPhone := DB.Self.Where("phone = ?", phone).First(&model.User{})
+// IsExistUser 判断用户表中某个值是不是存在了  @field:数据库中要判断的字段 @param:值 @a 实体类
+func IsExistUser(field, param string, a *model.User) bool {
+	isPhone := DB.Self.Where(field+" = ?", param).First(&a)
 	if isPhone.RowsAffected == 0 {
 		return false
 	} else {
@@ -18,31 +17,34 @@ func GetByPhone(phone string) bool {
 	}
 }
 
-// CreateUser 创建用户
-func CreateUser(user *model.User, classId string) error {
+// CreateUserMapper 创建用户 mapper
+func CreateUserMapper(user *model.User, classId string) error {
+	tx := DB.Self.Begin()
 	// 创建用户
-	db := DB.Self.Create(&user)
+	db := tx.Create(&user)
 	if db.Error != nil {
-		log.Errorf(db.Error, "创建班级失败，err：%v", db.Error)
+		tx.Rollback()
+		log.Errorf(db.Error, "创建班级失败")
 		return app.InternalServerError
 	}
 	log.Infof("创建班级：成功创建:%v条记录", db.RowsAffected)
 	// 维护用户班级中间表
-	intermediateTable := DB.Self.Create(&model.Connection{
-		ClassRoomId: util.GetUUID(),
-		ClassId:     classId,
-		UserId:      user.UserId,
+	intermediateTable := tx.Create(&model.Connection{
+		ClassId: classId,
+		UserId:  user.UserId,
 	})
 	if intermediateTable.Error != nil {
-		log.Errorf(intermediateTable.Error, "维护中间表失败，err：%v", intermediateTable.Error)
+		tx.Rollback()
+		log.Errorf(intermediateTable.Error, "维护中间表失败")
 		return app.InternalServerError
 	}
 	log.Infof("维护班级用户中间表：成功创建:%v条记录", intermediateTable.RowsAffected)
+	tx.Commit()
 	return nil
 }
 
-// UpdateUser 修改用户信息
-func UpdateUser(updateUser viewmodel.UpdateUserInfoRequest) error {
+// UpdateUserMapper 修改用户信息 mapper
+func UpdateUserMapper(updateUser viewmodel.UpdateUserInfoRequest) error {
 	result := DB.Self.Model(model.User{}).Where("user_id = ?", updateUser.UserId).Updates(model.User{
 		Email:    updateUser.Email,
 		RealName: updateUser.RealName,
@@ -52,31 +54,84 @@ func UpdateUser(updateUser viewmodel.UpdateUserInfoRequest) error {
 		Age:      updateUser.Age,
 	})
 	if result.Error != nil {
-		log.Errorf(result.Error, "修改用户信息失败，err：%v", result.Error)
+		log.Errorf(result.Error, "修改用户信息失败")
 		return app.InternalServerError
 	}
 	log.Infof("修改用户信息：成功修改 %v 条记录", result.RowsAffected)
 	return nil
 }
 
-// UpdateEmail 修改邮箱
-func UpdateEmail(updateEmail viewmodel.UpdateEmailRequest) error {
+// UpdateEmailMapper 修改邮箱 mapper
+func UpdateEmailMapper(updateEmail viewmodel.UpdateEmailRequest) error {
 	result := DB.Self.Model(&model.User{}).Where("user_id = ?", updateEmail.UserId).Update("email", updateEmail.Email)
 	if result.Error != nil {
-		log.Errorf(result.Error, "修改邮箱失败失败，err：%v", result.Error)
+		log.Errorf(result.Error, "修改邮箱失败")
 		return app.InternalServerError
 	}
 	log.Infof("修改邮箱：成功修改 %v 条记录", result.RowsAffected)
 	return nil
 }
 
-// UpdateNickName 修改昵称
-func UpdateNickName(updateNickName viewmodel.UpdateNickNameRequest) error {
-	result := DB.Self.Model(&model.User{}).Where("user_id = ?", updateNickName.UserId).Update("nick_name", updateNickName.NickName)
-	if result.Error != nil {
-		log.Errorf(result.Error, "修改昵称失败，err：%v", result.Error)
+// UpdateNickNameMapper 修改昵称 mapper
+func UpdateNickNameMapper(updateNickName viewmodel.UpdateNickNameRequest) error {
+	result1 := DB.Self.Model(&model.User{}).Where("user_id = ?", updateNickName.UserId).Update("nick_name", updateNickName.NickName)
+	if result1.Error != nil {
+		log.Errorf(result1.Error, "修改昵称失败")
 		return app.InternalServerError
 	}
-	log.Infof("修改昵称：成功修改 %v 条记录", result.RowsAffected)
+	log.Infof("修改昵称：成功修改 %v 条记录", result1.RowsAffected)
 	return nil
+}
+
+// GetPasswordById 根据用户ID查找对应用户的密码 mapper
+func GetPasswordById(userID string) (string, error) {
+	user := &model.User{}
+	result := DB.Self.Select("password").Where("user_id = ?", userID).Find(&user)
+	if result.Error != nil {
+		log.Errorf(result.Error, "查找用户密码失败")
+		return "", app.InternalServerError
+	}
+	return user.Password, nil
+}
+
+// UpdatePasswordMapper 修改密码 mapper
+func UpdatePasswordMapper(filed, condition, password string) error {
+	result := DB.Self.Model(&model.User{}).Where(filed+" = ?", condition).Update("password", password)
+	if result.Error != nil {
+		log.Errorf(result.Error, "修改密码失败")
+		return app.InternalServerError
+	}
+	return nil
+}
+
+// GetEmailByPhone 根据手机号查找对应用户的邮箱 mapper
+func GetEmailByPhone(phone string) (string, error) {
+	user := &model.User{}
+	result := DB.Self.Select("email").Where("phone = ?", phone).Find(&user)
+	if result.Error != nil {
+		log.Errorf(result.Error, "查找用户邮箱失败")
+		return "", app.InternalServerError
+	}
+	return user.Email, nil
+}
+
+// GetUserInfoByPhone 根据手机号获取用户信息
+func GetUserInfoByPhone(phone string) (*viewmodel.UserInfo, error) {
+
+	// userInfo := DB.Self.Where("phone = ?", phone).First(&info)
+
+	result := &viewmodel.UserInfo{}
+
+	scan := DB.Self.Model(&model.User{}).
+		Select("user.user_id, user.phone,user.password, user.role, user.email , user.class_id, class.class_name").
+		Joins("left join class on user.class_id = class.class_id").
+		Where("user.phone = ?", phone).Scan(&result)
+
+	if scan.RowsAffected == 0 {
+		log.Errorf(scan.Error, "找不到账号为: %v 的信息", phone)
+		return &viewmodel.UserInfo{}, app.ErrAccountDoesNotExist
+	}
+	log.Infof("查找到账号为: %v 的信息", phone)
+
+	return result, nil
 }

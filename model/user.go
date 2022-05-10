@@ -14,10 +14,11 @@ type User struct {
 	Role     int    `json:"role"      gorm:"column:role"`
 	ClassId  string `json:"class_id"  gorm:"column:class_id;"`
 	RealName string `json:"real_name" gorm:"column:real_name"`
-	Hobby    string `json:"hobby"     gorm:"hobby"`
-	Address  string `json:"address"   gorm:"address"`
-	Sex      int    `json:"sex"       gorm:"sex"`
-	Age      int    `json:"age"       gorm:"age"`
+	NickName string `json:"nick_name" gorm:"column:nick_name"`
+	Hobby    string `json:"hobby"     gorm:"column:hobby"`
+	Address  string `json:"address"   gorm:"column:address"`
+	Sex      int    `json:"sex"       gorm:"column:sex"`
+	Age      int    `json:"age"       gorm:"column:age"`
 
 	CreatedAt time.Time
 	UpdatedAt time.Time

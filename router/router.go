@@ -9,6 +9,7 @@ import (
 	"qiandao/controller/lesson"
 	"qiandao/controller/sd"
 	"qiandao/controller/user"
+	"qiandao/router/middleware"
 )
 
 func Load(engine *gin.Engine, handlerFunc ...gin.HandlerFunc) *gin.Engine {
@@ -21,28 +22,25 @@ func Load(engine *gin.Engine, handlerFunc ...gin.HandlerFunc) *gin.Engine {
 		context.String(http.StatusNotFound, "API路由错误")
 	})
 
-	userAPI := engine.Group("/api/user")
+	authAPI := engine.Group("/api/auth")
 	{
-		userAPI.POST("/register", user.Register)
-		userAPI.POST("/login", user.Login)
+		authAPI.POST("/register", user.Register)
+		authAPI.POST("/login", user.Login)
+	}
+
+	userAPI := engine.Group("/api/user", middleware.Auth())
+	{
 		userAPI.PUT("/update-user", user.UpdateUserInfo)
 		userAPI.PUT("/update-email", user.UpdateEmail)
 		userAPI.PUT("/update-nick-name", user.UpdateNickName)
+		userAPI.PUT("/update-password", user.UpdatePassword)
+		userAPI.PUT("/update-forget-password", user.ForgetPassword)
 	}
 
 	classAPI := engine.Group("/api/class")
 	{
 		classAPI.POST("", class.Create)
 		classAPI.GET("", class.GetAllClass)
-	}
-
-	// 检查http健康的路由组
-	svcd := engine.Group("/api/sd")
-	{
-		svcd.GET("/health", sd.HealthCheck)
-		svcd.GET("/disk", sd.DiskCheck)
-		svcd.GET("/cpu", sd.CPUCheck)
-		svcd.GET("/ram", sd.RAMCheck)
 	}
 
 	// 课程
@@ -54,6 +52,15 @@ func Load(engine *gin.Engine, handlerFunc ...gin.HandlerFunc) *gin.Engine {
 		lessonApi.GET("/user", lesson.GetCreateLessonList)
 		//获取加入的课程列表
 		lessonApi.GET("/join", lesson.GetJoinLessonList)
+	}
+
+	// 检查http健康的路由组
+	svcd := engine.Group("/api/sd")
+	{
+		svcd.GET("/health", sd.HealthCheck)
+		svcd.GET("/disk", sd.DiskCheck)
+		svcd.GET("/cpu", sd.CPUCheck)
+		svcd.GET("/ram", sd.RAMCheck)
 	}
 
 	// 签到
