@@ -68,10 +68,14 @@ func Load(engine *gin.Engine, handlerFunc ...gin.HandlerFunc) *gin.Engine {
 	{
 		// 创建签到
 		checkInApi.POST("createCheckin", checkin.CreateCheckin)
-		checkInApi.POST("", checkin.CheckIn)
+		// 学生签到
+		checkInApi.POST("", checkin.StuCheckIn)
+		// 获取签到详情
 		checkInApi.GET("getCheckinDetails", checkin.GetCheckinDetails)
-		checkInApi.GET("getCheckinRecList", checkin.GetCheckinRecList)
-		checkInApi.GET("getCreatedCheckinList", checkin.GetCreatedCheckinList)
+		// 获取已创建签到列表
+		checkInApi.GET("getCreatedCheckinList", checkin.GetCreatedCheckinLst)
+		// 获取签到记录列表
+		checkInApi.GET("getCheckinRecList", checkin.GetCheckinRecLst)
 	}
 
 	return engine

@@ -27,4 +27,19 @@ var (
 	// 班级错误
 	ErrClassExist    = &Errno{Code: 20201, Message: "班级已存在，不能重复创建"}
 	ErrClassNotExist = &Errno{Code: 11003, Message: "班级不存在"}
+
+	// 签到错误
+	ErrCheckinCreate    = &Errno{Code: 30101, Message: "创建签到失败"}
+	ErrCheckinClassGet  = &Errno{Code: 30102, Message: "获取签到班级失败"}
+	ErrCheckinStuGet    = &Errno{Code: 30103, Message: "获取签到学生失败"}
+	ErrCheckinRecCreate = &Errno{Code: 30104, Message: "添加签到记录失败"}
+
+	ErrCheckinGet         = &Errno{Code: 30201, Message: "获取签到失败"}
+	ErrCheckinCode        = &Errno{Code: 30202, Message: "签到码错误"}
+	ErrCheckinExpired     = &Errno{Code: 30203, Message: "签到过期"}
+	ErrCheckinRepeat      = &Errno{Code: 30204, Message: "重复的签到"}
+	ErrCheckinOutOfRng    = &Errno{Code: 30205, Message: "超出签到范围"}
+	ErrCheckinUpdateState = &Errno{Code: 30206, Message: "更新签到状态失败"}
+
+	ErrCheckinRecNotExist = &Errno{Code: 30301, Message: "签到记录不存在"}
 )

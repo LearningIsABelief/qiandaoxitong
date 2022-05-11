@@ -2,7 +2,7 @@ package viewmodel
 
 import "time"
 
-// CreateCheckin 创建签到请求结构体
+// CreateCheckin 创建签到 请求结构体
 type CreateCheckin struct {
 	LessonID    string `json:"lesson_id" form:"lesson_id"`
 	Duration    int    `json:"duration" form:"duration"`
@@ -12,7 +12,7 @@ type CreateCheckin struct {
 	Latitude    string `json:"latitude" form:"latitude"`
 }
 
-// Checkin 学生签到请求结构体
+// Checkin 学生签到 请求结构体
 type Checkin struct {
 	CheckinID   string `json:"checkin_id" form:"checkin_id"`
 	UserID      string `json:"user_id" form:"user_id"`
@@ -28,14 +28,14 @@ type List struct {
 	State     string `json:"state"`
 }
 
-// CheckinDetailsResponse 签到详情响应结构体
+// CheckinDetailsResponse 签到详情 响应结构体
 type CheckinDetailsResponse struct {
 	TotalList     []List `json:"total_list"`
 	CheckedInList []List `json:"checkin_list"`
 	NotCheckList  []List `json:"not_check_list"`
 }
 
-// ListResponse 已创建签到列表/签到记录列表响应结构体
+// ListResponse 已创建签到列表/签到记录列表 响应结构体
 type ListResponse struct {
 	CheckinID    string    `json:"checkin_id"`
 	LessonName   string    `json:"lesson_name"`

@@ -4,6 +4,7 @@ import (
 	"time"
 )
 
+// Checkin 签到结构体
 type Checkin struct {
 	CheckinID   string    `json:"checkin_id" gorm:"primaryKey"`
 	CreatorID   string    `json:"creator"`

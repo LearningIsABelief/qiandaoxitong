@@ -1,9 +1,10 @@
 package service
 
 import (
-	"fmt"
+	"github.com/lexkong/log"
 	"math"
 	"qiandao/model"
+	"qiandao/pkg/app"
 	"qiandao/pkg/util"
 	"qiandao/store"
 	"qiandao/viewmodel"
@@ -28,38 +29,44 @@ func CreateCheckin(viewCreatCheckin *viewmodel.CreateCheckin) (*model.Checkin, e
 	}
 	err := tx.CreateCheckin(checkin)
 	if err != nil {
+		log.Errorf(app.ErrCheckinCreate, "用户'v'创建签到失败", checkin.CreatorID)
 		tx.RollBack()
 		return nil, err
 	}
-	shouldCheckInClass, err := tx.GetShouldCheckInClass(checkin.LessonID)
-	if len(shouldCheckInClass) == 0 || err != nil {
+	shouldCheckInClassLst, err := tx.GetClassLstByLessonID(checkin.LessonID)
+	if len(shouldCheckInClassLst) == 0 || err != nil {
+		log.Errorf(app.ErrCheckinClassGet, "签到'v'的课程'v'的签到班级无法获取", checkin.CheckinID, checkin.LessonID)
 		tx.RollBack()
 		return nil, err
 	}
-	for i := range shouldCheckInClass {
-		class := shouldCheckInClass[i]
-		shouldCheckInStu, err := tx.GetShouldCheckInStu(class.ClassId)
+	// 根据需要签到的班级列表获取所有需要签到的学生
+	for i := range shouldCheckInClassLst {
+		class := shouldCheckInClassLst[i]
+		shouldCheckInStuLst, err := tx.GetStuLstByClassID(class.ClassId)
 		if err != nil {
+			log.Errorf(app.ErrCheckinStuGet, "签到'v'根据班级'%v'获取学生列表失败", checkin.CheckinID, class.ClassId)
 			tx.RollBack()
 			return nil, err
 		}
-		for j := range shouldCheckInStu {
-			stu := shouldCheckInStu[j]
-			stuCheckedIn := model.CheckedIn{
-				ID:        checkin.CheckinID + stu.UserId,
-				CheckinID: checkin.CheckinID,
-				UserID:    stu.UserId,
-				UserName:  stu.RealName,
-				State:     2,
-				EndTime:   checkin.EndTime,
+		for j := range shouldCheckInStuLst {
+			stu := shouldCheckInStuLst[j]
+			checkinRec := model.CheckinRec{
+				CheckinRecID: checkin.CheckinID + stu.UserId,
+				CheckinID:    checkin.CheckinID,
+				UserID:       stu.UserId,
+				UserName:     stu.RealName,
+				State:        2,
+				EndTime:      checkin.EndTime,
 			}
-			err := tx.AddCheckedIn(&stuCheckedIn)
+			err := tx.AddCheckinRec(&checkinRec)
 			if err != nil {
+				log.Errorf(app.ErrCheckinRecCreate, "签到'%v'添加签到记录'v'失败", checkin.CheckinID, checkinRec)
 				tx.RollBack()
 				return nil, err
 			}
 		}
 	}
+	log.Infof("用户'%v'创建签到'%v'成功", checkin.CreatorID, checkin.CheckinID)
 	tx.Commit()
 	return checkin, nil
 }
@@ -70,45 +77,50 @@ func CreateCheckin(viewCreatCheckin *viewmodel.CreateCheckin) (*model.Checkin, e
 // @Param viewCheckin
 // @Return res 1:签到成功 2:签到失败 3:重复的签到 4:非法的签到 5:签到已过期 6:签到码错误 7:超出签到范围
 // @Return err
-func StuCheckin(viewCheckin *viewmodel.Checkin) (res int, err error) {
+func StuCheckin(viewStuCheckin *viewmodel.Checkin) (res int, err error) {
 	tx := store.GetTx()
-	checkin, err := tx.GetCheckinById(viewCheckin.CheckinID)
+	checkin, err := tx.GetCheckinById(viewStuCheckin.CheckinID)
 	if err != nil {
-		fmt.Println(err)
-		return 4, err
+		log.Errorf(app.ErrCheckinGet, "用户'%v'获取签到'%v'失败", viewStuCheckin.UserID, viewStuCheckin.CheckinID)
+		return 4, app.ErrCheckinGet
 	}
-	// 获取正确的已签到信息
-	rightCheckedIn, err := tx.GetCheckedIn(viewCheckin.CheckinID + viewCheckin.UserID)
+	// 获取签到记录
+	checkinRec, err := tx.GetCheckinRecByID(viewStuCheckin.CheckinID + viewStuCheckin.UserID)
 	if err != nil {
-		fmt.Println(err)
 		// 检查签到合法性
 		if err.Error() == "record not found" {
-			return 4, err
+			log.Errorf(app.ErrCheckinRecNotExist, "签到'%v'的应签到列表中无此学生'%v'", viewStuCheckin.CheckinID, viewStuCheckin.UserID)
+			return 4, app.ErrCheckinRecNotExist
 		}
-		return 2, err
+		log.Errorf(app.ErrCheckinRecNotExist, "获取签到记录失败")
+		return 2, app.ErrCheckinRecNotExist
 	}
 	// 检查签到合法性
-	if reflect.DeepEqual(rightCheckedIn, model.CheckedIn{}) {
-		return 4, err
+	if reflect.DeepEqual(checkinRec, model.CheckinRec{}) {
+		log.Errorf(app.ErrCheckinRecNotExist, "签到'%v'的应签到列表中无此学生'%v'", viewStuCheckin.CheckinID, viewStuCheckin.UserID)
+		return 4, app.ErrCheckinRecNotExist
 	}
 	// 检查签到码
-	if checkin.CheckinCode != viewCheckin.CheckinCode {
-		return 6, nil
+	if checkin.CheckinCode != viewStuCheckin.CheckinCode {
+		log.Errorf(app.ErrCheckinCode, "用户'%v'签到'%v'时的签到码'%v'错误", viewStuCheckin.UserID, viewStuCheckin.CheckinID, viewStuCheckin.CheckinCode)
+		return 6, app.ErrCheckinCode
 	}
 	// 检查签到时间是否过期
 	if checkin.EndTime.Before(time.Now()) {
-		return 5, nil
+		log.Errorf(app.ErrCheckinExpired, "用户'%v'签到'%v'时签到过期，过期时间为'%v'", viewStuCheckin.UserID, viewStuCheckin.CheckinID, checkin.EndTime)
+		return 5, app.ErrCheckinExpired
 	}
 	// 检查是否重复签到
-	if rightCheckedIn.State == 2 {
-		return 3, err
+	if checkinRec.State == 2 {
+		log.Errorf(app.ErrCheckinRepeat, "用户'%v'签到'%v'时重复签到", viewStuCheckin.UserID, viewStuCheckin.CheckinID)
+		return 3, app.ErrCheckinRepeat
 	}
 	// 检查签到位置是否超出签到范围
 	distance := func() float64 {
 		lng1, _ := strconv.ParseFloat(checkin.Longitude, 64)
 		lat1, _ := strconv.ParseFloat(checkin.Latitude, 64)
-		lng2, _ := strconv.ParseFloat(viewCheckin.Longitude, 64)
-		lat2, _ := strconv.ParseFloat(viewCheckin.Latitude, 64)
+		lng2, _ := strconv.ParseFloat(viewStuCheckin.Longitude, 64)
+		lat2, _ := strconv.ParseFloat(viewStuCheckin.Latitude, 64)
 		const PI float64 = 3.141592653589793
 		radlat1 := PI * lat1 / 180
 		radlat2 := PI * lat2 / 180
@@ -129,60 +141,57 @@ func StuCheckin(viewCheckin *viewmodel.Checkin) (res int, err error) {
 		return dist
 	}()
 	if distance > 100 {
-		return 7, nil
+		log.Errorf(app.ErrCheckinOutOfRng, "用户'%v'签到'%v'时超出签到范围，用户签到范围为'%v','%v'，签到范围为'v','v'",
+			viewStuCheckin.UserID, viewStuCheckin.CheckinID, viewStuCheckin.Longitude, viewStuCheckin.Latitude,
+			checkin.Longitude, checkin.Latitude)
+		return 7, app.ErrCheckinOutOfRng
 	}
-	// 创建已签到记录
-	checkedIn := &model.CheckedIn{
-		ID:        viewCheckin.CheckinID + viewCheckin.UserID,
-		CheckinID: viewCheckin.CheckinID,
-		UserID:    viewCheckin.UserID,
-		UserName:  viewCheckin.UserName,
-		State:     1,
-	}
-	err = tx.UpdateCheckedIn(checkedIn)
+	err = tx.UpdateCheckinRecStateByID(viewStuCheckin.CheckinID+viewStuCheckin.UserID, 1)
 	if err != nil {
-		return 2, err
+		log.Errorf(app.ErrCheckinUpdateState, "更新用户'v'的签到状态失败,签到为'v'", viewStuCheckin.UserID, viewStuCheckin.CheckinID)
+		return 2, app.ErrCheckinUpdateState
 	}
+	log.Infof("用户'v'签到成功，签到为'v'", viewStuCheckin.UserID, viewStuCheckin.CheckinID)
 	return 1, nil
 }
 
-// GetCheckInDetails
+// GetCheckinDetails
 // @Description: 获取签到详情
 // @Author zhandongyang 2022-05-09 15:38:01
 // @Param checkinID
 // @Return checkinDetails
 // @Return err
-func GetCheckInDetails(checkinID string) (checkinDetails *viewmodel.CheckinDetailsResponse, err error) {
+func GetCheckinDetails(checkinID string) (checkinDetails *viewmodel.CheckinDetailsResponse, err error) {
 	tx := store.GetTx()
 	if err != nil {
 		return nil, err
 	}
 	// 获取需要签到的学生列表
-	shouldCheckInStuList, err := tx.GetAllCheckedInByCheckinID(checkinID)
+	checkinRecLst, err := tx.GetCheckinRecLstByCheckinID(checkinID)
 	if err != nil {
 		return nil, err
 	}
 	// 获取所有需要签到、已经签到、没有签到的 数据响应列表
-	totalStuList := make([]viewmodel.List, len(shouldCheckInStuList))
+	totalStuList := make([]viewmodel.List, len(checkinRecLst))
 	var checkedInStuList, noCheckedInStuList []viewmodel.List
-	for i := range shouldCheckInStuList {
-		checkedIn := shouldCheckInStuList[i]
+	for i := range checkinRecLst {
+		checkinRec := checkinRecLst[i]
 		state := func() string {
-			if checkedIn.State == 1 {
+			if checkinRec.State == 1 {
 				return "已签到"
 			}
 			return "未签到"
 		}()
-		class, err := tx.GetClassByUserID(checkedIn.UserID)
+		class, err := tx.GetClassByUserID(checkinRec.UserID)
 		if err != nil {
 			return nil, err
 		}
 		totalStuList[i] = viewmodel.List{
 			ClassName: class.ClassName,
-			UserName:  checkedIn.UserName,
+			UserName:  checkinRec.UserName,
 			State:     state,
 		}
-		if checkedIn.State == 1 {
+		if checkinRec.State == 1 {
 			checkedInStuList = append(checkedInStuList, totalStuList[i])
 		} else {
 			noCheckedInStuList = append(noCheckedInStuList, totalStuList[i])
@@ -204,38 +213,38 @@ func GetCheckInDetails(checkinID string) (checkinDetails *viewmodel.CheckinDetai
 // @Return err
 func GetCreatedCheckInList(creatorID string) (listResponse []viewmodel.ListResponse, err error) {
 	tx := store.GetTx()
-	createdCheckInList, err := tx.GetCheckinByCreator(creatorID)
+	checkinList, err := tx.GetCheckinByCreator(creatorID)
 	if err != nil {
 		return nil, err
 	}
-	listResponse = make([]viewmodel.ListResponse, len(createdCheckInList))
-	for i := range createdCheckInList {
-		lesson, err := tx.GetLessonById(createdCheckInList[i].LessonID)
+	listResponse = make([]viewmodel.ListResponse, len(checkinList))
+	for i := range checkinList {
+		lesson, err := tx.GetLessonByID(checkinList[i].LessonID)
 		if err != nil {
 			return nil, err
 		}
-		endTime := createdCheckInList[i].EndTime
+		endTime := checkinList[i].EndTime
 		checkinState := 2
 		if time.Now().Before(endTime) {
 			checkinState = 1
 		}
 		listResponse[i] = viewmodel.ListResponse{
-			CheckinID:    createdCheckInList[i].CheckinID,
+			CheckinID:    checkinList[i].CheckinID,
 			LessonName:   lesson.LessonName,
-			BeginTime:    createdCheckInList[i].BeginTime,
+			BeginTime:    checkinList[i].BeginTime,
 			CheckinState: checkinState,
 		}
 	}
 	return
 }
 
-// GetShouldCheckInList
+// GetCheckinRecList
 // @Description: 获取需要签到的列表
 // @Author zhandongyang 2022-05-09 21:16:44
 // @Param userID
 // @Return shouldCheckInList
 // @Return err
-func GetShouldCheckInList(userID string) (shouldCheckInList []viewmodel.ListResponse, err error) {
+func GetCheckinRecList(userID string) (shouldCheckInList []viewmodel.ListResponse, err error) {
 	tx := store.GetTx()
 	checkedInList, err := tx.GetAllCheckedInByUserID(userID)
 	if err != nil {
@@ -253,7 +262,7 @@ func GetShouldCheckInList(userID string) (shouldCheckInList []viewmodel.ListResp
 		if err != nil {
 			return nil, err
 		}
-		lesson, err := tx.GetLessonById(checkin.LessonID)
+		lesson, err := tx.GetLessonByID(checkin.LessonID)
 		if err != nil {
 			return nil, err
 		}
