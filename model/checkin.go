@@ -11,6 +11,8 @@ type Checkin struct {
 	BeginTime   time.Time `json:"begin_time"`
 	EndTime     time.Time `json:"end_time"`
 	CheckinCode string    `json:"checkin_code"`
+	Longitude   string    `json:"longitude"`
+	Latitude    string    `json:"latitude"`
 
 	CreatedAt time.Time  `gorm:"created_at"`
 	UpdatedAt time.Time  `gorm:"updated_at"`

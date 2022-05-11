@@ -140,7 +140,7 @@ func (tx *Tx) GetAllCheckedInByCheckinID(checkinID string) (checkedInList []mode
 // @Return checkedIn
 // @Return err
 func (tx *Tx) GetAllCheckedInByUserID(userID string) (checkedInList []model.CheckedIn, err error) {
-	err = tx.tx.Where("user_id = ?", userID).Find(&checkedInList).Error
+	err = tx.tx.Where("user_id = ?", userID).Order("end_time desc").Find(&checkedInList).Error
 	return
 }
 
