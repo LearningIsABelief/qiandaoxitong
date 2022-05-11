@@ -5,8 +5,14 @@ var (
 	OK                  = &Errno{Code: 200, Message: "OK"}
 	InternalServerError = &Errno{Code: 500, Message: "服务器异常."}
 	ErrBind             = &Errno{Code: 10002, Message: "将请求正文绑定到结构时发生错误."}
-
 	ErrParamNull = &Errno{Code: 11001, Message: "参数结果为空"}
+
+	// 课程错误
+	ErrLessonExist = &Errno{Code: 11004,Message: "课程已存在"}
+	ErrRecordNotExist = &Errno{Code:11005,Message: "查询记录不存在"}
+	ErrUpdated = &Errno{Code:11006,Message: "更新失败"}
+	ErrInserted = &Errno{Code:11007,Message: "插入失败"}
+	ErrDeleted = &Errno{Code:11008,Message: "删除失败"}
 
 	// 用户错误
 	ErrEncrypt             = &Errno{Code: 20101, Message: "加密用户密码时出错"}
