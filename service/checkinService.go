@@ -2,11 +2,13 @@ package service
 
 import (
 	"fmt"
+	"math"
 	"qiandao/model"
 	"qiandao/pkg/util"
 	"qiandao/store"
 	"qiandao/viewmodel"
 	"reflect"
+	"strconv"
 	"time"
 )
 
@@ -21,6 +23,8 @@ func CreateCheckin(viewCreatCheckin *viewmodel.CreateCheckin) (*model.Checkin, e
 		BeginTime:   time.Now(),
 		EndTime:     time.Now().UTC().Add(time.Duration(viewCreatCheckin.Duration) * time.Minute),
 		CheckinCode: viewCreatCheckin.CheckinCode,
+		Longitude:   viewCreatCheckin.Longitude,
+		Latitude:    viewCreatCheckin.Latitude,
 	}
 	err := tx.CreateCheckin(checkin)
 	if err != nil {
@@ -46,7 +50,8 @@ func CreateCheckin(viewCreatCheckin *viewmodel.CreateCheckin) (*model.Checkin, e
 				CheckinID: checkin.CheckinID,
 				UserID:    stu.UserId,
 				UserName:  stu.RealName,
-				State:     false,
+				State:     2,
+				EndTime:   checkin.EndTime,
 			}
 			err := tx.AddCheckedIn(&stuCheckedIn)
 			if err != nil {
@@ -63,7 +68,7 @@ func CreateCheckin(viewCreatCheckin *viewmodel.CreateCheckin) (*model.Checkin, e
 // @Description: 学生签到
 // @Author zhandongyang 2022-05-08 23:14:00
 // @Param viewCheckin
-// @Return res 1:签到成功 2:签到失败 3:重复的签到 4:非法的签到 5:签到已过期 6:签到码错误
+// @Return res 1:签到成功 2:签到失败 3:重复的签到 4:非法的签到 5:签到已过期 6:签到码错误 7:超出签到范围
 // @Return err
 func StuCheckin(viewCheckin *viewmodel.Checkin) (res int, err error) {
 	tx := store.GetTx()
@@ -95,8 +100,36 @@ func StuCheckin(viewCheckin *viewmodel.Checkin) (res int, err error) {
 		return 5, nil
 	}
 	// 检查是否重复签到
-	if rightCheckedIn.State == true {
+	if rightCheckedIn.State == 2 {
 		return 3, err
+	}
+	// 检查签到位置是否超出签到范围
+	distance := func() float64 {
+		lng1, _ := strconv.ParseFloat(checkin.Longitude, 64)
+		lat1, _ := strconv.ParseFloat(checkin.Latitude, 64)
+		lng2, _ := strconv.ParseFloat(viewCheckin.Longitude, 64)
+		lat2, _ := strconv.ParseFloat(viewCheckin.Latitude, 64)
+		const PI float64 = 3.141592653589793
+		radlat1 := PI * lat1 / 180
+		radlat2 := PI * lat2 / 180
+
+		theta := lng1 - lng2
+		radtheta := PI * theta / 180
+
+		dist := math.Sin(radlat1)*math.Sin(radlat2) + math.Cos(radlat1)*math.Cos(radlat2)*math.Cos(radtheta)
+
+		if dist > 1 {
+			dist = 1
+		}
+
+		dist = math.Acos(dist)
+		dist = dist * 180 / PI
+		dist = dist * 60 * 1.1515
+		dist = dist * 1.609344
+		return dist
+	}()
+	if distance > 100 {
+		return 7, nil
 	}
 	// 创建已签到记录
 	checkedIn := &model.CheckedIn{
@@ -104,7 +137,7 @@ func StuCheckin(viewCheckin *viewmodel.Checkin) (res int, err error) {
 		CheckinID: viewCheckin.CheckinID,
 		UserID:    viewCheckin.UserID,
 		UserName:  viewCheckin.UserName,
-		State:     true,
+		State:     1,
 	}
 	err = tx.UpdateCheckedIn(checkedIn)
 	if err != nil {
@@ -135,7 +168,7 @@ func GetCheckInDetails(checkinID string) (checkinDetails *viewmodel.CheckinDetai
 	for i := range shouldCheckInStuList {
 		checkedIn := shouldCheckInStuList[i]
 		state := func() string {
-			if checkedIn.State {
+			if checkedIn.State == 1 {
 				return "已签到"
 			}
 			return "未签到"
@@ -149,7 +182,7 @@ func GetCheckInDetails(checkinID string) (checkinDetails *viewmodel.CheckinDetai
 			UserName:  checkedIn.UserName,
 			State:     state,
 		}
-		if checkedIn.State == true {
+		if checkedIn.State == 1 {
 			checkedInStuList = append(checkedInStuList, totalStuList[i])
 		} else {
 			noCheckedInStuList = append(noCheckedInStuList, totalStuList[i])
@@ -164,7 +197,7 @@ func GetCheckInDetails(checkinID string) (checkinDetails *viewmodel.CheckinDetai
 }
 
 // GetCreatedCheckInList
-// @Description: 获取创建的签到
+// @Description: 获取已创建的签到
 // @Author zhandongyang 2022-05-09 16:59:29
 // @Param userID
 // @Return createdCheckInList
@@ -182,15 +215,15 @@ func GetCreatedCheckInList(creatorID string) (listResponse []viewmodel.ListRespo
 			return nil, err
 		}
 		endTime := createdCheckInList[i].EndTime
-		state := false
+		checkinState := 2
 		if time.Now().Before(endTime) {
-			state = true
+			checkinState = 1
 		}
 		listResponse[i] = viewmodel.ListResponse{
-			CheckinID:  createdCheckInList[i].CheckinID,
-			LessonName: lesson.LessonName,
-			BeginTime:  createdCheckInList[i].BeginTime,
-			State:      state,
+			CheckinID:    createdCheckInList[i].CheckinID,
+			LessonName:   lesson.LessonName,
+			BeginTime:    createdCheckInList[i].BeginTime,
+			CheckinState: checkinState,
 		}
 	}
 	return
@@ -212,6 +245,11 @@ func GetShouldCheckInList(userID string) (shouldCheckInList []viewmodel.ListResp
 	for i := range checkedInList {
 		checkedIn := checkedInList[i]
 		checkin, err := tx.GetCheckinById(checkedIn.CheckinID)
+		endTime := checkin.EndTime
+		checkinState := 2
+		if time.Now().Before(endTime) {
+			checkinState = 1
+		}
 		if err != nil {
 			return nil, err
 		}
@@ -220,10 +258,11 @@ func GetShouldCheckInList(userID string) (shouldCheckInList []viewmodel.ListResp
 			return nil, err
 		}
 		shouldCheckInList[i] = viewmodel.ListResponse{
-			CheckinID:  checkedIn.CheckinID,
-			LessonName: lesson.LessonName,
-			BeginTime:  checkin.BeginTime,
-			State:      checkedIn.State,
+			CheckinID:    checkedIn.CheckinID,
+			LessonName:   lesson.LessonName,
+			BeginTime:    checkin.BeginTime,
+			State:        checkedIn.State,
+			CheckinState: checkinState,
 		}
 	}
 	return
