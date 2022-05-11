@@ -4,9 +4,9 @@ import "time"
 
 // Lesson 课程
 type Lesson struct {
-	LessonName 	    string    `json:"lesson_name"`   	  // 课程名称
-	LessonCreator 	string    `json:"user_id"`           // 课程发起者
-	ClassList       []string  `json:"class_list"`       // 班级id列表
+	LessonName 	    string    `form:"lesson_name" json:"lesson_name"`   	  // 课程名称
+	LessonCreator 	string    `form:"user_id"     json:"user_id"`           // 课程发起者
+	ClassList       string  `form:"class_list"  json:"class_list"`       // 班级id列表
 }
 
 // ListObj 用户所创建的课程响应实体
