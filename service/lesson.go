@@ -1,9 +1,9 @@
 package service
 
 import (
-	"errors"
-	"github.com/gin-gonic/gin"
+	"github.com/lexkong/log"
 	"qiandao/model"
+	"qiandao/pkg/app"
 	"qiandao/pkg/util"
 	"qiandao/store"
 	"qiandao/viewmodel"
@@ -13,11 +13,12 @@ import (
 func CreateLesson(lessonParam *viewmodel.Lesson) error{
 	// 1.当前创建者的课程名不能重复
 	_,ok := store.LessonIsExist(lessonParam);if ok{
-		return errors.New("课程名称重复，不可创建")
+		log.Errorf(app.ErrLessonExist,"当前用户创建重复课程")
+		return app.ErrLessonExist
 	}
 	// 处理课程表实体并加入数据库
 	lesson := &model.Lesson{
-		LessonID:util.GetUUID(),
+		LessonID:		util.GetUUID(),
 		LessonName:    lessonParam.LessonName,
 		LessonCreator: lessonParam.LessonCreator,
 	}
@@ -63,11 +64,19 @@ func GetJoinLessonList(classId string)(lessonList []*viewmodel.ListObj,err error
 
 // EditorLesson 编辑课程信息
 func EditorLesson(lesson *viewmodel.LessonEditor)(err error){
-	// 首先更新课程名称
-	err = store.UpdateLessonName(lesson)
+	// 查询课程名是否更改
+	err,OldLesson := store.GetLessonInfoByLessonId(lesson.LessonID)
 	if err != nil {
 		return err
 	}
+	if OldLesson.LessonName != lesson.LessonName{
+		// 更新课程名称
+		err = store.UpdateLessonName(lesson)
+		if err != nil {
+			return err
+		}
+	}
+
 	// 删除该课程对应的班级
 	err = store.DeleteClassIdByLessonId(lesson.LessonID)
 	if err != nil {
@@ -91,7 +100,17 @@ func EditorLesson(lesson *viewmodel.LessonEditor)(err error){
 	}
 	return nil
 }
-
-func RemoveLesson(ctx *gin.Context)  {
-
+// RemoveLesson 移除所选课程
+func RemoveLesson(lesson *viewmodel.LessonRemove)(err error){
+//  判定传入参数是否不匹配
+	err = store.LessonCreatorIsExist(lesson)
+	if err != nil {
+		return err
+	}
+//  调用移除功能
+	err = store.RemoveLesson(lesson)
+	if err != nil {
+		return err
+	}
+	return nil
 }
