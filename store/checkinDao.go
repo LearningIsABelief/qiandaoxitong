@@ -57,6 +57,11 @@ func (tx *Tx) GetCheckinByCreator(creatorID string) (checkinList []model.Checkin
 	return
 }
 
+//func (tx *Tx) GetACheckin(field, fieldValue string) (checkinLst []model.Checkin, err error) {
+//	err = tx.tx.Where(fmt.Sprintf("%v = ?", field), fieldValue).Find(&checkinLst).Error
+//	return
+//}
+
 // GetLessonByID
 // @Description: 根据课程id获取课程
 // @Author zhandongyang 2022-05-09 17:13:17
@@ -133,13 +138,13 @@ func (tx *Tx) GetCheckinRecLstByCheckinID(checkinID string) (checkedInList []mod
 	return
 }
 
-// GetAllCheckedInByUserID
+// GetCheckinRecByUserID
 // @Description: 根据用户id获取某个用户需要签到的列表
 // @Author zhandongyang 2022-05-09 15:46:01
 // @Param checkedID
 // @Return checkedIn
 // @Return err
-func (tx *Tx) GetAllCheckedInByUserID(userID string) (checkedInList []model.CheckinRec, err error) {
+func (tx *Tx) GetCheckinRecByUserID(userID string) (checkedInList []model.CheckinRec, err error) {
 	err = tx.tx.Where("user_id = ?", userID).Order("end_time desc").Find(&checkedInList).Error
 	return
 }

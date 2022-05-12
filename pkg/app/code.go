@@ -41,5 +41,9 @@ var (
 	ErrCheckinOutOfRng    = &Errno{Code: 30205, Message: "超出签到范围"}
 	ErrCheckinUpdateState = &Errno{Code: 30206, Message: "更新签到状态失败"}
 
+	ErrCheckinRecGet = &Errno{Code: 30301, Message: "签到记录获取失败"}
+
+	ErrCheckinLessonGet = &Errno{Code: 30401, Message: "签到课程获取失败"}
+
 	ErrCheckinRecNotExist = &Errno{Code: 30301, Message: "签到记录不存在"}
 )
