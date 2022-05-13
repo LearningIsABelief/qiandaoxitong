@@ -7,6 +7,7 @@ import (
 	"qiandao/pkg/util"
 	"qiandao/store"
 	"qiandao/viewmodel"
+	"strings"
 )
 
 // CreateLesson 创建课程
@@ -25,8 +26,9 @@ func CreateLesson(lessonParam *viewmodel.Lesson) error{
 
 	// 遍历班级id列表，创建中间表实体，加入切片
 	 classLessonSlice := make([]model.ClassLesson,0)
-
-	for _, v := range lessonParam.ClassList {
+ 	// 班级列表字符串切割成数组
+	 classList := strings.Split(lessonParam.ClassList,",")
+	for _, v := range classList {
 		classLesson := model.ClassLesson{
 			ClassLessonID:util.GetUUID(),
 			ClassID:v,
@@ -85,7 +87,9 @@ func EditorLesson(lesson *viewmodel.LessonEditor)(err error){
 	// 重新插入
 	// 遍历班级id列表，创建中间表实体，加入切片
 	classLessonSlice := make([]model.ClassLesson,0)
-	for _,v := range lesson.ClassIdList{
+	//将班级id列表变成切片
+	classIdList := strings.Split(lesson.ClassIdList,",")
+	for _,v := range classIdList{
 		classLesson := model.ClassLesson{
 			ClassLessonID:util.GetUUID(),
 			ClassID: v,

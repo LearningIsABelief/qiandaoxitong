@@ -119,7 +119,6 @@ func GetJoinLessonList(classId string) ([]*viewmodel.ListObj,error) {
 			LessonName: v.LessonName,
 			CreatedAt: v.CreatedAt,
 			ClassName: classLessonMap[v.LessonID],
-
 		}
 		resListObj = append(resListObj,vobj)
 	}
