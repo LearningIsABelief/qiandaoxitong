@@ -87,7 +87,9 @@ func EditorLesson(lesson *viewmodel.LessonEditor)(err error){
 	// 重新插入
 	// 遍历班级id列表，创建中间表实体，加入切片
 	classLessonSlice := make([]model.ClassLesson,0)
-	for _,v := range lesson.ClassIdList{
+	//将班级id列表变成切片
+	classIdList := strings.Split(lesson.ClassIdList,",")
+	for _,v := range classIdList{
 		classLesson := model.ClassLesson{
 			ClassLessonID:util.GetUUID(),
 			ClassID: v,

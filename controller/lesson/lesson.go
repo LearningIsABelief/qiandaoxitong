@@ -75,7 +75,7 @@ func GetJoinLessonList(ctx *gin.Context){
 func EditorLesson(ctx *gin.Context){
 // 	1.绑定参数
 	var lesson *viewmodel.LessonEditor
-	err := ctx.ShouldBindJSON(&lesson)
+	err := ctx.ShouldBind(&lesson)
 	if err != nil {
 		app.SendResponse(ctx,app.ErrBind,nil)
 		return
@@ -97,7 +97,7 @@ func EditorLesson(ctx *gin.Context){
 func RemoveLesson(ctx *gin.Context)  {
 // 1.绑定参数
 	lesson := new(viewmodel.LessonRemove)
-	err := ctx.ShouldBindJSON(&lesson)
+	err := ctx.ShouldBind(&lesson)
 	if err != nil {
 		app.SendResponse(ctx,app.ErrBind,nil)
 		return
