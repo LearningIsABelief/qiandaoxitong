@@ -67,7 +67,10 @@ func CreateCheckin(viewCreatCheckin *viewmodel.CreateCheckin) (*model.Checkin, e
 		}
 	}
 	log.Infof("用户'%v'创建签到'%v'成功", checkin.CreatorID, checkin.CheckinID)
-	tx.Commit()
+	err = tx.Commit()
+	if err != nil {
+		return nil, err
+	}
 	return checkin, nil
 }
 

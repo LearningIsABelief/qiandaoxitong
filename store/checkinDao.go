@@ -14,15 +14,16 @@ func GetTx() *Tx {
 }
 
 func (tx *Tx) Begin() {
-	tx.tx.Begin()
+	tx.tx = tx.tx.Begin()
 }
 
 func (tx *Tx) RollBack() {
 	tx.tx.Rollback()
 }
 
-func (tx *Tx) Commit() {
-	tx.tx.Commit()
+func (tx *Tx) Commit() (err error) {
+	err = tx.tx.Commit().Error
+	return
 }
 
 // CreateCheckin
