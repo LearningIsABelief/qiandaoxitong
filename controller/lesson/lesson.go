@@ -11,7 +11,7 @@ import (
 func CreateLesson(ctx *gin.Context)  {
 //	 1.绑定参数
 	lesson := new(viewmodel.Lesson)
-	err := ctx.ShouldBindJSON(lesson)
+	err := ctx.ShouldBind(lesson)
 	if err != nil {
 		app.SendResponse(ctx,app.ErrBind,nil)
 		return
