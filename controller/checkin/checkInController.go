@@ -18,7 +18,8 @@ func CreateCheckin(ctx *gin.Context) {
 		app.SendResponse(ctx, app.ErrBind, nil)
 		return
 	}
-	if viewCheckin.CreatorID == "" || viewCheckin.CheckinCode == "" || viewCheckin.Duration <= 0 || viewCheckin.LessonID == "" {
+	if viewCheckin.CreatorID == "" || viewCheckin.CheckinCode == "" || viewCheckin.Duration <= 0 ||
+		viewCheckin.LessonID == "" || viewCheckin.Longitude == "" || viewCheckin.Latitude == "" {
 		app.SendResponse(ctx, app.ErrParamNull, nil)
 		return
 	}
