@@ -26,6 +26,12 @@ type UserInfo struct {
 	Role      int    `json:"role"`
 	ClassId   string `json:"class_id"`
 	ClassName string `json:"class_name"`
+	RealName  string `json:"real_name"`
+	NickName  string `json:"nick_name"`
+	Hobby     string `json:"hobby"`
+	Address   string `json:"address"`
+	Sex       int    `json:"sex"`
+	Age       int    `json:"age"`
 }
 
 // LoginResponse 登录响应结构体

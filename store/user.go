@@ -123,7 +123,19 @@ func GetUserInfoByPhone(phone string) (*viewmodel.UserInfo, error) {
 	result := &viewmodel.UserInfo{}
 
 	scan := DB.Self.Model(&model.User{}).
-		Select("user.user_id, user.phone,user.password, user.role, user.email , user.class_id, class.class_name").
+		Select("user.user_id, "+
+			"user.phone, "+
+			"user.password, "+
+			"user.role, "+
+			"user.email, "+
+			"user.real_name, "+
+			"user.nick_name, "+
+			"user.hobby, "+
+			"user.address, "+
+			"user.sex, "+
+			"user.age, "+
+			"user.class_id, "+
+			"class.class_name").
 		Joins("left join class on user.class_id = class.class_id").
 		Where("user.phone = ?", phone).Scan(&result)
 
