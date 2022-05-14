@@ -10,7 +10,7 @@ type RegisterRequest struct {
 	Password string `json:"password" form:"password" binding:"required"`
 	Email    string `json:"email" form:"email" binding:"required"`
 	Role     int    `json:"role" form:"role" binding:"required"`
-	ClassId  string `json:"class_id" form:"class_id" binding:"required"`
+	ClassId  string `json:"class_id" form:"class_id"`
 }
 
 // LoginRequest 登录请求结构体
