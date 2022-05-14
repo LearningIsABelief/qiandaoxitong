@@ -114,7 +114,7 @@ func StuCheckin(viewStuCheckin *viewmodel.Checkin) (res int, err error) {
 		return 5, app.ErrCheckinExpired
 	}
 	// 检查是否重复签到
-	if checkinRec.State == 2 {
+	if checkinRec.State == 1 {
 		log.Errorf(app.ErrCheckinRepeat, "用户'%v'签到'%v'时重复签到", viewStuCheckin.UserID, viewStuCheckin.CheckinID)
 		return 3, app.ErrCheckinRepeat
 	}

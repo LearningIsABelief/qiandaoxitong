@@ -42,7 +42,7 @@ func StuCheckIn(ctx *gin.Context) {
 		app.SendResponse(ctx, app.ErrBind, nil)
 		return
 	}
-	if checkIn.CheckinID == "" || checkIn.UserID == "" || checkIn.UserName == "" || checkIn.CheckinCode == "" {
+	if checkIn.CheckinID == "" || checkIn.UserID == "" || checkIn.CheckinCode == "" {
 		app.SendResponse(ctx, app.ErrParamNull, nil)
 		return
 	}

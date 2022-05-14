@@ -16,7 +16,6 @@ type CreateCheckin struct {
 type Checkin struct {
 	CheckinID   string `json:"checkin_id" form:"checkin_id"`
 	UserID      string `json:"user_id" form:"user_id"`
-	UserName    string `json:"user_name" form:"user_name"`
 	CheckinCode string `json:"checkin_code" form:"checkin_code"`
 	Longitude   string `json:"longitude" form:"longitude"`
 	Latitude    string `json:"latitude" form:"latitude"`
