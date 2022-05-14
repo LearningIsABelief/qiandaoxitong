@@ -94,8 +94,8 @@ func GetPasswordById(userID string) (string, error) {
 	return user.Password, nil
 }
 
-// UpdatePasswordMapper 修改密码 mapper
-func UpdatePasswordMapper(filed, condition, password string) error {
+// UpdatePasswordByFieldMapper 根据规定的地段修改密码 mapper
+func UpdatePasswordByFieldMapper(filed, condition, password string) error {
 	result := DB.Self.Model(&model.User{}).Where(filed+" = ?", condition).Update("password", password)
 	if result.Error != nil {
 		log.Errorf(result.Error, "修改密码失败")

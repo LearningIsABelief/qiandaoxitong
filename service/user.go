@@ -51,7 +51,7 @@ func UpdateUser(updateUserInfo viewmodel.UpdateUserInfoRequest) error {
 // UpdateEmail 修改邮箱 service
 func UpdateEmail(updateUserEmail viewmodel.UpdateEmailRequest) error {
 	if isExits := store.IsExistUser("email", updateUserEmail.Email, &model.User{}); isExits {
-		log.Errorf(app.ErrEmailExist, "邮箱已存在")
+		log.Errorf(app.ErrEmailExist, "该邮箱已被绑定，请换一个试试")
 		return app.ErrEmailExist
 	}
 	if err := store.UpdateEmailMapper(updateUserEmail); err != nil {
@@ -85,7 +85,7 @@ func UpdatePassword(updatePasswordRequest viewmodel.UpdatePasswordRequest) error
 		return app.ErrPassword
 	}
 	// 判断新密码和确认输入的新密码是否相等
-	if updatePasswordRequest.NewPassword != updatePasswordRequest.NewConfirmPassword {
+	if strings.Compare(updatePasswordRequest.NewPassword, updatePasswordRequest.NewConfirmPassword) != 0 {
 		log.Errorf(app.ErrOldNewInconsistent, "请确保两次输入的密码一样")
 		return app.ErrOldNewInconsistent
 	}
@@ -95,7 +95,7 @@ func UpdatePassword(updatePasswordRequest viewmodel.UpdatePasswordRequest) error
 		log.Errorf(app.ErrEncrypt, "密码加密出错")
 		return app.ErrEncrypt
 	}
-	if err := store.UpdatePasswordMapper("user_id", updatePasswordRequest.UserId, psw); err != nil {
+	if err := store.UpdatePasswordByFieldMapper("user_id", updatePasswordRequest.UserId, psw); err != nil {
 		return err
 	}
 	return nil
@@ -113,7 +113,7 @@ func ForgetPassword(forgetPasswordRequest viewmodel.ForgetPasswordRequest) error
 	if err2 != nil {
 		return err2
 	}
-	if strings.Compare(email, forgetPasswordRequest.Email) == 1 {
+	if strings.Compare(email, forgetPasswordRequest.Email) != 0 {
 		log.Errorf(app.ErrPhoneBinEmail, "请输入手机号绑定的正确邮箱")
 		return app.ErrPhoneBinEmail
 	}
@@ -123,7 +123,7 @@ func ForgetPassword(forgetPasswordRequest viewmodel.ForgetPasswordRequest) error
 		log.Errorf(app.ErrEncrypt, "密码加密出错")
 		return app.ErrEncrypt
 	}
-	if err := store.UpdatePasswordMapper("phone", forgetPasswordRequest.Phone, psw); err != nil {
+	if err := store.UpdatePasswordByFieldMapper("phone", forgetPasswordRequest.Phone, psw); err != nil {
 		return err
 	}
 	return nil
