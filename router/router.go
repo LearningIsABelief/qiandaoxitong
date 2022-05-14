@@ -24,6 +24,7 @@ func Load(engine *gin.Engine, handlerFunc ...gin.HandlerFunc) *gin.Engine {
 	{
 		authAPI.POST("/register", user.Register)
 		authAPI.POST("/login", user.Login)
+		authAPI.PUT("/update-forget-password", user.ForgetPassword)
 	}
 
 	userAPI := engine.Group("/api/user", middleware.Auth())
@@ -32,7 +33,6 @@ func Load(engine *gin.Engine, handlerFunc ...gin.HandlerFunc) *gin.Engine {
 		userAPI.PUT("/update-email", user.UpdateEmail)
 		userAPI.PUT("/update-nick-name", user.UpdateNickName)
 		userAPI.PUT("/update-password", user.UpdatePassword)
-		userAPI.PUT("/update-forget-password", user.ForgetPassword)
 	}
 
 	classAPI := engine.Group("/api/class")
@@ -51,9 +51,9 @@ func Load(engine *gin.Engine, handlerFunc ...gin.HandlerFunc) *gin.Engine {
 		//获取加入的课程列表
 		lessonApi.GET("/join", lesson.GetJoinLessonList)
 		// 编辑课程
-		lessonApi.PUT("/editor",lesson.EditorLesson)
+		lessonApi.PUT("/editor", lesson.EditorLesson)
 		// 移除课程
-		lessonApi.DELETE("/del",lesson.RemoveLesson)
+		lessonApi.DELETE("/del", lesson.RemoveLesson)
 	}
 
 	// 检查http健康的路由组
