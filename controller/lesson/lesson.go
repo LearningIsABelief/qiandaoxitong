@@ -1,7 +1,6 @@
 package lesson
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"qiandao/pkg/app"
 	"qiandao/service"
@@ -12,7 +11,7 @@ import (
 func CreateLesson(ctx *gin.Context)  {
 //	 1.绑定参数
 	lesson := new(viewmodel.Lesson)
-	err := ctx.ShouldBindJSON(lesson)
+	err := ctx.ShouldBind(lesson)
 	if err != nil {
 		app.SendResponse(ctx,app.ErrBind,nil)
 		return
@@ -28,6 +27,7 @@ func CreateLesson(ctx *gin.Context)  {
 	}
 	err = service.CreateLesson(lesson)
 	if err != nil {
+		app.SendResponse(ctx,err,nil)
 		return
 	}
 
@@ -46,15 +46,11 @@ func GetCreateLessonList(ctx *gin.Context)  {
 //	2.调用业务逻辑
 	dataList,err := service.GetCreateLessonList(userId)
 	if err != nil {
-		app.SendResponse(ctx,app.ErrUserNotExist,nil)
+		app.SendResponse(ctx,err,nil)
 		return
-	}
-	for _,v := range dataList{
-		fmt.Println(v)
 	}
 //	3.返回响应
 	app.SendResponse(ctx,app.OK,dataList)
-	
 }
 
 // GetJoinLessonList 获取加入的课程列表
@@ -68,11 +64,56 @@ func GetJoinLessonList(ctx *gin.Context){
 //	2.调用业务逻辑
 	joinList,err:= service.GetJoinLessonList(classId)
 	if err != nil{
-		app.SendResponse(ctx,app.ErrClassNotExist,nil)
+		app.SendResponse(ctx,err,nil)
 		return
 	}
 //	3.返回响应
 	app.SendResponse(ctx,app.OK,joinList)
 
 }
+// EditorLesson 编辑课程信息
+func EditorLesson(ctx *gin.Context){
+// 	1.绑定参数
+	var lesson *viewmodel.LessonEditor
+	err := ctx.ShouldBind(&lesson)
+	if err != nil {
+		app.SendResponse(ctx,app.ErrBind,nil)
+		return
+	}
+	if lesson.LessonID == "" || lesson.LessonName == ""{
+		app.SendResponse(ctx,app.ErrParamNull,nil)
+		return
+	}
+//	2.业务处理
+	err = service.EditorLesson(lesson)
+	if err != nil {
+		app.SendResponse(ctx,err,nil)
+		return
+	}
+//	3.返回响应
+	app.SendResponse(ctx,app.OK,nil)
+}
+// RemoveLesson 移除课程
+func RemoveLesson(ctx *gin.Context)  {
+// 1.绑定参数
+	lesson := new(viewmodel.LessonRemove)
+	err := ctx.ShouldBind(&lesson)
+	if err != nil {
+		app.SendResponse(ctx,app.ErrBind,nil)
+		return
+	}
+	if lesson.LessonID == "" || lesson.LessonCreator == ""{
+		app.SendResponse(ctx,app.ErrParamNull,nil)
+		return
+	}
+// 2.调用业务逻辑
+	err = service.RemoveLesson(lesson)
+	if err != nil {
+		app.SendResponse(ctx,err,nil)
+		return
+	}
+// 3.返回响应
+	app.SendResponse(ctx,app.OK,nil)
+}
+
 
