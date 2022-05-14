@@ -9,7 +9,7 @@ type RegisterRequest struct {
 	Phone    string `json:"phone" form:"phone" binding:"required"`
 	Password string `json:"password" form:"password" binding:"required"`
 	Email    string `json:"email" form:"email" binding:"required"`
-	Role     int    `json:"role" form:"role" binding:"required"`
+	Role     int    `json:"role" form:"role"`
 	ClassId  string `json:"class_id" form:"class_id"`
 }
 
