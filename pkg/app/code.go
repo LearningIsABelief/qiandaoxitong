@@ -11,7 +11,7 @@ var (
 	// 用户错误
 	ErrEncrypt             = &Errno{Code: 20101, Message: "加密用户密码时出错"}
 	ErrPhoneExist          = &Errno{Code: 20102, Message: "手机号已被注册"}
-	ErrEmailExist          = &Errno{Code: 20103, Message: "邮箱已被绑定"}
+	ErrEmailExist          = &Errno{Code: 20103, Message: "该邮箱已被绑定"}
 	ErrNickNameExist       = &Errno{Code: 20104, Message: "该昵称已被占用"}
 	ErrPassword            = &Errno{Code: 20105, Message: "原密码不正确"}
 	ErrOldNewInconsistent  = &Errno{Code: 20106, Message: "请确保两次输入的密码一样"}

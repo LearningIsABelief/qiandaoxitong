@@ -7,6 +7,7 @@ import (
 	"qiandao/pkg/util"
 	"qiandao/store"
 	"qiandao/viewmodel"
+	"strings"
 )
 
 // CreateClass 创建班级 service
@@ -28,11 +29,18 @@ func CreateClass(createClassRequest viewmodel.CreateClassRequest) error {
 	return nil
 }
 
-// GetAllClass 分页获取班级列表 service
+// GetAllClass 获取班级列表 service
 func GetAllClass(page util.PageRequest) (viewmodel.GetClassListResponse, error) {
-	mapper, count, err := store.GetAllClassMapper(page.Offset, page.Limit)
+	var infos []viewmodel.ClassInfo
+	var count uint64
+	var err error
+	if strings.Compare(page.Logo, "register") == 0 {
+		infos, count, err = store.GetAllClassMapper()
+	} else if strings.Compare(page.Logo, "universal") == 0 {
+		infos, count, err = store.GetAllClassPageMapper(page.Offset, page.Limit)
+	}
 	return viewmodel.GetClassListResponse{
 		TotalCount: count,
-		Class:      mapper,
+		Class:      infos,
 	}, err
 }

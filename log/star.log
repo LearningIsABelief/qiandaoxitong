@@ -687,3 +687,6 @@
 {"level":"INFO","timestamp":"2022-05-07 22:59:24.168","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
 {"level":"INFO","timestamp":"2022-05-07 22:59:24.168","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8000"}
 {"level":"INFO","timestamp":"2022-05-07 22:59:48.663","file":"store/user.go:134","msg":"查找到账号为: 15637954339 的信息"}
+{"level":"INFO","timestamp":"2022-05-14 14:21:51.874","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-05-14 14:21:51.875","file":"qiandaoxitong/main.go:44","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-05-14 14:21:51.875","file":"qiandaoxitong/main.go:45","msg":"开始监听 http 地址上的传入请求: :8000"}

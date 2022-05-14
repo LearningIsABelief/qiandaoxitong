@@ -7,7 +7,7 @@ import (
 	"qiandao/service"
 )
 
-// GetAllClass 分页获取班级列表 controller
+// GetAllClass 获取班级列表 controller
 func GetAllClass(ctx *gin.Context) {
 	var pageCondition util.PageRequest
 	if err := ctx.Bind(&pageCondition); err != nil {
