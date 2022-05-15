@@ -25,7 +25,7 @@ func CreateCheckin(ctx *gin.Context) {
 	}
 	createCheckin, err := service.CreateCheckin(viewCheckin)
 	if err != nil {
-		app.SendResponse(ctx, app.InternalServerError, nil)
+		app.SendResponse(ctx, err, nil)
 		return
 	}
 	app.SendResponse(ctx, app.OK, createCheckin.CheckinID)
@@ -48,7 +48,7 @@ func StuCheckIn(ctx *gin.Context) {
 	}
 	checkinResponse, err := service.StuCheckin(checkIn)
 	if err != nil {
-		app.SendResponse(ctx, app.InternalServerError, checkinResponse)
+		app.SendResponse(ctx, err, checkinResponse)
 		return
 	}
 	app.SendResponse(ctx, app.OK, checkinResponse)
@@ -66,7 +66,7 @@ func GetCheckinDetails(ctx *gin.Context) {
 	}
 	checkinDetailsResponse, err := service.GetCheckinDetails(checkinID)
 	if err != nil {
-		app.SendResponse(ctx, app.InternalServerError, nil)
+		app.SendResponse(ctx, err, nil)
 		return
 	}
 	app.SendResponse(ctx, app.OK, checkinDetailsResponse)
@@ -84,7 +84,7 @@ func GetCreatedCheckinLst(ctx *gin.Context) {
 	}
 	response, err := service.GetCreatedCheckInList(userID)
 	if err != nil {
-		app.SendResponse(ctx, app.InternalServerError, nil)
+		app.SendResponse(ctx, err, nil)
 		return
 	}
 	app.SendResponse(ctx, app.OK, response)
@@ -102,7 +102,7 @@ func GetCheckinRecLst(ctx *gin.Context) {
 	}
 	response, err := service.GetCheckinRecList(userID)
 	if err != nil {
-		app.SendResponse(ctx, app.InternalServerError, nil)
+		app.SendResponse(ctx, err, nil)
 		return
 	}
 	app.SendResponse(ctx, app.OK, response)
