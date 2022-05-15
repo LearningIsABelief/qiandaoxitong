@@ -1,7 +1,5 @@
 package viewmodel
 
-import "time"
-
 // CreateCheckin 创建签到 请求结构体
 type CreateCheckin struct {
 	LessonID    string `json:"lesson_id" form:"lesson_id"`
@@ -36,9 +34,9 @@ type CheckinDetailsResponse struct {
 
 // ListResponse 已创建签到列表/签到记录列表 响应结构体
 type ListResponse struct {
-	CheckinID    string    `json:"checkin_id"`
-	LessonName   string    `json:"lesson_name"`
-	BeginTime    time.Time `json:"begin_time"`
-	State        int       `json:"state"`
-	CheckinState int       `json:"checkin_state"`
+	CheckinID    string `json:"checkin_id"`
+	LessonName   string `json:"lesson_name"`
+	BeginTime    string `json:"begin_time"`
+	State        int    `json:"state"`
+	CheckinState int    `json:"checkin_state"`
 }

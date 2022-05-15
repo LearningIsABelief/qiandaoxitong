@@ -236,7 +236,7 @@ func GetCreatedCheckInList(creatorID string) (listResponse []viewmodel.ListRespo
 		listResponse[i] = viewmodel.ListResponse{
 			CheckinID:    checkinList[i].CheckinID,
 			LessonName:   lesson.LessonName,
-			BeginTime:    checkinList[i].BeginTime,
+			BeginTime:    checkinList[i].BeginTime.Format("2006/01/02 15:04"),
 			CheckinState: checkinState,
 		}
 	}
@@ -278,7 +278,7 @@ func GetCheckinRecList(userID string) (shouldCheckInList []viewmodel.ListRespons
 		shouldCheckInList[i] = viewmodel.ListResponse{
 			CheckinID:    checkinRec.CheckinID,
 			LessonName:   lesson.LessonName,
-			BeginTime:    checkin.BeginTime,
+			BeginTime:    checkin.BeginTime.Format("2006/01/02 15:04"),
 			State:        checkinRec.State,
 			CheckinState: checkinState,
 		}
