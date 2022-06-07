@@ -3,6 +3,8 @@ package router
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"qiandao/controller/checkin"
+
 	"qiandao/controller/class"
 	"qiandao/controller/lesson"
 	"qiandao/controller/sd"
@@ -63,6 +65,21 @@ func Load(engine *gin.Engine, handlerFunc ...gin.HandlerFunc) *gin.Engine {
 		svcd.GET("/disk", sd.DiskCheck)
 		svcd.GET("/cpu", sd.CPUCheck)
 		svcd.GET("/ram", sd.RAMCheck)
+	}
+
+	// 签到
+	checkInApi := engine.Group("/api/checkin")
+	{
+		// 创建签到
+		checkInApi.POST("createCheckin", checkin.CreateCheckin)
+		// 学生签到
+		checkInApi.POST("", checkin.StuCheckIn)
+		// 获取签到详情
+		checkInApi.GET("getCheckinDetails", checkin.GetCheckinDetails)
+		// 获取已创建签到列表
+		checkInApi.GET("getCreatedCheckinList", checkin.GetCreatedCheckinLst)
+		// 获取签到记录列表
+		checkInApi.GET("getCheckinRecList", checkin.GetCheckinRecLst)
 	}
 
 	return engine
