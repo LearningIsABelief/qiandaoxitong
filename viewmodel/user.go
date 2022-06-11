@@ -17,7 +17,7 @@ type RegisterRequest struct {
 type LoginRequest struct {
 	Phone       string `json:"phone" form:"phone" binding:"required"`
 	Password    string `json:"password" form:"password" binding:"required"`
-	Uuid        string `json:"Uuid" form:"Uuid" binding:"required"`
+	Uuid        string `json:"uuid" form:"uuid" binding:"required"`
 	VerifyValue string `json:"verify_value" form:"verify_value" binding:"required"`
 }
 
