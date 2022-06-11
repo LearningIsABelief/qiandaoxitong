@@ -29,6 +29,7 @@ redis:
 
 # 验证码配置
 code:
+  expiration: 2        # 验证码到期时间，单位分
   captcha_type: math   # 一共五种类型验证码： 1.纯数字型 dight 2.纯字符串型：string 3.数学运算型：math 4.纯中文型：chinese 5. 音频类型：auto
   height: 65           # 配置验证码的高度（音频不能设置高度）
   Width: 195           # 配置验证码的宽度（音频不能设置宽度）

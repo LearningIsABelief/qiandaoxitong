@@ -2,6 +2,7 @@ package service
 
 import (
 	"github.com/lexkong/log"
+	"github.com/spf13/viper"
 	"qiandao/pkg/app"
 	"qiandao/pkg/util"
 	"qiandao/store"
@@ -21,7 +22,7 @@ func CreateCodeService() (*viewmodel.CodeInfoResponse, error) {
 	// 获取验证码结果
 	verificationCode := util.GetCodeAnswer(id)
 	// 获取完验证码将验证码和答案 以key-value方式存入redis,设置过期时间2分钟
-	store.RedisDB.Self.Set("login-code-"+id, verificationCode, 2*time.Minute)
+	store.RedisDB.Self.Set("login-code-"+id, verificationCode, viper.GetDuration("code.expiration")*time.Minute)
 
 	log.Info("验证码：" + verificationCode)
 	return &viewmodel.CodeInfoResponse{
