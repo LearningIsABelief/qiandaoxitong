@@ -132,12 +132,12 @@ func ForgetPassword(forgetPasswordRequest viewmodel.ForgetPasswordRequest) error
 // Login 用户登录 service
 func Login(loginRequest viewmodel.LoginRequest) (viewmodel.LoginResponse, error) {
 	// 判断验证码是否过期
-	value, err := store.RedisDB.Self.Get("login-code-" + loginRequest.Uuid).Result()
+	_, err := store.RedisDB.Self.Get("login-code-" + loginRequest.Uuid).Result()
 	if err != nil {
 		log.Errorf(err, "验证码已过期")
 		return viewmodel.LoginResponse{}, app.ErrCodeExpired
 	}
-	if strings.Compare(value, loginRequest.VerifyValue) != 0 {
+	if !util.VerifyCaptcha(loginRequest.Uuid, loginRequest.VerifyValue) {
 		log.Errorf(err, "验证码错误")
 		return viewmodel.LoginResponse{}, app.ErrCode
 	}

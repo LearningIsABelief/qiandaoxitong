@@ -6,7 +6,7 @@ import (
 	"image/color"
 )
 
-var result = base64Captcha.DefaultMemStore
+var Result = base64Captcha.DefaultMemStore
 
 // CreateCode
 // @Description: 生成图片验证码的 base64编码和ID
@@ -20,18 +20,18 @@ func CreateCode() (string, string, error) {
 	case "audio":
 		driver = autoConfig()
 	case "string":
-		driver = stringConfig().ConvertFonts()
+		driver = stringConfig()
 	case "math":
-		driver = mathConfig().ConvertFonts()
+		driver = mathConfig()
 	case "chinese":
-		driver = chineseConfig().ConvertFonts()
+		driver = chineseConfig()
 	case "digit":
 		driver = digitConfig()
 	}
 	if driver == nil {
 		panic("生成验证码的类型没有配置，请在yaml文件中配置完再次重试启动项目")
 	}
-	c := base64Captcha.NewCaptcha(driver, result)
+	c := base64Captcha.NewCaptcha(driver, Result)
 	id, b64s, err := c.Generate()
 	return id, b64s, err
 }
@@ -43,7 +43,7 @@ func CreateCode() (string, string, error) {
 // @Pram VerifyValue 答案
 // @Result true：正确，false：失败
 func VerifyCaptcha(id, VerifyValue string) bool {
-	return result.Verify(id, VerifyValue, true)
+	return Result.Verify(id, VerifyValue, true)
 }
 
 // GetCodeAnswer
@@ -52,7 +52,7 @@ func VerifyCaptcha(id, VerifyValue string) bool {
 // @Pram codeId 验证码id
 // @Result 验证码答案
 func GetCodeAnswer(codeId string) string {
-	return result.Get(codeId, true)
+	return Result.Get(codeId, false)
 }
 
 // mathConfig 生成图形化算术验证码配置
