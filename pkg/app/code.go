@@ -54,5 +54,6 @@ var (
 	ErrCheckinRecNotExist = &Errno{Code: 30301, Message: "签到记录不存在"}
 
 	// 验证码错误
-	ErrCodeNotExist = &Errno{Code: 40001, Message: "验证码已过期，请刷新页面或者点击图片刷新验证码"}
+	ErrCodeExpired = &Errno{Code: 40001, Message: "验证码已过期"}
+	ErrCode        = &Errno{Code: 40002, Message: "验证码错误"}
 )

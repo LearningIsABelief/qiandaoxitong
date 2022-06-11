@@ -28,5 +28,4 @@ func CreateCodeService() (*viewmodel.CodeInfoResponse, error) {
 		Uuid:   id,
 		Base64: base64,
 	}, nil
-
 }
