@@ -1,7 +1,7 @@
 run_mode: debug              # 开发模式, debug, release, test
-addr: :8080                  # HTTP绑定端口
+addr: :8000                 # HTTP绑定端口
 name: qiandaoqitong          # API Server的名字
-url: http://127.0.0.1:8080   # pingServer函数请求的API服务器的ip:port
+url: http://127.0.0.1:8000   # pingServer函数请求的API服务器的ip:port
 max_ping_count: 10           # pingServer函数try的次数
 
 log:
@@ -16,7 +16,30 @@ log:
 
 # 数据库配置
 db:
-  name: sgnInSys
-  addr: 47.93.88.66:3306
+  name: checkin
+  addr: 127.0.0.1:3306
   username: root
-  password: mysql1.
+  password: 875839231
+
+# redis配置
+redis:
+  database: 0
+  host: 127.0.0.1:6379
+  password:
+
+# 验证码配置
+code:
+  captcha_type: math   # 一共五种类型验证码： 1.纯数字型 dight 2.纯字符串型：string 3.数学运算型：math 4.纯中文型：chinese 5. 音频类型：auto
+  height: 65           # 配置验证码的高度（音频不能设置高度）
+  Width: 195           # 配置验证码的宽度（音频不能设置宽度）
+  auto:
+    autoLength: 3      # 配置音频的字符(例如：length=3， 那么音频就随机输出 7 5 9)
+    language: zh       # 配置音频的语言，有：en、zh、ru、ja 四种
+  string:
+    # 设置字符串图片验证码的字符串的范围
+    source: "1234567890qwertyuiopasdfghjklzxcvbnm"
+  chinese:
+    # 设置汉字图片验证码的汉字的范围
+    source: "设想,你在,处理,消费者,的音,频输,出音,频可,能无,论什,么都,没有,任何,输出,或者,它可,能是,单声道,立体声,或是,环绕立,体声的,,不想要,的值"
+
+

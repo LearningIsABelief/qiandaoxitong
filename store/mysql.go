@@ -23,7 +23,6 @@ func (db *Database) Init() {
 
 func (db *Database) Close() {
 	DB.Self.Close()
-	//DB.Docker.Close()
 }
 func GetSelfDB() *gorm.DB {
 	return openDB(
@@ -48,6 +47,7 @@ func openDB(username, password, addr, name string) *gorm.DB {
 	if err != nil {
 		log.Errorf(err, "数据库连接失败.Database Name: %s", name)
 	}
+	log.Infof("数据库连接成功.Database Name: %s", name)
 	db.LogMode(viper.GetBool("run_mode"))
 	db.DB().SetMaxIdleConns(0)
 	db.SingularTable(true)

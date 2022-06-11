@@ -3,6 +3,7 @@ package router
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"qiandao/controller/auth"
 	"qiandao/controller/checkin"
 
 	"qiandao/controller/class"
@@ -21,14 +22,15 @@ func Load(engine *gin.Engine, handlerFunc ...gin.HandlerFunc) *gin.Engine {
 		// 将给定的字符串写入响应正文
 		context.String(http.StatusNotFound, "API路由错误")
 	})
-
+	// 系统路由
 	authAPI := engine.Group("/api/auth")
 	{
 		authAPI.POST("/register", user.Register)
 		authAPI.POST("/login", user.Login)
 		authAPI.PUT("/update-forget-password", user.ForgetPassword)
+		authAPI.GET("/code", auth.Code)
 	}
-
+	// 用户路由
 	userAPI := engine.Group("/api/user", middleware.Auth())
 	{
 		userAPI.PUT("/update-user", user.UpdateUserInfo)
@@ -36,8 +38,8 @@ func Load(engine *gin.Engine, handlerFunc ...gin.HandlerFunc) *gin.Engine {
 		userAPI.PUT("/update-nick-name", user.UpdateNickName)
 		userAPI.PUT("/update-password", user.UpdatePassword)
 	}
-
-	classAPI := engine.Group("/api/class")
+	// 班级路由
+	classAPI := engine.Group("/api/class", middleware.Auth())
 	{
 		classAPI.POST("", class.Create)
 		classAPI.GET("", class.GetAllClass)

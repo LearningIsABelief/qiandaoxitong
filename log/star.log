@@ -725,3 +725,61 @@
 {"level":"ERROR","timestamp":"2022-05-14 15:58:53.148","file":"service/user.go:25","msg":"手机号已被注册","data":{"error":"手机号已被注册"}}
 {"level":"INFO","timestamp":"2022-05-14 15:59:08.655","file":"store/user.go:30","msg":"创建班级：成功创建:1条记录"}
 {"level":"INFO","timestamp":"2022-05-14 15:59:08.661","file":"store/user.go:41","msg":"维护班级用户中间表：成功创建:1条记录"}
+{"level":"ERROR","timestamp":"2022-06-11 10:37:54.821","file":"store/mysql.go:48","msg":"数据库连接失败.Database Name: sgnInSys","data":{"error":"Error 1045: Access denied for user 'root'@'42.233.5.106' (using password: YES)"}}
+{"level":"INFO","timestamp":"2022-06-11 10:37:54.824","file":"store/redis.go:43","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-11 10:37:54.840","file":"qiandaoxitong/main.go:62","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-06-11 10:37:55.842","file":"qiandaoxitong/main.go:62","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-06-11 10:37:56.845","file":"qiandaoxitong/main.go:62","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-06-11 10:37:57.848","file":"qiandaoxitong/main.go:62","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-06-11 10:37:58.851","file":"qiandaoxitong/main.go:62","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-06-11 10:37:59.853","file":"qiandaoxitong/main.go:62","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-06-11 10:38:00.856","file":"qiandaoxitong/main.go:62","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-06-11 10:38:01.858","file":"qiandaoxitong/main.go:62","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-06-11 10:38:02.861","file":"qiandaoxitong/main.go:62","msg":"等待路由，1秒后重试."}
+{"level":"INFO","timestamp":"2022-06-11 10:38:03.863","file":"qiandaoxitong/main.go:62","msg":"等待路由，1秒后重试."}
+{"level":"FATAL","timestamp":"2022-06-11 10:38:04.864","file":"qiandaoxitong/main.go:46","msg":"路由没有响应，或者启动时间过长.","data":{"error":"无法连接到路由","trace":"goroutine 11 [running]:\ngithub.com/lexkong/log/lager.(*logger).logs(0xc00008c5a0, {0x10, 0x2a1155c0598, 0x10}, 0x4, {0xedbca4, 0x2e}, {0xfb6d40, 0xc0002bb5d0}, {0x0, ...})\n\tC:/Users/13916/go/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:135 +0x145\ngithub.com/lexkong/log/lager.(*logger).log(0xc0000b5f78, 0xd827a5, {0xedbca4, 0x2e}, {0xfb6d40, 0xc0002bb5d0}, {0x0, 0x0, 0x0})\n\tC:/Users/13916/go/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:123 +0xcd\ngithub.com/lexkong/log/lager.(*logger).Fatal(0x0, {0xedbca4, 0x0}, {0xfb6d40, 0xc0002bb5d0}, {0x0, 0x0, 0x0})\n\tC:/Users/13916/go/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/lager/logger.go:197 +0x4a\ngithub.com/lexkong/log.Fatal(...)\n\tC:/Users/13916/go/pkg/mod/github.com/lexkong/log@v0.0.0-20180607165131-972f9cd951fc/st_lager.go:162\nmain.main.func1()\n\tD:/qiandaoxitong2/qiandaoxitong/main.go:46 +0x58\ncreated by main.main\n\tD:/qiandaoxitong2/qiandaoxitong/main.go:44 +0x289\n"}}
+{"level":"INFO","timestamp":"2022-06-11 10:38:53.585","file":"store/redis.go:43","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-11 10:38:54.092","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-11 10:38:54.093","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-11 10:38:54.093","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-11 10:40:06.895","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: checkin"}
+{"level":"INFO","timestamp":"2022-06-11 10:40:06.898","file":"store/redis.go:43","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-11 10:40:07.404","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-11 10:40:07.404","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-11 10:40:07.404","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-06-11 10:40:27.391","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: checkin"}
+{"level":"INFO","timestamp":"2022-06-11 10:40:27.393","file":"store/redis.go:43","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-11 10:40:27.899","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-11 10:40:27.899","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-11 10:40:27.899","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-06-11 10:40:59.413","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: checkin"}
+{"level":"INFO","timestamp":"2022-06-11 10:40:59.415","file":"store/redis.go:43","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-11 10:40:59.922","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-11 10:40:59.922","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-11 10:40:59.923","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-06-11 10:42:47.775","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: checkin"}
+{"level":"INFO","timestamp":"2022-06-11 10:42:47.777","file":"store/redis.go:43","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-11 10:42:48.283","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-11 10:42:48.284","file":"qiandaoxitong/main.go:49","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-11 10:42:48.284","file":"qiandaoxitong/main.go:50","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-06-11 11:48:29.822","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: checkin"}
+{"level":"INFO","timestamp":"2022-06-11 14:22:37.381","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: checkin"}
+{"level":"INFO","timestamp":"2022-06-11 14:40:42.285","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: checkin"}
+{"level":"ERROR","timestamp":"2022-06-11 14:40:45.287","file":"store/redis.go:41","msg":"redis连接超时. URL: 127.0.0.1:6379","data":{"error":"read tcp 127.0.0.1:49286-\u003e127.0.0.1:6379: i/o timeout"}}
+{"level":"INFO","timestamp":"2022-06-11 14:40:45.287","file":"store/redis.go:43","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-11 14:40:45.792","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-11 14:40:45.793","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-11 14:40:45.793","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-06-11 14:41:20.465","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: checkin"}
+{"level":"ERROR","timestamp":"2022-06-11 14:41:23.467","file":"store/redis.go:41","msg":"redis连接超时. URL: 127.0.0.1:6379","data":{"error":"read tcp 127.0.0.1:49337-\u003e127.0.0.1:6379: i/o timeout"}}
+{"level":"INFO","timestamp":"2022-06-11 14:41:23.467","file":"store/redis.go:43","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-11 14:41:23.974","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-11 14:41:23.974","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-11 14:41:23.975","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-06-11 14:41:39.712","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: checkin"}
+{"level":"ERROR","timestamp":"2022-06-11 14:41:42.715","file":"store/redis.go:41","msg":"redis连接超时. URL: 127.0.0.1:6379","data":{"error":"read tcp 127.0.0.1:49410-\u003e127.0.0.1:6379: i/o timeout"}}
+{"level":"INFO","timestamp":"2022-06-11 14:42:53.519","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: checkin"}
+{"level":"INFO","timestamp":"2022-06-11 14:42:53.522","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-11 14:42:54.028","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-11 14:42:54.029","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-11 14:42:54.029","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
