@@ -28,6 +28,10 @@ func main() {
 	store.DB.Init()
 	defer store.DB.Close()
 
+	// redis初始化建立连接
+	store.RedisDB.Init()
+	defer store.RedisDB.Close()
+
 	gin.SetMode(viper.GetString("run_mode"))
 
 	g := gin.New()
