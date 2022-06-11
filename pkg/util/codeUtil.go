@@ -1,7 +1,6 @@
 package util
 
 import (
-	"fmt"
 	"github.com/mojocn/base64Captcha"
 	"github.com/spf13/viper"
 	"image/color"
@@ -17,8 +16,6 @@ var result = base64Captcha.DefaultMemStore
 // @Result error 错误
 func CreateCode() (string, string, error) {
 	var driver base64Captcha.Driver
-	getString := viper.GetString("code.captcha_type")
-	fmt.Println(getString)
 	switch viper.GetString("code.captcha_type") {
 	case "audio":
 		driver = autoConfig()

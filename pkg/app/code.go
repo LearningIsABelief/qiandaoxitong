@@ -52,4 +52,7 @@ var (
 	ErrCheckinLessonGet = &Errno{Code: 30401, Message: "签到课程获取失败"}
 
 	ErrCheckinRecNotExist = &Errno{Code: 30301, Message: "签到记录不存在"}
+
+	// 验证码错误
+	ErrCodeNotExist = &Errno{Code: 40001, Message: "验证码已过期，请刷新页面或者点击图片刷新验证码"}
 )

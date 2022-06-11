@@ -67,7 +67,7 @@ func DecodeErr(err error) (int, string) {
 	return InternalServerError.Code, err.Error()
 }
 
-// SendResponse 同意封装返回结果集
+// SendResponse 统一封装返回结果集
 func SendResponse(c *gin.Context, err error, data interface{}) {
 	code, message := DecodeErr(err)
 	c.JSON(http.StatusOK, Response{
