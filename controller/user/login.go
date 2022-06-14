@@ -13,7 +13,7 @@ func Login(ctx *gin.Context) {
 		app.SendResponse(ctx, app.ErrBind, nil)
 		return
 	}
-	login, err := service.Login(loginRequest)
+	login, err := service.Login(loginRequest, ctx)
 	if err != nil {
 		app.SendResponse(ctx, err, nil)
 		return

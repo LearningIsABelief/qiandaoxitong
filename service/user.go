@@ -1,6 +1,10 @@
 package service
 
 import (
+	"encoding/base64"
+	"encoding/json"
+	"errors"
+	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
 	"github.com/spf13/viper"
 	"qiandao/model"
@@ -10,6 +14,7 @@ import (
 	"qiandao/store"
 	"qiandao/viewmodel"
 	"strings"
+	"time"
 )
 
 // CreateUser 创建用户 service
@@ -130,9 +135,11 @@ func ForgetPassword(forgetPasswordRequest viewmodel.ForgetPasswordRequest) error
 }
 
 // Login 用户登录 service
-func Login(loginRequest viewmodel.LoginRequest) (viewmodel.LoginResponse, error) {
+func Login(loginRequest viewmodel.LoginRequest, ctx *gin.Context) (viewmodel.LoginResponse, error) {
 	// 判断验证码是否过期
 	_, err := store.RedisDB.Self.Get("login-code-" + loginRequest.Uuid).Result()
+	// 清除redis中的验证码的key
+	util.RedisDel("login-code-" + loginRequest.Uuid)
 	if err != nil {
 		log.Errorf(err, "验证码已过期")
 		return viewmodel.LoginResponse{}, app.ErrCodeExpired
@@ -154,11 +161,39 @@ func Login(loginRequest viewmodel.LoginRequest) (viewmodel.LoginResponse, error)
 	// 账号存在 密码正确 生成token
 	userToken, err := token.Sign(nil, token.Context{ID: userInfo.UserId}, viper.GetString("jwt_secret"))
 	if err != nil {
-		return viewmodel.LoginResponse{}, app.ErrTokenInvalid
+		return viewmodel.LoginResponse{}, app.ErrTokenCreate
 	}
-	// 走到这说明验证码正确账号密码也正确，清除redis中的验证码的key
-	store.RedisDB.Self.Del("login-code-" + loginRequest.Uuid)
 
+	// 自定义在线用户信息 有用户ID、用户账号、加密的用户颁发token、ip地址，地区， 登录时间
+	onlineUserInfo := viewmodel.OnlineUserInfo{
+		Id:          userInfo.UserId,
+		UserAccount: loginRequest.Phone,
+		// 将用户id转换为byte数组进行加密，再将加密后的byte数组转换为base64
+		Token:     base64.StdEncoding.EncodeToString(util.DesEncrypt(util.StringToByteSlice(loginRequest.Uuid))),
+		Ip:        util.GetRequestIP(ctx),
+		Address:   util.GetAddressByLngAndLat(loginRequest.Longitude, loginRequest.Latitude),
+		LoginTime: time.Now().Unix(),
+	}
+	// 将结构体序列化
+	marshal, err := json.Marshal(onlineUserInfo)
+	if err != nil {
+		log.Errorf(err, "结构体序列化失败")
+		return viewmodel.LoginResponse{}, errors.New("结构体序列化失败")
+	}
+	// 将通过验证的账号的信息存入redis
+	err = util.RedisSet(viper.GetString("jwt.online_key")+userToken, util.ByteSliceToString(marshal))
+	if err != nil {
+		log.Errorf(err, "redis键设置失败")
+		return viewmodel.LoginResponse{}, err
+	}
+	// 单用户模式：true，多用户模式：false
+	// 为true需要踢掉之前登陆过的用户
+	if viper.GetBool("login.single_login") {
+		err := util.CheckLoginOnUser(loginRequest.Uuid, userToken)
+		if err != nil {
+			return viewmodel.LoginResponse{}, err
+		}
+	}
 	return viewmodel.LoginResponse{
 		Token: userToken,
 		User:  userInfo,

@@ -39,9 +39,9 @@ func Load(engine *gin.Engine, handlerFunc ...gin.HandlerFunc) *gin.Engine {
 		userAPI.PUT("/update-password", user.UpdatePassword)
 	}
 	// 班级路由
-	classAPI := engine.Group("/api/class", middleware.Auth())
+	classAPI := engine.Group("/api/class")
 	{
-		classAPI.POST("", class.Create)
+		classAPI.POST("", middleware.Auth(), class.Create)
 		classAPI.GET("", class.GetAllClass)
 	}
 
