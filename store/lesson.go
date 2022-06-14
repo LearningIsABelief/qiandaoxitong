@@ -89,8 +89,8 @@ func GetLessonList(userId string) ([]*viewmodel.ListObj,error){
 		}
 		res = append(res,val)
 	  }
-	  log.Infof("查询用户创建列表成功%v",res)
-	return res,nil
+	    log.Infof("查询用户创建列表成功%v",res)
+		return res,nil
 }
 
 // GetJoinLessonList 查询当前用户加入的课程
