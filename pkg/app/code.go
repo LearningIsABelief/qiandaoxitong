@@ -29,6 +29,9 @@ var (
 
 	// token
 	ErrTokenInvalid = &Errno{Code: 20103, Message: "无效token"}
+	ErrTokenCreate  = &Errno{Code: 20102, Message: "token生成失败"}
+	ErrExpiredToken = &Errno{Code: 20104, Message: "token已过期，请重新登录您的账号"}
+	ErrIllegalToken = &Errno{Code: 20104, Message: "非法token"}
 
 	// 班级错误
 	ErrClassExist    = &Errno{Code: 20201, Message: "班级已存在，不能重复创建"}
@@ -56,4 +59,7 @@ var (
 	// 验证码错误
 	ErrCodeExpired = &Errno{Code: 40001, Message: "验证码已过期"}
 	ErrCode        = &Errno{Code: 40002, Message: "验证码错误"}
+
+	// redis错误
+	ErrRedisDataUnmarshal = &Errno{Code: 50001, Message: "验证码错误"}
 )

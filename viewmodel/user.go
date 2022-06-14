@@ -19,12 +19,15 @@ type LoginRequest struct {
 	Password    string `json:"password" form:"password" binding:"required"`
 	Uuid        string `json:"uuid" form:"uuid" binding:"required"`
 	VerifyValue string `json:"verify_value" form:"verify_value" binding:"required"`
+	Longitude   string `json:"longitude" form:"longitude"`
+	Latitude    string `json:"latitude" form:"latitude"`
 }
 
 type UserInfo struct {
 	UserId    string `json:"user_id"`
 	Password  string `json:"password"`
 	Email     string `json:"email"`
+	Phone     string `json:"phone"`
 	Role      int    `json:"role"`
 	ClassId   string `json:"class_id"`
 	ClassName string `json:"class_name"`
