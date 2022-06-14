@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-// BulkInsert 批量插入
+// BulkInsert 中间表内容批量插入
 func BulkInsert(db *gorm.DB,data []model.ClassLesson) error{
 	// 声明buffer缓冲器
 	var buffer bytes.Buffer
@@ -20,7 +20,7 @@ func BulkInsert(db *gorm.DB,data []model.ClassLesson) error{
 	// 拼接字符串,构成多行插入语句
 	for i,val := range data{
 		if i == len(data)-1 {
-			buffer.WriteString(fmt.Sprintf("('%s','%s','%s','%s','%s','%s','%s');",val.ClassLessonID,val.ClassID,val.LessonID,val.ClassName,time.Now().Format("2006-01-02 15:04:05.000"),time.Now().Format("2006-01-02 15:04:05.000"),time.Now().Format("2006-01-02 15:04:05.000")))
+				buffer.WriteString(fmt.Sprintf("('%s','%s','%s','%s','%s','%s','%s');",val.ClassLessonID,val.ClassID,val.LessonID,val.ClassName,time.Now().Format("2006-01-02 15:04:05.000"),time.Now().Format("2006-01-02 15:04:05.000"),time.Now().Format("2006-01-02 15:04:05.000")))
 		}else{
 			buffer.WriteString(fmt.Sprintf("('%s','%s','%s','%s','%s','%s','%s'),",val.ClassLessonID,val.ClassID,val.LessonID,val.ClassName,time.Now().Format("2006-01-02 15:04:05.000"),time.Now().Format("2006-01-02 15:04:05.000"),time.Now().Format("2006-01-02 15:04:05.000")))
 		}

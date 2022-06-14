@@ -22,6 +22,14 @@ type ListObj struct {
 	ClassName       []string      `form:"class_name_list"  json:"class_name_list"`      //  班级名称列表
 }
 
+// LessonClass 用户创建的所有课程的相应
+type LessonClass struct {
+	LessonId		string        `form:"lesson_id"        json:"lesson_id"`			// 课程id
+	LessonName   	string	      `form:"lesson_name"      json:"lesson_name"`	        // 课程名称
+	CreatedAt    	time.Time     `form:"created_at"       json:"created_at"`           //  创建时间
+	ClassName       string        `form:"class_name"       json:"class_name"`          //  班级名
+}
+
 // ClassObj 用户创建的班级、用户加入的班级
 type ClassObj struct {
 	ClassName  string 		`form:"class_name"  json:"class_name"`    					// 班级名

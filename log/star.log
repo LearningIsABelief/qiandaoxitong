@@ -1127,3 +1127,221 @@
 {"level":"INFO","timestamp":"2022-06-14 17:50:53.457","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
 {"level":"ERROR","timestamp":"2022-06-14 17:51:01.253","file":"store/lesson.go:201","msg":"查询课程记录失败","data":{"error":"record not found"}}
 {"level":"ERROR","timestamp":"2022-06-14 18:01:04.689","file":"store/lesson.go:55","msg":"中间表查询班级id失败","data":{"error":"Error 1052: Column 'class_name' in field list is ambiguous"}}
+{"level":"INFO","timestamp":"2022-06-14 19:46:05.817","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"ERROR","timestamp":"2022-06-14 19:46:07.845","file":"store/redis.go:41","msg":"redis连接超时. URL: 127.0.0.1:6379","data":{"error":"dial tcp 127.0.0.1:6379: connectex: No connection could be made because the target machine actively refused it."}}
+{"level":"INFO","timestamp":"2022-06-14 19:46:46.480","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 19:46:46.481","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 19:46:46.986","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 19:46:46.987","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 19:46:46.987","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 19:46:50.510","file":"store/lesson.go:48","msg":"指定查找的课程记录不存在"}
+{"level":"ERROR","timestamp":"2022-06-14 19:46:57.795","file":"store/lesson.go:205","msg":"查询课程记录失败","data":{"error":"record not found"}}
+{"level":"INFO","timestamp":"2022-06-14 20:23:51.845","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 20:23:51.845","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 20:23:51.846","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 20:23:51.846","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 20:23:51.846","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 20:23:59.478","file":"store/lesson.go:53","msg":"GetLessonList 连表查询失败"}
+{"level":"INFO","timestamp":"2022-06-14 20:30:55.776","file":"store/lesson.go:226","msg":"查询当前用户是否创建重复课程操作成功1"}
+{"level":"ERROR","timestamp":"2022-06-14 20:30:55.776","file":"service/lesson.go:17","msg":"当前用户创建重复课程","data":{"error":"课程已存在"}}
+{"level":"ERROR","timestamp":"2022-06-14 20:31:11.617","file":"store/lesson.go:223","msg":"查询课程记录失败","data":{"error":"record not found"}}
+{"level":"ERROR","timestamp":"2022-06-14 20:31:27.102","file":"store/lesson.go:53","msg":"GetLessonList 连表查询失败"}
+{"level":"INFO","timestamp":"2022-06-14 20:33:12.964","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 20:33:12.964","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 20:33:12.966","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 20:33:12.966","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 20:33:12.966","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-06-14 20:51:26.617","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 20:51:26.618","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 20:51:26.619","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 20:51:26.620","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 20:51:26.620","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 20:51:30.751","file":"store/lesson.go:60","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1"}}
+{"level":"INFO","timestamp":"2022-06-14 20:53:34.845","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 20:53:34.845","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 20:53:35.349","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 20:53:35.350","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 20:53:35.350","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 20:53:47.174","file":"store/lesson.go:60","msg":"GetLessonList 连表查询失败","data":{"error":"sql: converting argument $1 type: unsupported type []string, a slice of string"}}
+{"level":"INFO","timestamp":"2022-06-14 20:56:28.140","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 20:56:28.140","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 20:56:28.645","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 20:56:28.645","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 20:56:28.645","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 20:56:29.036","file":"store/lesson.go:66","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?)' at line 1"}}
+{"level":"INFO","timestamp":"2022-06-14 20:57:49.754","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 20:57:49.754","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 20:57:50.266","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 20:57:50.267","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 20:57:50.267","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 20:57:55.238","file":"store/lesson.go:66","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'JOIN lesson ON lesson.lesson_id = class_lesson.lesson_idINNER JOIN class ON clas' at line 1"}}
+{"level":"INFO","timestamp":"2022-06-14 21:00:08.208","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:00:08.208","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:00:08.210","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:00:08.210","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:00:08.210","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:00:10.325","file":"store/lesson.go:68","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?)' at line 1"}}
+{"level":"INFO","timestamp":"2022-06-14 21:04:40.463","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:04:40.469","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:04:40.469","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:04:40.469","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:04:40.469","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:04:43.910","file":"store/lesson.go:73","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?,?)' at line 1"}}
+{"level":"INFO","timestamp":"2022-06-14 21:06:43.442","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:06:43.442","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:06:43.442","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:06:43.442","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:06:43.442","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:06:44.434","file":"store/lesson.go:73","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?,?)' at line 1"}}
+{"level":"INFO","timestamp":"2022-06-14 21:08:42.339","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:08:42.339","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:08:42.340","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:08:42.340","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:08:42.340","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:08:43.623","file":"store/lesson.go:74","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?,?)' at line 1"}}
+{"level":"INFO","timestamp":"2022-06-14 21:09:22.349","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:09:22.349","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:09:22.350","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:09:22.350","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:09:22.350","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:09:23.188","file":"store/lesson.go:76","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?,?)' at line 1"}}
+{"level":"INFO","timestamp":"2022-06-14 21:14:27.234","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:14:27.235","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:14:27.236","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:14:27.236","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:14:27.236","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:14:30.872","file":"store/lesson.go:73","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?,? )' at line 1"}}
+{"level":"INFO","timestamp":"2022-06-14 21:17:21.320","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:17:21.320","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:17:21.321","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:17:21.321","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:17:21.321","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:17:22.436","file":"store/lesson.go:73","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'JOIN lesson ON lesson.lesson_id = class_lesson.lesson_idINNER JOIN class ON clas' at line 1"}}
+{"level":"INFO","timestamp":"2022-06-14 21:18:40.357","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:18:40.357","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:18:40.867","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:18:40.867","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:18:40.867","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:18:42.059","file":"store/lesson.go:73","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'JOIN lesson ON lesson.lesson_id = class_lesson.lesson_id INNER JOIN class ON cla' at line 1"}}
+{"level":"INFO","timestamp":"2022-06-14 21:19:50.930","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:19:50.931","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:19:50.932","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:19:50.932","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:19:50.932","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:19:51.885","file":"store/lesson.go:73","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'JOIN lesson ON lesson.lesson_id = class_lesson.lesson_id\nINNER JOIN class ON cla' at line 1"}}
+{"level":"INFO","timestamp":"2022-06-14 21:20:36.408","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:20:36.408","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:20:36.915","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:20:36.915","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:20:36.915","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:20:37.841","file":"store/lesson.go:73","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'JOIN lesson ON lesson.lesson_id = class_lesson.lesson_id\nINNER JOIN class ON cla' at line 1"}}
+{"level":"INFO","timestamp":"2022-06-14 21:30:52.048","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:30:52.049","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:30:52.550","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:30:52.551","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:30:52.551","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:30:54.049","file":"store/lesson.go:73","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'JOIN lesson ON lesson.lesson_id = class_lesson.lesson_id\nINNER JOIN class ON cla' at line 1"}}
+{"level":"INFO","timestamp":"2022-06-14 21:42:15.235","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:42:15.236","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:42:15.743","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:42:15.744","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:42:15.744","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:42:19.745","file":"store/lesson.go:73","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'JOIN lesson ON lesson.lesson_id = class_lesson.lesson_id\nINNER JOIN class ON cla' at line 1"}}
+{"level":"INFO","timestamp":"2022-06-14 21:43:10.555","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:43:10.556","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:43:10.558","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:43:10.558","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:43:10.558","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:43:12.625","file":"store/lesson.go:73","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 4"}}
+{"level":"INFO","timestamp":"2022-06-14 21:43:52.898","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:43:52.898","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:43:52.900","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:43:52.901","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:43:52.901","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:43:53.915","file":"store/lesson.go:73","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 5"}}
+{"level":"INFO","timestamp":"2022-06-14 21:46:01.895","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:46:01.895","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:46:02.405","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:46:02.406","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:46:02.406","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:46:05.774","file":"store/lesson.go:73","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 5"}}
+{"level":"INFO","timestamp":"2022-06-14 21:47:25.277","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:47:25.277","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:47:25.279","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:47:25.279","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:47:25.279","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:47:30.369","file":"store/lesson.go:73","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 5"}}
+{"level":"INFO","timestamp":"2022-06-14 21:48:18.301","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:48:18.301","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:48:18.814","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:48:18.814","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:48:18.814","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:48:21.142","file":"store/lesson.go:73","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '? ()' at line 5"}}
+{"level":"INFO","timestamp":"2022-06-14 21:50:22.049","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:50:23.575","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:50:23.577","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:50:23.578","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:50:23.578","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:50:26.556","file":"store/lesson.go:73","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 5"}}
+{"level":"INFO","timestamp":"2022-06-14 21:52:53.538","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:52:53.538","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:52:53.544","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:52:53.544","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:52:53.544","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:52:54.400","file":"store/lesson.go:73","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 5"}}
+{"level":"INFO","timestamp":"2022-06-14 21:53:45.674","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:53:45.675","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:53:45.676","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:53:45.676","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:53:45.676","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:53:47.342","file":"store/lesson.go:73","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?,? )' at line 1"}}
+{"level":"INFO","timestamp":"2022-06-14 21:54:30.351","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:54:30.351","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:54:30.353","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:54:30.353","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:54:30.353","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:54:31.332","file":"store/lesson.go:73","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?,? ()' at line 1"}}
+{"level":"INFO","timestamp":"2022-06-14 21:54:57.661","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:54:57.661","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:54:57.663","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:54:57.663","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:54:57.663","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:54:58.312","file":"store/lesson.go:73","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1"}}
+{"level":"INFO","timestamp":"2022-06-14 21:55:32.365","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:55:32.366","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:55:32.367","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:55:32.367","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:55:32.367","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:55:33.202","file":"store/lesson.go:73","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1"}}
+{"level":"INFO","timestamp":"2022-06-14 21:56:20.601","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:56:20.601","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:56:20.603","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:56:20.603","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:56:20.603","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:56:23.577","file":"store/lesson.go:73","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1"}}
+{"level":"INFO","timestamp":"2022-06-14 21:57:23.728","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:57:23.729","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:57:23.730","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:57:23.730","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:57:23.730","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:57:24.635","file":"store/lesson.go:73","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1"}}
+{"level":"INFO","timestamp":"2022-06-14 21:57:56.219","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 21:57:56.219","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 21:57:56.220","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 21:57:56.220","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 21:57:56.220","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 21:57:57.327","file":"store/lesson.go:73","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?,? )' at line 1"}}
+{"level":"INFO","timestamp":"2022-06-14 22:01:24.918","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 22:01:24.919","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 22:01:24.920","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 22:01:24.920","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 22:01:24.920","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-06-14 22:01:26.998","file":"store/lesson.go:117","msg":"查询用户创建列表成功[0xc000068640]"}
+{"level":"INFO","timestamp":"2022-06-14 22:02:33.024","file":"store/lesson.go:246","msg":"查询当前用户是否创建重复课程操作成功1"}
+{"level":"INFO","timestamp":"2022-06-14 22:02:35.772","file":"store/lesson.go:117","msg":"查询用户创建列表成功[0xc000068870 0xc000068910]"}
+{"level":"INFO","timestamp":"2022-06-14 22:06:10.338","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 22:06:10.339","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 22:06:10.340","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 22:06:10.340","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 22:06:10.340","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-06-14 22:06:11.451","file":"store/lesson.go:89","msg":"查询用户创建列表成功[0xc000317b80 0xc000317c20]"}

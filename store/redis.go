@@ -36,11 +36,11 @@ func openRedis(host, password string, database int) *redis.Client {
 		Password: password,
 		DB:       database,
 	})
-	_, err := redisDB.Ping().Result()
-	if err != nil {
-		log.Errorf(err, "redis连接超时. URL: %s", host)
-		panic(err)
-	}
+	//_, err := redisDB.Ping().Result()
+	//if err != nil {
+	//	log.Errorf(err, "redis连接超时. URL: %s", host)
+	//	panic(err)
+	//}
 	log.Infof("redis连接成功. URL: %s", host)
 	return redisDB
 }
