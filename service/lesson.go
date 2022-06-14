@@ -26,14 +26,14 @@ func CreateLesson(lessonParam *viewmodel.Lesson) error{
 
 	// 遍历班级id列表，创建中间表实体，加入切片
 	 classLessonSlice := make([]model.ClassLesson,0)
- 	// 班级列表字符串切割成数组
-	 classList := strings.Split(lessonParam.ClassList,",")
-	for _, v := range classList {
+	for _, v := range lessonParam.ClassList {
 		classLesson := model.ClassLesson{
 			ClassLessonID:util.GetUUID(),
-			ClassID:v,
+			ClassID:v.ClassId,
 			LessonID:lesson.LessonID,
+			ClassName: v.ClassName,
 		}
+		// 追加到最终结果集中
 		classLessonSlice = append(classLessonSlice,classLesson)
 	}
 

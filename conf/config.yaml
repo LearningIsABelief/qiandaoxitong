@@ -16,10 +16,10 @@ log:
 
 # 数据库配置
 db:
-  name: checkin
+  name: javaweb
   addr: 127.0.0.1:3306
   username: root
-  password: 875839231
+  password: mysql1.
 
 # redis配置
 redis:

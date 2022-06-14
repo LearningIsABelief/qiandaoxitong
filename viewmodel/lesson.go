@@ -2,11 +2,16 @@ package viewmodel
 
 import "time"
 
-// Lesson 课程
+// Lesson 创建课程
 type Lesson struct {
-	LessonName 	    string    `form:"lesson_name" json:"lesson_name"`   	  // 课程名称
-	LessonCreator 	string    `form:"user_id"     json:"user_id"`           // 课程发起者
-	ClassList       string    `form:"class_list"  json:"class_list"`       // 班级id列表
+	LessonName 	    string           `form:"lesson_name" json:"lesson_name"`   	  // 课程名称
+	LessonCreator 	string           `form:"user_id"     json:"user_id"`           // 课程发起者
+	ClassList       []ClassContext   `form:"class"       json:"class"`       // 班级对象列表
+}
+// ClassContext 班级信息
+type ClassContext struct {
+	ClassId    string 		`form:"class_id"    json:"class_id"`     					//  班级id
+	ClassName  string 		`form:"class_name"  json:"class_name"`    					 // 班级名
 }
 
 // ListObj 用户所创建的课程响应实体

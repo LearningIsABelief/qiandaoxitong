@@ -1,6 +1,7 @@
 package lesson
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"qiandao/pkg/app"
 	"qiandao/service"
@@ -11,7 +12,8 @@ import (
 func CreateLesson(ctx *gin.Context)  {
 //	 1.绑定参数
 	lesson := new(viewmodel.Lesson)
-	err := ctx.ShouldBind(lesson)
+	err := ctx.ShouldBindJSON(lesson)
+	fmt.Println(err)
 	if err != nil {
 		app.SendResponse(ctx,app.ErrBind,nil)
 		return
