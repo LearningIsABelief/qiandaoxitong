@@ -6,7 +6,7 @@ import "time"
 type Lesson struct {
 	LessonName 	    string           `form:"lesson_name" json:"lesson_name"`   	    // 课程名称
 	LessonCreator 	string           `form:"user_id"     json:"user_id"`           // 课程发起者
-	ClassList       []ClassContext   `form:"class"       json:"class"`            // 班级对象列表
+	ClassList       []ClassContext   `form:"class_list"  json:"class_list"`            // 班级对象列表
 }
 // ClassContext 班级信息
 type ClassContext struct {
@@ -42,7 +42,7 @@ type ClassObj struct {
 type LessonEditor struct {
 	LessonID      string        `form:"lesson_id"     json:"lesson_id"`			 // 课程id
 	LessonName    string        `form:"lesson_name"   json:"lesson_name"`		//  课程名
-    ClassList    []ClassContext `form:"class"         json:"class"`            // 班级对象列表
+    ClassList    []ClassContext `form:"class_list"         json:"class_list"`            // 班级对象列表
 }
 
 // LessonRemove 移除课程

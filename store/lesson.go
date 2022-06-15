@@ -56,7 +56,7 @@ func GetLessonList(userId string) ([]*viewmodel.ListObj,error){
 	  // 2.根据课程id连表查询出最后返回的结果集
 	// 2.根据课程id列表,获取所有最后结果集
 	db = DB.Self.Table("class_lesson").Select([]string{`lesson_id`,`lesson_name`,`class_name`,`created_at`}).
-		Where("lesson_id IN (?) ",lessonIDList).Find(&queryData)
+		Where("lesson_id IN (?) AND deleted_at is null ",lessonIDList).Find(&queryData)
 	//  错误处理
 		if db.RowsAffected == 0 {
 			log.Errorf(db.Error,"GetLessonList 连表查询失败")
@@ -110,7 +110,7 @@ func GetJoinLessonList(classId string) ([]*viewmodel.ListObj,error) {
 
 	// 2.根据课程id列表,获取所有最后结果集
 	db = DB.Self.Table("class_lesson").Select([]string{`lesson_id`,`lesson_name`,`class_name`,`created_at`}).
-		Where("lesson_id IN (?) ",lessonIDList).Find(&queryData)
+		Where("lesson_id IN (?) AND deleted_at is null ",lessonIDList).Find(&queryData)
 
 	//  错误处理
 	if db.RowsAffected == 0 {

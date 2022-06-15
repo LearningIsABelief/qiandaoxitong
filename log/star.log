@@ -1547,3 +1547,27 @@
 {"level":"INFO","timestamp":"2022-06-15 10:57:36.902","file":"store/lesson.go:233","msg":"查询课程信息成功1"}
 {"level":"INFO","timestamp":"2022-06-15 10:57:36.907","file":"store/lesson.go:248","msg":"删除班级id是啊比0"}
 {"level":"INFO","timestamp":"2022-06-15 10:57:36.912","file":"store/lesson.go:170","msg":"插入中间表信息成功[{0d7c6ae6-8191-4bf1-af98-f73cf705ff70 4 d42d57e3-47cf-4be8-ba56-3928650c22b2 计科333 化学 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC \u003cnil\u003e} {5323d971-4d70-4d20-8f44-068c62c517f8 3 d42d57e3-47cf-4be8-ba56-3928650c22b2 计科666 化学 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC \u003cnil\u003e}]"}
+{"level":"INFO","timestamp":"2022-06-15 11:18:29.315","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 11:18:29.424","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 11:18:29.425","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 11:18:29.425","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 11:18:29.426","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-06-15 11:19:32.026","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 11:19:32.026","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 11:19:32.028","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 11:19:32.028","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 11:19:32.028","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-15 11:19:33.386","file":"store/lesson.go:219","msg":"查询课程记录失败","data":{"error":"record not found"}}
+{"level":"INFO","timestamp":"2022-06-15 11:20:10.224","file":"store/lesson.go:235","msg":"查询课程信息成功1"}
+{"level":"INFO","timestamp":"2022-06-15 11:20:10.229","file":"store/lesson.go:158","msg":"更新课程名称成功化学"}
+{"level":"INFO","timestamp":"2022-06-15 11:20:10.233","file":"store/lesson.go:250","msg":"删除班级id是啊比0"}
+{"level":"INFO","timestamp":"2022-06-15 11:20:10.237","file":"store/lesson.go:172","msg":"插入中间表信息成功[{0264b7dd-8ddc-4f90-a2bd-435d45d83c15 4 714e7f78-17b3-4b8b-8955-f0c0b3b7bb6a 计科333 化学 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC \u003cnil\u003e} {643d02b8-ea14-4d42-ad63-6ff826bf5b6c 3 714e7f78-17b3-4b8b-8955-f0c0b3b7bb6a 计科666 化学 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC \u003cnil\u003e}]"}
+{"level":"INFO","timestamp":"2022-06-15 11:20:31.273","file":"store/lesson.go:141","msg":"获取用户加入课程成功"}
+{"level":"INFO","timestamp":"2022-06-15 11:20:59.776","file":"store/lesson.go:84","msg":"查询用户创建列表成功[0xc00041dd60 0xc00041de00]"}
+{"level":"INFO","timestamp":"2022-06-15 11:22:48.670","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 11:22:48.671","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 11:22:48.672","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 11:22:48.672","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 11:22:48.672","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-06-15 11:22:49.711","file":"store/lesson.go:141","msg":"获取用户加入课程成功"}
+{"level":"INFO","timestamp":"2022-06-15 11:22:54.090","file":"store/lesson.go:84","msg":"查询用户创建列表成功[0xc00033e4b0]"}
