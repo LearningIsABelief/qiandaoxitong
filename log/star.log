@@ -1345,3 +1345,32 @@
 {"level":"INFO","timestamp":"2022-06-14 22:06:10.340","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
 {"level":"INFO","timestamp":"2022-06-14 22:06:10.340","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
 {"level":"INFO","timestamp":"2022-06-14 22:06:11.451","file":"store/lesson.go:89","msg":"查询用户创建列表成功[0xc000317b80 0xc000317c20]"}
+{"level":"INFO","timestamp":"2022-06-14 22:35:39.240","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 22:35:39.338","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 22:35:39.339","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 22:35:39.339","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 22:35:39.339","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 22:35:54.975","file":"store/lesson.go:117","msg":"GetLessonList 查询lessonID列表失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE `class_lesson`.`deleted_at` IS NULL AND ((class_id = ?))' at line 1"}}
+{"level":"ERROR","timestamp":"2022-06-14 22:36:12.526","file":"store/lesson.go:117","msg":"GetLessonList 查询lessonID列表失败","data":{"error":"Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE `class_lesson`.`deleted_at` IS NULL AND ((class_id = ?))' at line 1"}}
+{"level":"INFO","timestamp":"2022-06-14 22:36:59.512","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 22:36:59.512","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 22:36:59.514","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 22:36:59.514","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 22:36:59.514","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 22:37:00.638","file":"store/lesson.go:117","msg":"GetLessonList 查询lessonID列表失败","data":{"error":"Error 1052: Column 'class_id' in where clause is ambiguous"}}
+{"level":"INFO","timestamp":"2022-06-14 22:37:18.088","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-14 22:37:18.089","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-14 22:37:18.594","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-14 22:37:18.595","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-14 22:37:18.595","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-14 22:37:19.074","file":"store/lesson.go:117","msg":"GetLessonList 查询lessonID列表失败"}
+{"level":"ERROR","timestamp":"2022-06-14 22:38:00.786","file":"store/lesson.go:117","msg":"GetLessonList 查询lessonID列表失败"}
+{"level":"INFO","timestamp":"2022-06-15 09:17:52.040","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 09:17:52.041","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 09:17:52.546","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 09:17:52.546","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 09:17:52.546","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-06-15 09:18:28.912","file":"store/lesson.go:245","msg":"查询课程信息成功1"}
+{"level":"INFO","timestamp":"2022-06-15 09:18:28.920","file":"store/lesson.go:167","msg":"更新课程名称成功化学"}
+{"level":"INFO","timestamp":"2022-06-15 09:18:28.923","file":"store/lesson.go:260","msg":"删除班级id是啊比0"}
+{"level":"INFO","timestamp":"2022-06-15 09:18:28.930","file":"store/lesson.go:182","msg":"插入中间表信息成功[{1156dcc5-fa3b-48d1-b57b-3631e05226ef 2 e265e409-506d-4fc7-afe1-0fffb53bc11d  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC \u003cnil\u003e} {62beaae5-8c22-4476-a5e3-57fcb54b22bc 3 e265e409-506d-4fc7-afe1-0fffb53bc11d  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC \u003cnil\u003e}]"}
