@@ -7,7 +7,6 @@ import (
 	"qiandao/pkg/util"
 	"qiandao/store"
 	"qiandao/viewmodel"
-	"strings"
 )
 
 // CreateLesson 创建课程
@@ -25,13 +24,14 @@ func CreateLesson(lessonParam *viewmodel.Lesson) error{
 	}
 
 	// 遍历班级id列表，创建中间表实体，加入切片
-	 classLessonSlice := make([]model.ClassLesson,0)
+    classLessonSlice := make([]model.ClassLesson,0)
 	for _, v := range lessonParam.ClassList {
 		classLesson := model.ClassLesson{
 			ClassLessonID:util.GetUUID(),
 			ClassID:v.ClassId,
 			LessonID:lesson.LessonID,
 			ClassName: v.ClassName,
+			LessonName:lesson.LessonName,
 		}
 		// 追加到最终结果集中
 		classLessonSlice = append(classLessonSlice,classLesson)
@@ -42,7 +42,7 @@ func CreateLesson(lessonParam *viewmodel.Lesson) error{
 	if err != nil{
 		return err
 	}
-	return nil
+	return err
 }
 
 // GetCreateLessonList 获取当前用户创建的所有课程
@@ -78,22 +78,20 @@ func EditorLesson(lesson *viewmodel.LessonEditor)(err error){
 			return err
 		}
 	}
-
 	// 删除该课程对应的班级
 	err = store.DeleteClassIdByLessonId(lesson.LessonID)
 	if err != nil {
 		return err
 	}
-	// 重新插入
-	// 遍历班级id列表，创建中间表实体，加入切片
+	// 存储需要插入中间表的数据
 	classLessonSlice := make([]model.ClassLesson,0)
-	//将班级id列表变成切片
-	classIdList := strings.Split(lesson.ClassIdList,",")
-	for _,v := range classIdList{
+	for _,v := range lesson.ClassList{
 		classLesson := model.ClassLesson{
 			ClassLessonID:util.GetUUID(),
-			ClassID: v,
+			ClassID: v.ClassId,
 			LessonID: lesson.LessonID,
+			ClassName: v.ClassName,
+			LessonName: lesson.LessonName,
 		}
 		classLessonSlice = append(classLessonSlice,classLesson)
 	}

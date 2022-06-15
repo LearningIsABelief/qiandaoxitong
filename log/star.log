@@ -1374,3 +1374,176 @@
 {"level":"INFO","timestamp":"2022-06-15 09:18:28.920","file":"store/lesson.go:167","msg":"更新课程名称成功化学"}
 {"level":"INFO","timestamp":"2022-06-15 09:18:28.923","file":"store/lesson.go:260","msg":"删除班级id是啊比0"}
 {"level":"INFO","timestamp":"2022-06-15 09:18:28.930","file":"store/lesson.go:182","msg":"插入中间表信息成功[{1156dcc5-fa3b-48d1-b57b-3631e05226ef 2 e265e409-506d-4fc7-afe1-0fffb53bc11d  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC \u003cnil\u003e} {62beaae5-8c22-4476-a5e3-57fcb54b22bc 3 e265e409-506d-4fc7-afe1-0fffb53bc11d  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC \u003cnil\u003e}]"}
+{"level":"INFO","timestamp":"2022-06-15 09:50:55.473","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 09:50:55.473","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 09:50:55.990","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 09:50:55.990","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 09:50:55.990","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-06-15 09:51:14.422","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 09:51:14.422","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 09:51:14.424","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 09:51:14.424","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 09:51:14.424","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-15 09:51:15.401","file":"store/lesson.go:100","msg":"查询用户所在班级加入的课堂失败"}
+{"level":"ERROR","timestamp":"2022-06-15 09:51:22.819","file":"store/lesson.go:100","msg":"查询用户所在班级加入的课堂失败"}
+{"level":"ERROR","timestamp":"2022-06-15 09:52:12.749","file":"store/lesson.go:100","msg":"查询用户所在班级加入的课堂失败"}
+{"level":"INFO","timestamp":"2022-06-15 09:54:24.143","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 09:54:24.144","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 09:54:24.145","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 09:54:24.146","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 09:54:24.146","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-15 09:54:25.111","file":"store/lesson.go:100","msg":"查询用户所在班级加入的课堂失败"}
+{"level":"INFO","timestamp":"2022-06-15 09:57:25.904","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 09:57:25.904","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 09:57:25.906","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 09:57:25.906","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 09:57:25.906","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-15 09:57:31.208","file":"store/lesson.go:100","msg":"查询用户所在班级加入的课堂失败","data":{"error":"record not found"}}
+{"level":"INFO","timestamp":"2022-06-15 09:58:24.623","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 09:58:24.624","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 09:58:25.130","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 09:58:25.130","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 09:58:25.130","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-15 09:58:28.479","file":"store/lesson.go:100","msg":"查询用户所在班级加入的课堂失败","data":{"error":"record not found"}}
+{"level":"INFO","timestamp":"2022-06-15 09:59:14.154","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 09:59:14.154","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 09:59:14.156","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 09:59:14.156","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 09:59:14.156","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-15 09:59:18.929","file":"store/lesson.go:100","msg":"查询用户所在班级加入的课堂失败","data":{"error":"record not found"}}
+{"level":"INFO","timestamp":"2022-06-15 10:00:10.222","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 10:00:10.222","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 10:00:10.224","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 10:00:10.225","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 10:00:10.225","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-15 10:00:11.282","file":"store/lesson.go:100","msg":"查询用户所在班级加入的课堂失败","data":{"error":"record not found"}}
+{"level":"INFO","timestamp":"2022-06-15 10:01:10.010","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 10:01:10.010","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 10:01:10.012","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 10:01:10.012","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 10:01:10.012","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-15 10:01:10.889","file":"store/lesson.go:100","msg":"查询用户所在班级加入的课堂失败"}
+{"level":"INFO","timestamp":"2022-06-15 10:02:48.583","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 10:02:48.583","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 10:02:48.584","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 10:02:48.585","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 10:02:48.585","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-15 10:02:49.448","file":"store/lesson.go:100","msg":"查询用户所在班级加入的课堂失败"}
+{"level":"ERROR","timestamp":"2022-06-15 10:04:51.264","file":"store/lesson.go:204","msg":"查询课程记录失败","data":{"error":"record not found"}}
+{"level":"ERROR","timestamp":"2022-06-15 10:05:12.456","file":"store/lesson.go:100","msg":"查询用户所在班级加入的课堂失败"}
+{"level":"ERROR","timestamp":"2022-06-15 10:05:16.748","file":"store/lesson.go:100","msg":"查询用户所在班级加入的课堂失败"}
+{"level":"INFO","timestamp":"2022-06-15 10:06:59.877","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 10:06:59.877","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 10:06:59.879","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 10:06:59.879","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 10:06:59.879","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-15 10:07:11.500","file":"store/lesson.go:204","msg":"查询课程记录失败","data":{"error":"record not found"}}
+{"level":"ERROR","timestamp":"2022-06-15 10:07:11.509","file":"store/lesson.go:26","msg":"批量插入失败","data":{"error":"Error 1292: Incorrect datetime value: '' for column 'deleted_at' at row 1"}}
+{"level":"INFO","timestamp":"2022-06-15 10:08:54.625","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 10:08:54.626","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 10:08:54.628","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 10:08:54.628","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 10:08:54.628","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-15 10:09:02.402","file":"store/lesson.go:204","msg":"查询课程记录失败","data":{"error":"record not found"}}
+{"level":"ERROR","timestamp":"2022-06-15 10:09:22.471","file":"store/lesson.go:100","msg":"查询用户所在班级加入的课堂失败"}
+{"level":"INFO","timestamp":"2022-06-15 10:09:46.747","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 10:09:46.747","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 10:09:46.748","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 10:09:46.749","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 10:09:46.749","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-15 10:10:08.677","file":"store/lesson.go:204","msg":"查询课程记录失败","data":{"error":"record not found"}}
+{"level":"ERROR","timestamp":"2022-06-15 10:10:08.682","file":"store/lesson.go:26","msg":"批量插入失败","data":{"error":"Error 1292: Incorrect datetime value: '%!s(\u003cnil\u003e)' for column 'deleted_at' at row 1"}}
+{"level":"ERROR","timestamp":"2022-06-15 10:12:33.485","file":"store/lesson.go:204","msg":"查询课程记录失败","data":{"error":"record not found"}}
+{"level":"ERROR","timestamp":"2022-06-15 10:12:33.489","file":"store/lesson.go:26","msg":"批量插入失败","data":{"error":"Error 1292: Incorrect datetime value: '%!s(\u003cnil\u003e)' for column 'deleted_at' at row 1"}}
+{"level":"INFO","timestamp":"2022-06-15 10:12:43.792","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 10:12:43.792","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 10:12:43.793","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 10:12:43.794","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 10:12:43.794","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-15 10:12:49.613","file":"store/lesson.go:204","msg":"查询课程记录失败","data":{"error":"record not found"}}
+{"level":"ERROR","timestamp":"2022-06-15 10:12:57.629","file":"store/lesson.go:114","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1054: Unknown column 'lesson.lesson_id' in 'field list'"}}
+{"level":"INFO","timestamp":"2022-06-15 10:14:51.087","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 10:14:51.087","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 10:14:51.089","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 10:14:51.089","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 10:14:51.089","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-15 10:14:52.068","file":"store/lesson.go:115","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1054: Unknown column 'lesson.lesson_id' in 'field list'"}}
+{"level":"INFO","timestamp":"2022-06-15 10:15:45.931","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 10:15:45.932","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 10:15:45.933","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 10:15:45.933","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 10:15:45.933","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-15 10:15:46.800","file":"store/lesson.go:115","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1054: Unknown column 'lesson_name' in 'field list'"}}
+{"level":"INFO","timestamp":"2022-06-15 10:16:06.281","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 10:16:06.281","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 10:16:06.283","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 10:16:06.283","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 10:16:06.283","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-15 10:16:07.428","file":"store/lesson.go:115","msg":"GetLessonList 连表查询失败","data":{"error":"Error 1054: Unknown column 'lesson_name' in 'field list'"}}
+{"level":"INFO","timestamp":"2022-06-15 10:22:52.600","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 10:22:52.600","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 10:22:52.602","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 10:22:52.602","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 10:22:52.602","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-15 10:23:23.716","file":"store/lesson.go:205","msg":"查询课程记录失败","data":{"error":"record not found"}}
+{"level":"INFO","timestamp":"2022-06-15 10:33:01.187","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 10:33:01.187","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 10:33:01.188","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 10:33:01.188","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 10:33:01.188","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-15 10:33:02.165","file":"store/lesson.go:116","msg":"GetLessonList 连表查询失败"}
+{"level":"INFO","timestamp":"2022-06-15 10:34:37.291","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 10:34:37.291","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 10:34:37.292","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 10:34:37.292","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 10:34:37.292","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-06-15 10:34:39.180","file":"store/lesson.go:127","msg":"获取用户加入课程成功"}
+{"level":"INFO","timestamp":"2022-06-15 10:37:03.121","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 10:37:03.122","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 10:37:03.123","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 10:37:03.123","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 10:37:03.123","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-06-15 10:37:04.366","file":"store/lesson.go:141","msg":"获取用户加入课程成功"}
+{"level":"INFO","timestamp":"2022-06-15 10:38:58.389","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 10:38:58.389","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 10:38:58.391","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 10:38:58.391","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 10:38:58.391","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-06-15 10:38:59.322","file":"store/lesson.go:82","msg":"查询用户创建列表成功[0xc00041e1e0]"}
+{"level":"INFO","timestamp":"2022-06-15 10:39:33.630","file":"store/lesson.go:235","msg":"查询课程信息成功1"}
+{"level":"INFO","timestamp":"2022-06-15 10:39:33.635","file":"store/lesson.go:156","msg":"更新课程名称成功化学"}
+{"level":"INFO","timestamp":"2022-06-15 10:39:33.639","file":"store/lesson.go:250","msg":"删除班级id是啊比0"}
+{"level":"INFO","timestamp":"2022-06-15 10:39:33.643","file":"store/lesson.go:172","msg":"插入中间表信息成功[{76bfe547-46f3-41c0-9d61-ebbb46d18f9d 2 317455d3-8044-4bea-9dee-019be5354e75   0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC \u003cnil\u003e} {09471352-9dba-474b-8bd8-4502e7a00ea0 3 317455d3-8044-4bea-9dee-019be5354e75   0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC \u003cnil\u003e}]"}
+{"level":"INFO","timestamp":"2022-06-15 10:40:13.737","file":"store/lesson.go:210","msg":"查询指定用户创建的课程记录成功1"}
+{"level":"INFO","timestamp":"2022-06-15 10:40:13.749","file":"store/lesson.go:198","msg":"移除课程记录成功2"}
+{"level":"INFO","timestamp":"2022-06-15 10:46:02.133","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 10:46:02.134","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 10:46:02.135","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 10:46:02.135","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 10:46:02.135","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-15 10:46:08.726","file":"store/lesson.go:232","msg":"查询课程记录失败","data":{"error":"record not found"}}
+{"level":"ERROR","timestamp":"2022-06-15 10:46:39.411","file":"store/lesson.go:232","msg":"查询课程记录失败","data":{"error":"record not found"}}
+{"level":"ERROR","timestamp":"2022-06-15 10:47:01.253","file":"store/lesson.go:219","msg":"查询课程记录失败","data":{"error":"record not found"}}
+{"level":"ERROR","timestamp":"2022-06-15 10:47:07.279","file":"store/lesson.go:232","msg":"查询课程记录失败","data":{"error":"record not found"}}
+{"level":"INFO","timestamp":"2022-06-15 10:47:21.984","file":"store/lesson.go:235","msg":"查询课程信息成功1"}
+{"level":"INFO","timestamp":"2022-06-15 10:47:21.989","file":"store/lesson.go:156","msg":"更新课程名称成功化学"}
+{"level":"INFO","timestamp":"2022-06-15 10:47:21.993","file":"store/lesson.go:250","msg":"删除班级id是啊比0"}
+{"level":"INFO","timestamp":"2022-06-15 10:47:21.995","file":"store/lesson.go:172","msg":"插入中间表信息成功[]"}
+{"level":"INFO","timestamp":"2022-06-15 10:49:15.609","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 10:49:15.609","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 10:49:15.610","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 10:49:15.611","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 10:49:15.611","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"ERROR","timestamp":"2022-06-15 10:49:28.152","file":"store/lesson.go:217","msg":"查询课程记录失败","data":{"error":"record not found"}}
+{"level":"INFO","timestamp":"2022-06-15 10:49:45.716","file":"store/lesson.go:233","msg":"查询课程信息成功1"}
+{"level":"INFO","timestamp":"2022-06-15 10:49:45.722","file":"store/lesson.go:156","msg":"更新课程名称成功化学"}
+{"level":"INFO","timestamp":"2022-06-15 10:49:45.728","file":"store/lesson.go:248","msg":"删除班级id是啊比0"}
+{"level":"ERROR","timestamp":"2022-06-15 10:49:45.730","file":"store/lesson.go:165","msg":"插入中间表信息失败"}
+{"level":"INFO","timestamp":"2022-06-15 10:56:39.142","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 10:56:39.143","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 10:56:39.144","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 10:56:39.144","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 10:56:39.144","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-06-15 10:57:36.902","file":"store/lesson.go:233","msg":"查询课程信息成功1"}
+{"level":"INFO","timestamp":"2022-06-15 10:57:36.907","file":"store/lesson.go:248","msg":"删除班级id是啊比0"}
+{"level":"INFO","timestamp":"2022-06-15 10:57:36.912","file":"store/lesson.go:170","msg":"插入中间表信息成功[{0d7c6ae6-8191-4bf1-af98-f73cf705ff70 4 d42d57e3-47cf-4be8-ba56-3928650c22b2 计科333 化学 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC \u003cnil\u003e} {5323d971-4d70-4d20-8f44-068c62c517f8 3 d42d57e3-47cf-4be8-ba56-3928650c22b2 计科666 化学 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC \u003cnil\u003e}]"}
