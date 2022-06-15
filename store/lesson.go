@@ -34,23 +34,23 @@ func InsertLesson(lesson *model.Lesson, classLesson []model.ClassLesson) error {
 // GetLessonList 获取当前用户创建课程列表
 // 主要逻辑:根据课程创建者获取其所创建的所有课程id列表，然后根据课程id列表中间表查询，获取最后所需要的返回结果。
 func GetLessonList(userId string) ([]*viewmodel.ListObj,error){
-	  var res []*viewmodel.ListObj 	 			        // 返回给前端的最终结果集
+	  var lessonList []*viewmodel.ListObj 	 			        // 返回给前端的最终结果集
 	  var queryData []*viewmodel.LessonClass           // 连表查询需要的结果集
 	  var lessonClassMap  = make(map[string][]string) // 去重lessonID，记录每个课程所拥有的班级
-	  var lessonList = make([]model.Lesson,0)		 // 根据课程创建者,获取所有课程对象
+	  var lessonObjList = make([]model.Lesson,0)		 // 根据课程创建者,获取所有课程对象
 
 	  // 1.根据userID获取该用户所创建的课程
-	  db := DB.Self.Table("lesson").Select([]string{`lesson_id`}).Where("lesson_creator = ?",userId).Find(&lessonList)
+	  db := DB.Self.Table("lesson").Select([]string{`lesson_id`}).Where("lesson_creator = ?",userId).Find(&lessonObjList)
 	 // 创建课程id列表
-	 var lessonIDList = make([]string,len(lessonList))
+	 var lessonIDList = make([]string,len(lessonObjList))
 	  // 存入id列表
-	 for _,v := range lessonList{
+	 for _,v := range lessonObjList{
 		 lessonIDList = append(lessonIDList,v.LessonID)
 	 }
 	  // 错误处理
      if db.RowsAffected == 0 {
 		log.Errorf(db.Error,"GetLessonList 查询lessonID列表失败")
-		return res,app.ErrRecordNotExist
+		return lessonList,app.ErrRecordNotExist
 	 }
 
 	  // 2.根据课程id连表查询出最后返回的结果集
@@ -60,7 +60,7 @@ func GetLessonList(userId string) ([]*viewmodel.ListObj,error){
 	//  错误处理
 		if db.RowsAffected == 0 {
 			log.Errorf(db.Error,"GetLessonList 连表查询失败")
-			return res,app.ErrRecordNotExist
+			return lessonList,app.ErrRecordNotExist
 		}
 
 	  // 3.获取每个课程对应的班级，存入lessonClass
@@ -73,16 +73,16 @@ func GetLessonList(userId string) ([]*viewmodel.ListObj,error){
 	  for key,val := range lessonClassMap{
 	    vals := strings.Split(key,",")   // 分割
 		createdAt,_ := time.Parse("2006-01-02 15:04:05",vals[2]) // 字符串转成日期
-	  	val := &viewmodel.ListObj{
+	  	lessonObj := &viewmodel.ListObj{
 	  		LessonId : vals[0],
 	  		LessonName:vals[1],
 	  		CreatedAt: createdAt,
 	  		ClassName:val,
 		}
-		res = append(res,val)
+		lessonList = append(lessonList,lessonObj)
 	  }
-	 log.Infof("查询用户创建列表成功%v",res)
-	 return res,nil
+	 log.Infof("查询用户创建列表成功%v",lessonList)
+	 return lessonList,nil
 }
 
 // GetJoinLessonList 查询当前用户加入的课程
