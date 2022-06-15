@@ -4,7 +4,7 @@ import (
 	"github.com/lexkong/log"
 	"qiandao/model"
 	"qiandao/pkg/app"
-	"qiandao/pkg/util"
+	//"qiandao/pkg/util"
 	"qiandao/viewmodel"
 	"strings"
 	"time"
@@ -21,7 +21,7 @@ func InsertLesson(lesson *model.Lesson, classLesson []model.ClassLesson) error {
 		return app.InternalServerError
 	}
 //  批量插入中间表
-	err = util.BulkInsert(DB.Self,classLesson)
+//	err = util.BulkInsert(DB.Self,classLesson)
 	if err != nil {
 		log.Errorf(err,"插入课程记录失败")
 		tx.Rollback()
@@ -161,7 +161,7 @@ func UpdateLessonName(lesson *viewmodel.LessonEditor)(err error) {
 // InsertClassLesson 插入中间表信息
 func InsertClassLesson(classLessonSlice []model.ClassLesson)(err error) {
 	tx := DB.Self.Begin()
-	err = util.BulkInsert(tx,classLessonSlice)
+	//err = util.BulkInsert(tx,classLessonSlice)
 	if err != nil{
 		log.Errorf(tx.Error,"插入中间表信息失败")
 		tx.Rollback()
