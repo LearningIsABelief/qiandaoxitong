@@ -11,20 +11,17 @@ import (
 func CreateLesson(ctx *gin.Context)  {
 //	 1.绑定参数
 	lesson := new(viewmodel.Lesson)
-	err := ctx.ShouldBind(lesson)
+	err := ctx.ShouldBindJSON(lesson)
 	if err != nil {
 		app.SendResponse(ctx,app.ErrBind,nil)
 		return
 	}
-//	 2.调用业务逻辑
-	if lesson.LessonName == "" {
+//	 2.判断参数是否合理
+	if lesson.LessonName == "" ||  len(lesson.ClassList) == 0 {
 		app.SendResponse(ctx,app.ErrParamNull,nil)
 		return
 	}
-	if len(lesson.ClassList) == 0 {
-		app.SendResponse(ctx,app.ErrParamNull,nil)
-		return
-	}
+//  3.调用逻辑处理
 	err = service.CreateLesson(lesson)
 	if err != nil {
 		app.SendResponse(ctx,err,nil)
@@ -75,7 +72,7 @@ func GetJoinLessonList(ctx *gin.Context){
 func EditorLesson(ctx *gin.Context){
 // 	1.绑定参数
 	var lesson *viewmodel.LessonEditor
-	err := ctx.ShouldBind(&lesson)
+	err := ctx.ShouldBindJSON(&lesson)
 	if err != nil {
 		app.SendResponse(ctx,app.ErrBind,nil)
 		return

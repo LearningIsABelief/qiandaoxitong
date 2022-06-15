@@ -4,7 +4,10 @@ import (
 	"github.com/lexkong/log"
 	"qiandao/model"
 	"qiandao/pkg/app"
+	"qiandao/pkg/util"
 	"qiandao/viewmodel"
+	"strings"
+	"time"
 )
 
 // InsertLesson 插入课程信息
@@ -17,113 +20,127 @@ func InsertLesson(lesson *model.Lesson, classLesson []model.ClassLesson) error {
 		tx.Rollback()
 		return app.InternalServerError
 	}
-//  插入中间表
-	for _, v := range classLesson{
-		err = tx.Create(&v).Error;if err != nil{
-			log.Errorf(err,"插入中间表记录失败")
-			tx.Rollback()
-			return app.InternalServerError
-		}
+//  批量插入中间表
+	err = util.BulkInsert(DB.Self,classLesson)
+	if err != nil {
+		log.Errorf(err,"插入课程记录失败")
+		tx.Rollback()
+		log.Errorf(err,"批量插入失败")
 	}
 	tx.Commit()
-	log.Infof("课程、中间表记录插入成功%d")
 	return err
 }
 
 // GetLessonList 获取当前用户创建课程列表
+// 主要逻辑:根据课程创建者获取其所创建的所有课程id列表，然后根据课程id列表中间表查询，获取最后所需要的返回结果。
 func GetLessonList(userId string) ([]*viewmodel.ListObj,error){
-	  // 返回给前端的最终结果集
-	  var res []*viewmodel.ListObj
-	  // 获取课程信息:课程名、创建时间
-	  lesson := make([]*model.Lesson,0)
-	  // 存储每个课程对应的班级
-	  var lessonClass  = make(map[string][]string)
-	  //  班级实体
-	  classEntity := make([]viewmodel.ClassObj,0)
+	  var lessonList []*viewmodel.ListObj 	 			        // 返回给前端的最终结果集
+	  var queryData []*viewmodel.LessonClass           // 连表查询需要的结果集
+	  var lessonClassMap  = make(map[string][]string) // 去重lessonID，记录每个课程所拥有的班级
+	  var lessonObjList = make([]model.Lesson,0)		 // 根据课程创建者,获取所有课程对象
 
-	  // 查询数据库，获取课程信息，存入lesson
-	  db := DB.Self.Table("lesson").Select([]string{`lesson_id`,`lesson_name`,`created_at`}).Where("lesson_creator = ? ",userId).Find(&lesson)
-	  if db.RowsAffected == 0 {
-	  	log.Errorf(db.Error,"指定查找的课程记录不存在")
-	  	return nil,app.ErrRecordNotExist
-	  }
+	  // 1.根据userID获取该用户所创建的课程
+	  db := DB.Self.Table("lesson").Select([]string{`lesson_id`}).Where("lesson_creator = ?",userId).Find(&lessonObjList)
+	 // 创建课程id列表
+	 var lessonIDList = make([]string,len(lessonObjList))
+	  // 存入id列表
+	 for _,v := range lessonObjList{
+		 lessonIDList = append(lessonIDList,v.LessonID)
+	 }
+	  // 错误处理
+     if db.RowsAffected == 0 {
+		log.Errorf(db.Error,"GetLessonList 查询lessonID列表失败")
+		return lessonList,app.ErrRecordNotExist
+	 }
 
-	  // 获取每个课程对应的班级，存入lessonClass
-	  for _,v := range lesson {
-	 //  查询数据库，根据上述查询的课程id获取班级名称。
-	  	db = DB.Self.Table("class_lesson").Select([]string{`class_name`,`class.class_id`}).
-	  		Joins("inner join class on class.class_id = class_lesson.class_id").
-	  		Where("lesson_id = ?",v.LessonID).Find(&classEntity)
-	  if db.RowsAffected == 0 {
-	  	log.Errorf(db.Error,"中间表查询班级id失败")
-	  	return nil,app.ErrClassNotExist
-	  }
-	  // 存储每个课程对应的班级
-	  	var tmp []string
-	  	for _,val := range classEntity{
-	  		tmp = append(tmp,val.ClassName)
+	  // 2.根据课程id连表查询出最后返回的结果集
+	// 2.根据课程id列表,获取所有最后结果集
+	db = DB.Self.Table("class_lesson").Select([]string{`lesson_id`,`lesson_name`,`class_name`,`created_at`}).
+		Where("lesson_id IN (?) AND deleted_at is null ",lessonIDList).Find(&queryData)
+	//  错误处理
+		if db.RowsAffected == 0 {
+			log.Errorf(db.Error,"GetLessonList 连表查询失败")
+			return lessonList,app.ErrRecordNotExist
 		}
-		lessonClass[v.LessonID] = tmp
+
+	  // 3.获取每个课程对应的班级，存入lessonClass
+	  for _,v := range queryData {
+	  // key是课程id+课程名+创建时间
+		  mapKey := v.LessonId+","+v.LessonName+","+v.CreatedAt.String()
+		  lessonClassMap[mapKey] = append(lessonClassMap[mapKey],v.ClassName)
 	  }
-	  // 存入最终结果集
-	  for _,v := range lesson{
-	  	val := &viewmodel.ListObj{
-	  		LessonId : v.LessonID,
-	  		LessonName: v.LessonName,
-	  		CreatedAt: v.CreatedAt,
-	  		ClassName: lessonClass[v.LessonID],
+	  // 4.存入最终结果集
+	  for key,val := range lessonClassMap{
+	    vals := strings.Split(key,",")   // 分割
+		createdAt,_ := time.Parse("2006-01-02 15:04:05",vals[2]) // 字符串转成日期
+	  	lessonObj := &viewmodel.ListObj{
+	  		LessonId : vals[0],
+	  		LessonName:vals[1],
+	  		CreatedAt: createdAt,
+	  		ClassName:val,
 		}
-		res = append(res,val)
+		lessonList = append(lessonList,lessonObj)
 	  }
-	  log.Infof("查询用户创建列表以成功%v",res)
-	return res,nil
+	 log.Infof("查询用户创建列表成功%v",lessonList)
+	 return lessonList,nil
 }
 
 // GetJoinLessonList 查询当前用户加入的课程
 func GetJoinLessonList(classId string) ([]*viewmodel.ListObj,error) {
-	// 返回结果
-	var resListObj []*viewmodel.ListObj
-	// 创建课程实体
-	var lesson []model.Lesson
-	// 存入每个课堂对应的班级
-	classLessonMap := make(map[string][]string)
-	// 创建班级实体
-	var classLesson []viewmodel.ClassObj
-	// 根据中间表关联查询到当前班级加入的课堂
-	db := DB.Self.Table("class_lesson").Select([]string{`lesson.lesson_name`,`lesson.created_at`,`lesson.lesson_id`}).
-		Joins("inner join lesson on lesson.lesson_id = class_lesson.lesson_id").
-		Joins("inner join class on class.class_id = class_lesson.class_id").Where("class_lesson.class_id = ?",classId).
-		Find(&lesson)
+	var joinList []*viewmodel.ListObj			  // 返回结果
+	var lesson []model.Lesson		  		 	 // 创建课程实体
+    var queryData []*viewmodel.LessonClass      // 连表查询需要的结果集
+	classLessonMap := make(map[string][]string) // 存入每个课堂对应的班级
+
+	// 1.根据班级id查询出当前班级所加入的所有课程,获取了课程id列表
+	db := DB.Self.Table("class_lesson").Select([]string{"lesson.lesson_id"}).
+		Joins("INNER JOIN lesson ON lesson.lesson_id = class_lesson.lesson_id").
+		Where("class_lesson.class_id = ?",classId).Find(&lesson)
+	// 错误处理
 	if db.RowsAffected == 0 {
 		log.Errorf(db.Error,"查询用户所在班级加入的课堂失败")
 		return nil,app.ErrRecordNotExist
 	}
-	// 根据查询出的课堂id,去反查询，得到加入该课堂的相应班级
-	for _,v := range lesson{
-		db = DB.Self.Table("class_lesson").Select([]string{`class_name`}).
-			Joins("inner join class on class.class_id = class_lesson.class_id").
-			Where("class_lesson.lesson_id = ?",v.LessonID).Find(&classLesson)
-		if db.RowsAffected == 0 {
-			log.Errorf(db.Error,"查询当前课程所拥有的班级信息失败")
-			return nil,app.ErrRecordNotExist
-		}
-		var tmp []string
-		for _,v1 := range classLesson{
-			tmp = append(tmp,v1.ClassName)
-		}
-		classLessonMap[v.LessonID] = tmp
+	// 课程id列表
+	 lessonIDList := make([]string,len(lesson))
+	 for _,v := range lesson {
+		 lessonIDList = append(lessonIDList,v.LessonID)
+	 }
+
+
+	// 2.根据课程id列表,获取所有最后结果集
+	db = DB.Self.Table("class_lesson").Select([]string{`lesson_id`,`lesson_name`,`class_name`,`created_at`}).
+		Where("lesson_id IN (?) AND deleted_at is null ",lessonIDList).Find(&queryData)
+
+	//  错误处理
+	if db.RowsAffected == 0 {
+		log.Errorf(db.Error,"GetLessonList 连表查询失败")
+		return joinList,app.ErrRecordNotExist
 	}
-	// 存入resListObj结果集中
-	for _,v := range lesson{
-		vobj := &viewmodel.ListObj{
-			LessonName: v.LessonName,
-			CreatedAt: v.CreatedAt,
-			ClassName: classLessonMap[v.LessonID],
-		}
-		resListObj = append(resListObj,vobj)
+
+	// 3.处理相应课程对应的班级
+	for _,v := range queryData {
+		// key是课程id+课程名+创建时间
+		mapKey := v.LessonId+","+v.LessonName+","+v.CreatedAt.String()
+		classLessonMap[mapKey] = append(classLessonMap[mapKey],v.ClassName)
 	}
-	log.Infof("获取用户加入课程成功",resListObj)
-	return resListObj,nil
+
+	// 4.存入joinList
+	for key,val := range classLessonMap{
+		vals := strings.Split(key,",")   // 分割
+		createdAt,_ := time.Parse("2006-01-02 15:04:05",vals[2]) // 字符串转成日期
+		val := &viewmodel.ListObj{
+			LessonId : vals[0],
+			LessonName:vals[1],
+			CreatedAt: createdAt,
+			ClassName:val,
+		}
+		joinList = append(joinList,val)
+	}
+
+	log.Infof("获取用户加入课程成功")
+
+	return joinList,nil
 }
 
 // UpdateLessonName  更新课程名称
@@ -145,14 +162,12 @@ func UpdateLessonName(lesson *viewmodel.LessonEditor)(err error) {
 // InsertClassLesson 插入中间表信息
 func InsertClassLesson(classLessonSlice []model.ClassLesson)(err error) {
 	tx := DB.Self.Begin()
-	for _, v := range classLessonSlice{
-	 if tx.Create(&v).RowsAffected == 0{
-	 	log.Errorf(tx.Error,"插入中间表信息失败")
-	 	tx.Rollback()
-	 	return app.ErrInserted
-	 }
-  }
-
+	err = util.BulkInsert(tx,classLessonSlice)
+	if err != nil{
+		log.Errorf(tx.Error,"插入中间表信息失败")
+		tx.Rollback()
+		return err
+	}
 	tx.Commit()
 	log.Infof("插入中间表信息成功%v",classLessonSlice)
 	return nil
@@ -235,6 +250,7 @@ func DeleteClassIdByLessonId(lessonId string)(err error){
 	log.Infof("删除班级id是啊比%d",tx.RowsAffected)
 	return nil
 }
+
 
 
 
