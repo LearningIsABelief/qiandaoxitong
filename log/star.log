@@ -1586,3 +1586,8 @@
 {"level":"INFO","timestamp":"2022-06-15 20:52:37.204","file":"sd/healthcheck.go:25","msg":"路由正常"}
 {"level":"INFO","timestamp":"2022-06-15 20:52:37.204","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
 {"level":"INFO","timestamp":"2022-06-15 20:52:37.204","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-06-15 20:58:52.043","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 20:58:52.044","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 20:58:52.045","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 20:58:52.046","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 20:58:52.046","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}

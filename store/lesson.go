@@ -1,6 +1,9 @@
 package store
 
 import (
+	"bytes"
+	"fmt"
+	"github.com/jinzhu/gorm"
 	"github.com/lexkong/log"
 	"qiandao/model"
 	"qiandao/pkg/app"
@@ -21,7 +24,7 @@ func InsertLesson(lesson *model.Lesson, classLesson []model.ClassLesson) error {
 		return app.InternalServerError
 	}
 //  批量插入中间表
-//	err = util.BulkInsert(DB.Self,classLesson)
+	err = BulkInsert(DB.Self,classLesson)
 	if err != nil {
 		log.Errorf(err,"插入课程记录失败")
 		tx.Rollback()
@@ -161,7 +164,7 @@ func UpdateLessonName(lesson *viewmodel.LessonEditor)(err error) {
 // InsertClassLesson 插入中间表信息
 func InsertClassLesson(classLessonSlice []model.ClassLesson)(err error) {
 	tx := DB.Self.Begin()
-	//err = util.BulkInsert(tx,classLessonSlice)
+	err = BulkInsert(tx,classLessonSlice)
 	if err != nil{
 		log.Errorf(tx.Error,"插入中间表信息失败")
 		tx.Rollback()
@@ -248,6 +251,27 @@ func DeleteClassIdByLessonId(lessonId string)(err error){
 	tx.Commit()
 	log.Infof("删除班级id是啊比%d",tx.RowsAffected)
 	return nil
+}
+
+func BulkInsert(db *gorm.DB,data []model.ClassLesson) error{
+	// 声明buffer缓冲器
+	var buffer bytes.Buffer
+	sql := "insert into `class_lesson` (`class_lesson_id`,`class_id`,`lesson_id`,`class_name`,`lesson_name`,`created_at`,`updated_at`) values"
+	// 将字符串放到缓冲器的尾部
+	if _,err := buffer.WriteString(sql);err != nil{
+		return err
+	}
+	// 拼接字符串,构成多行插入语句
+	for i,val := range data{
+		if i == len(data)-1 {
+			buffer.WriteString(fmt.Sprintf("('%s','%s','%s','%s','%s','%s','%s');",val.ClassLessonID,val.ClassID,val.LessonID,val.ClassName,val.LessonName,time.Now().Format("2006-01-02 15:04:05.000"),time.Now().Format("2006-01-02 15:04:05.000")))
+		}else{
+			buffer.WriteString(fmt.Sprintf("('%s','%s','%s','%s','%s','%s','%s'),",val.ClassLessonID,val.ClassID,val.LessonID,val.ClassName,val.LessonName,time.Now().Format("2006-01-02 15:04:05.000"),time.Now().Format("2006-01-02 15:04:05.000")))
+		}
+	}
+	// 执行插入
+	return db.Exec(buffer.String()).Error
+
 }
 
 
