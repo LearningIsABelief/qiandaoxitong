@@ -107,7 +107,6 @@ func GetJoinLessonList(classId string) ([]*viewmodel.ListObj,error) {
 		 lessonIDList = append(lessonIDList,v.LessonID)
 	 }
 
-
 	// 2.根据课程id列表,获取所有最后结果集
 	db = DB.Self.Table("class_lesson").Select([]string{`lesson_id`,`lesson_name`,`class_name`,`created_at`}).
 		Where("lesson_id IN (?) AND deleted_at is null ",lessonIDList).Find(&queryData)
