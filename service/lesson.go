@@ -116,3 +116,4 @@ func RemoveLesson(lesson *viewmodel.LessonRemove)(err error){
 	}
 	return nil
 }
+
