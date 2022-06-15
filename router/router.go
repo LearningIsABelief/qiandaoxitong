@@ -46,7 +46,7 @@ func Load(engine *gin.Engine, handlerFunc ...gin.HandlerFunc) *gin.Engine {
 	}
 
 	// 课程
-	lessonApi := engine.Group("/api/lesson")
+	lessonApi := engine.Group("/api/lesson").Use(middleware.Auth())
 	{
 		// 创建课程
 		lessonApi.POST("", lesson.CreateLesson)
