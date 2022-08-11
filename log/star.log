@@ -1600,3 +1600,14 @@
 {"level":"INFO","timestamp":"2022-06-15 20:58:52.046","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
 {"level":"INFO","timestamp":"2022-06-15 20:58:52.046","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
 >>>>>>> f09892ddbcff36a357838fc1389d93abd9903946
+{"level":"ERROR","timestamp":"2022-06-15 21:06:34.968","file":"store/mysql.go:48","msg":"数据库连接失败.Database Name: javaweb","data":{"error":"Error 1045: Access denied for user 'root'@'localhost' (using password: YES)"}}
+{"level":"INFO","timestamp":"2022-06-15 21:06:34.969","file":"store/mysql.go:50","msg":"数据库连接成功.Database Name: javaweb"}
+{"level":"INFO","timestamp":"2022-06-15 21:06:34.969","file":"store/redis.go:44","msg":"redis连接成功. URL: 127.0.0.1:6379"}
+{"level":"INFO","timestamp":"2022-06-15 21:06:35.476","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 21:06:35.476","file":"qiandaoxitong/main.go:48","msg":"路由启动成功."}
+{"level":"INFO","timestamp":"2022-06-15 21:06:35.476","file":"qiandaoxitong/main.go:49","msg":"开始监听 http 地址上的传入请求: :8000"}
+{"level":"INFO","timestamp":"2022-06-15 21:08:47.872","file":"sd/healthcheck.go:53","msg":"OK - 可用空间：283597MB(276GB) / 720762MB(703GB) | 已使用：39%"}
+{"level":"INFO","timestamp":"2022-06-15 21:17:15.104","file":"sd/healthcheck.go:77","msg":"OK - 平均负荷: 0.00, 0.00, 0.00 | 物理内核: 6"}
+{"level":"INFO","timestamp":"2022-06-15 21:17:24.973","file":"sd/healthcheck.go:106","msg":"OK - 可用空间：10268MB(10GB) / 16261MB(15GB) | 已使用：63%"}
+{"level":"INFO","timestamp":"2022-06-15 21:17:47.304","file":"sd/healthcheck.go:25","msg":"路由正常"}
+{"level":"INFO","timestamp":"2022-06-15 21:17:50.905","file":"sd/healthcheck.go:25","msg":"路由正常"}
