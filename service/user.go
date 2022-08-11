@@ -189,7 +189,7 @@ func Login(loginRequest viewmodel.LoginRequest, ctx *gin.Context) (viewmodel.Log
 	// 单用户模式：true，多用户模式：false
 	// 为true需要踢掉之前登陆过的用户
 	if viper.GetBool("login.single_login") {
-		err := util.CheckLoginOnUser(loginRequest.Uuid, userToken)
+		err := util.CheckLoginOnUser(userInfo.UserId, userToken)
 		if err != nil {
 			return viewmodel.LoginResponse{}, err
 		}

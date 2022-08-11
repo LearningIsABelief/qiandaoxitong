@@ -32,7 +32,7 @@ func GetRequestIP(c *gin.Context) string {
 }
 
 // GetAllOnlineUser
-// @Description: 获取所有在线的用户
+// @Description: 获取某个账号所有在线的信息
 // @Author YangXuZheng
 // @Date: 2022-06-12 21:03
 func GetAllOnlineUser(userId string) ([]viewmodel.OnlineUserInfo, error) {
@@ -48,6 +48,9 @@ func GetAllOnlineUser(userId string) ([]viewmodel.OnlineUserInfo, error) {
 		userInfo, _ := RedisGet(v)
 		bytes := StringToByteSlice(userInfo)
 		err := json.Unmarshal(bytes, &dateMap)
+		if dateMap.Id != userId {
+			continue
+		}
 		if err != nil {
 			log.Errorf(err, "redis中字符串序列化为结构体失败")
 			return nil, errors.New("redis中字符串序列化为结构体失败")

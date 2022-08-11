@@ -12,8 +12,8 @@ var Result = base64Captcha.DefaultMemStore
 // @Description: 生成图片验证码的 base64编码和ID
 // @Author YangXuZheng 2022-06-11 13:21
 // @Result id 验证码id
-// @Result base64 图片base64编码
-// @Result error 错误
+// @Result bse64s 图片base64编码
+// @Result err 错误
 func CreateCode() (string, string, error) {
 	var driver base64Captcha.Driver
 	switch viper.GetString("code.captcha_type") {
